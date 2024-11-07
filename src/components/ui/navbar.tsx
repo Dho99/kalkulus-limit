@@ -4,8 +4,8 @@ export default function Navbar() {
   const navMenu: Array<String> = ["Item 1", "Item 2"];
 
   return (
-    <Container pos="relative" maxW={"dvw"} backgroundColor={"white"}>
-      <Box position={"fixed"} zIndex={"1"} left={0} shadow={"xs"}  backgroundColor={"blackAlpha.300"}>
+    <Container pos="relative" maxW={"dvw"}>
+      <Box position={"fixed"} zIndex={"3"} left={0} shadow={"xs"} backgroundColor={"whiteAlpha.700"}>
         <Box flexDirection="row" w={"dvw"} px={{lg:10, base: 0}}>
           <Container display={"flex"} py={4} px={5} alignItems={"center"}>
             <Box flexBasis={"50%"}>

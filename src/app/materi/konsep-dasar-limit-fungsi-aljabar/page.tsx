@@ -3,6 +3,8 @@ import { Text, Container, Box, Flex } from "@chakra-ui/react";
 import Link from "next/link";
 import LatexRenderer from "../../../components/LatexRenderer";
 import Sidenav from "@/components/page/materi/sidenav";
+import Chart from "chart.js/auto";
+import AcquisitionsChart from "@/components/page/materi/chart";
 
 export default function Page() {
   metadata.title = "LearnLimit - Konsep Dasar Limit Fungsi Aljabar";
@@ -12,6 +14,14 @@ export default function Page() {
   const twoHandLimit = " \\lim_{x \\to a^-}f(x) = \\lim_{x \\to a^+}f(x)";
   const limitRight = "\\lim_{x \\to a^+}f(x)";
   const limitLeft = "\\lim_{x \\to a^-}f(x)";
+
+  const data = [
+    { x: -20, y: -10 },
+    { x: 0, y: 5,  },
+    { x: 5, y: 10,  },
+    { x: 8, y: 5,},
+    { x: 15, y: 0},
+  ];
 
   return (
     <>
@@ -45,9 +55,23 @@ export default function Page() {
                 <Box maxH={"30px"} overflow={"hidden"} mb={2}>
                   <LatexRenderer expression={latexExpression} inline={false} />
                 </Box>
-                yang artinya, ketika 𝑥 mendekati 𝑎, nilai dari 𝑓 ( 𝑥 ) mendekati
-                𝐿
               </Text>
+              <Text
+                textStyle={"lg"}
+                display={"flex"}
+                overflow={"hidden"}
+                maxH={"25px"}
+              >
+                yang artinya, ketika 𝑥 mendekati 𝑎, tetapi (𝑥{" "}
+                <Text maxW={"20px"} overflow={"hidden"}>
+                  <LatexRenderer expression={"\\neq"} inline={true} />
+                </Text>{" "}
+                a) maka nilai dari 𝑓 ( 𝑥 ) mendekati 𝐿
+              </Text>
+            </Box>
+            <Box maxW={"50%"} display={"flex"} margin={"auto"} my={3}>
+              <AcquisitionsChart datas={data} />
+
             </Box>
 
             <Box mt={10}>
@@ -62,8 +86,8 @@ export default function Page() {
                 <Box maxH={"38px"} overflow={"hidden"} my={4}>
                   <LatexRenderer expression={limitRight} inline={false} />
                 </Box>
-                Di sini, 𝑥 mendekati 𝑎 dari nilai yang sedikit lebih besar
-                dari 𝑎.
+                Di sini, 𝑥 mendekati 𝑎 dari nilai yang sedikit lebih besar dari
+                𝑎.
               </Text>
             </Box>
 
@@ -79,8 +103,8 @@ export default function Page() {
                 <Box maxH={"38px"} overflow={"hidden"} my={4}>
                   <LatexRenderer expression={limitLeft} inline={false} />
                 </Box>
-                Di sini,𝑥 mendekati 𝑎 dari nilai yang sedikit lebih kecil
-                dari 𝑎.
+                Di sini,𝑥 mendekati 𝑎 dari nilai yang sedikit lebih kecil dari
+                𝑎.
               </Text>
             </Box>
 
@@ -113,18 +137,6 @@ export default function Page() {
                 𝐿
               </Text>
             </Box>
-
-
-
-
-
-
-
-
-
-
-
-
           </Box>
         </Flex>
       </Container>

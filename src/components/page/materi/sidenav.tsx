@@ -58,7 +58,6 @@ export default function Sidenav({ content }: SidenavProps) {
         >
           {menus[0].menuSelection.map((item, key) => {
             return (
-              <>
                 <Link
                   key={key}
                   href={menus[0].menuLink[key]}
@@ -70,7 +69,7 @@ export default function Sidenav({ content }: SidenavProps) {
                 >
                   {key + 1} . {item}
                 </Link>
-              </>
+
             );
           })}
         </Flex>

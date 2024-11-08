@@ -1,19 +1,47 @@
-import { Box, Container, Link, Text } from "@chakra-ui/react";
+"use client"
+
+import { Box, Container, Link as ChakraUILinker, Text } from "@chakra-ui/react";
+import Link from 'next/link' 
+import { MouseEvent } from "react";
+import {useRouter} from 'next/navigation';
 
 export default function Navbar() {
-  const navMenu: Array<String> = ["Item 1", "Item 2"];
+  const router = useRouter();
+  type NavItems = {
+    href: string;
+    navTitle: string;
+    // event: (event: MouseEvent<HTMLAnchorElement>) => void;
+  };
+
+
+  const navMenu: Array<NavItems> = [
+    {
+      navTitle: "Item 1",
+      href: "/materi/konsep-dasar-limit-fungsi-aljabar"
+    },
+    {  
+      navTitle: "Item 2",
+      href: "/konz1" 
+    },
+  ];
 
   return (
     <Container pos="relative" maxW={"dvw"}>
-      <Box position={"fixed"} zIndex={"3"} left={0} shadow={"xs"} backgroundColor={"whiteAlpha.700"}>
-        <Box flexDirection="row" w={"dvw"} px={{lg:10, base: 0}}>
+      <Box
+        position={"fixed"}
+        zIndex={"3"}
+        left={0}
+        shadow={"xs"}
+        backgroundColor={"whiteAlpha.700"}
+      >
+        <Box flexDirection="row" w={"dvw"} px={{ lg: 10, base: 0 }}>
           <Container display={"flex"} py={4} px={5} alignItems={"center"}>
             <Box flexBasis={"50%"}>
-              <Link variant={"plain"} colorPalette={"cyan"} href="/">
+              <ChakraUILinker variant={"plain"} colorPalette={"cyan"} onClick={() => {router.push('/')}}>
                 <Text textStyle="3xl" fontWeight="bold">
                   LearnLimit
                 </Text>
-              </Link>
+              </ChakraUILinker>
             </Box>
             <Box
               flexBasis={"50%"}
@@ -25,10 +53,13 @@ export default function Navbar() {
                 return (
                   <Box flexBasis={"10%"} key={index}>
                     <Link
-                      color={{ base: "gray ", _hover: "black"}}
-                      transition={"all 0.2s ease-in-out "}
+                      // color={{ base: "gray ", _hover: "black" }}
+                      // transition={"all 0.2s ease-in-out "}
+                      // className={}
+                      href={menu.href}
+                      // onClick={menu.event}
                     >
-                      <Text fontWeight={"semibold"}>{menu}</Text>
+                      <Text fontWeight={"semibold"} style={{color: "black"}}>{menu.navTitle}</Text>
                     </Link>
                   </Box>
                 );

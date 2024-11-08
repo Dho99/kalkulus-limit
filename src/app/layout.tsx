@@ -3,9 +3,8 @@ import localFont from "next/font/local";
 import { Provider } from "@/components/ui/provider";
 import { Container, Box, Image } from "@chakra-ui/react";
 import Navbar from "@/components/ui/navbar";
-import Hero from "@/components/page/root/hero";
-import Cards from "@/components/page/root/cards";
 import Footer from "@/components/page/root/footer";
+import Head from "next/head";
 
 const inter = localFont({
   src: "./fonts/Inter-VariableFont_opsz,wght.ttf",

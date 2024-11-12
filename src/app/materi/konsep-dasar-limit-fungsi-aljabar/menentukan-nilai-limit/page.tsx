@@ -401,6 +401,9 @@ export default function Page() {
                                     }
                                     inline={true}
                                   />
+
+
+                                  
                                   <LatexRenderer
                                     expression={
                                       "= \\frac{3-1}{3-2}"

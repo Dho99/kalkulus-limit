@@ -11,7 +11,7 @@ import {
   TimelineRoot,
   TimelineTitle,
 } from "@/components/ui/timeline";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
+// import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 export default function Cards() {
 
@@ -46,7 +46,7 @@ export default function Cards() {
                     onClick={() => {router.push('/materi/konsep-dasar-limit-fungsi-aljabar')}}
                   >
                     <Text fontWeight={"bold"}>
-                      Mulai Belajar <ArrowForwardIcon />
+                      Mulai Belajar
                     </Text>
                   </Button>
                 </TimelineContent>
@@ -72,7 +72,7 @@ export default function Cards() {
                     onClick={() => {router.push('/materi/limit-suku-banyak')}}
                   >
                     <Text fontWeight={"bold"}>
-                      Lihat Materi <ArrowForwardIcon />
+                      Lihat Materi
                     </Text>
                   </Button>
                 </TimelineContent>
@@ -98,7 +98,7 @@ export default function Cards() {
                     onClick={() => {router.push('/materi/limit-fungsi-trigonometri')}}
                   >
                     <Text fontWeight={"bold"}>
-                      Lihat Materi <ArrowForwardIcon />
+                      Lihat Materi
                     </Text>
                   </Button>
                 </TimelineContent>

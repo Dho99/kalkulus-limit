@@ -5,6 +5,8 @@ import { Container, Box, Image } from "@chakra-ui/react";
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/page/root/footer";
 import Head from "next/head";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const inter = localFont({
   src: "./fonts/Inter-VariableFont_opsz,wght.ttf",
@@ -26,18 +28,20 @@ export default function RootLayout({
         <Provider>
           <Box maxW={"dvw"} overflow={"hidden"}>
             <Navbar />
-            <Container
-              fluid={true}
-              minH="dvh"
-              w={"dvw"}
-              px="2"
-              centerContent={false}
-              bgColor={"white"}
-              color={"black"}
-              py="4"
-            >
-              {children}
-            </Container>
+            <Suspense fallback={<Loading />}>
+              <Container
+                fluid={true}
+                minH="dvh"
+                w={"dvw"}
+                px="2"
+                centerContent={false}
+                bgColor={"white"}
+                color={"black"}
+                py="4"
+              >
+                {children}
+              </Container>
+            </Suspense>
             <Footer />
           </Box>
         </Provider>

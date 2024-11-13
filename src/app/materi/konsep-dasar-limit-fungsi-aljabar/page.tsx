@@ -1,6 +1,5 @@
 import { metadata } from "@/app/layout";
 import { Text, Container, Box, Flex } from "@chakra-ui/react";
-import Link from "next/link";
 import LatexRenderer from "../../../components/LatexRenderer";
 import Sidenav from "@/components/page/materi/sidenav";
 import BasicTable from "@/components/page/materi/konsep-dasar/table";

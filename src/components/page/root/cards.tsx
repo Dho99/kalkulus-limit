@@ -6,12 +6,10 @@ import { Button } from "@/components/ui/button";
 import {
   TimelineConnector,
   TimelineContent,
-  TimelineDescription,
   TimelineItem,
   TimelineRoot,
   TimelineTitle,
 } from "@/components/ui/timeline";
-// import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 export default function Cards() {
 

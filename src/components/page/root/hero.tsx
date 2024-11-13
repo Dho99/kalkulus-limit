@@ -13,7 +13,7 @@ export default function Hero() {
             <Button mt={8} colorPalette={"yellow"} size={"xl"}><Text fontWeight={"bold"}>Lihat Materi </Text></Button>
           </Box>
           <Box flexBasis="45%">
-            <Image src={"/Images/math_ilustration.svg"} rounded={"full"}/>
+            <Image src={"/Images/math_ilustration.svg"} rounded={"full"} alt={"Math Illustration Image"}/>
           </Box>
         </Flex>
       </Container>

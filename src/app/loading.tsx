@@ -1,9 +1,3 @@
-import { HStack, Stack } from "@chakra-ui/react";
-import {
-  Skeleton,
-  SkeletonCircle,
-  SkeletonText,
-} from "@/components/ui/skeleton";
 import { Flex, Container, Box, Text } from "@chakra-ui/react";
 import Sidenav from "@/components/page/materi/sidenav";
 import { Spinner } from "@chakra-ui/react"

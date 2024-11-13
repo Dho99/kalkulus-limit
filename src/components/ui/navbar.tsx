@@ -2,7 +2,6 @@
 
 import { Box, Container, Link as ChakraUILinker, Text } from "@chakra-ui/react";
 import Link from 'next/link' 
-import { MouseEvent } from "react";
 import {useRouter} from 'next/navigation';
 
 export default function Navbar() {

@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Flex, Menu } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import sidenav from "../../../../public/sidenav.module.css";
@@ -23,7 +23,7 @@ export default function Sidenav({ content }: SidenavProps) {
     konsepDasar: Array<MenuContent>;
   };
 
-  let menus: Array<MenuContent> = [];
+  const menus: Array<MenuContent> = [];
 
   const menuElements: Array<Menus> = [
     {

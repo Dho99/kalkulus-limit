@@ -8,8 +8,6 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Title,
-  Legend,
   ChartOptions,
   LogarithmicScale,
 } from "chart.js";
@@ -75,8 +73,8 @@ const AcquisitionsLineChart: React.FC<AcquisitionsLineChartProps> = ({
       },
       y: {
         type: "linear",
-        min: xMin,
-        max: xMax, // adjust based on range of data
+        min: yMin,
+        max: yMax, // adjust based on range of data
       },
     },
     plugins: {

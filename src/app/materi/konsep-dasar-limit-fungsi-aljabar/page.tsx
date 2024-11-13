@@ -5,16 +5,16 @@ import Sidenav from "@/components/page/materi/sidenav";
 import BasicTable from "@/components/page/materi/konsep-dasar/table";
 
 export default function Page() {
-  metadata.title = "LearnLimit - Konsep Dasar Limit Fungsi Aljabar";
+  metadata.title = "LearnLimit | Konsep Dasar Limit Fungsi Aljabar";
 
   const latex = " \\lim_{ x\\to a} = L";
   const latexExpression = latex;
 
   return (
     <>
-      <Container fluid={true} mt={{ xl: "5%", lg: "8%" }} zIndex={2}>
+      <Container fluid={true} mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%"}} zIndex={2}>
         <Flex direction={"row"} gap={10}>
-          <Sidenav content={"Konsep Dasar Limit"} />
+          <Sidenav content={"Konsep Dasar Limit"}/>
           <Box flexBasis={"100%"}>
             <Text
               textStyle={"5xl"}

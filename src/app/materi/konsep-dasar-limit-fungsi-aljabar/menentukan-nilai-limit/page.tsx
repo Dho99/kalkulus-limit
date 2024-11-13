@@ -1,12 +1,18 @@
 import { Container, Flex, Box, Text, SimpleGrid } from "@chakra-ui/react";
 import Sidenav from "@/components/page/materi/sidenav";
 import LatexRenderer from "@/components/LatexRenderer";
+import { metadata } from "@/app/layout";
 
 
 export default function Page() {
+  metadata.title = 'Learn Limit | Menentukan Nilai Limit Fungsi'
   return (
     <>
-      <Container fluid={true} mt={{ xl: "5%", lg: "8%" }} zIndex={2}>
+      <Container
+        fluid={true}
+        mt={{ xl: "5%", lg: "8%", md: "8%", sm: "8%" }}
+        zIndex={2}
+      >
         <Flex direction={"row"} gap={10}>
           <Sidenav content={"Konsep Dasar Limit"} />
           <Box flexBasis={"100%"}>
@@ -324,10 +330,15 @@ export default function Page() {
                           </Text>
                           <Text as="li">
                             <SimpleGrid
-                              columns={{lg: 2, md: 2, sm: 1, base: 1}}
-                              minChildWidth="200px" 
+                              columns={{ lg: 2, md: 2, sm: 1, base: 1 }}
+                              minChildWidth="200px"
                               display={"flex"}
-                              flexDirection={{lg: "row", md: "row", sm: "column", base: "column"}}
+                              flexDirection={{
+                                lg: "row",
+                                md: "row",
+                                sm: "column",
+                                base: "column",
+                              }}
                               gapY={7}
                               gapX={2}
                             >
@@ -359,17 +370,21 @@ export default function Page() {
                                     }
                                     inline={true}
                                   />
-
                                 </Flex>
                               </Box>
                             </SimpleGrid>
                           </Text>
                           <Text as="li">
                             <SimpleGrid
-                              columns={{lg: 2, md: 2, sm: 1, base: 1}}
-                              minChildWidth="200px" 
+                              columns={{ lg: 2, md: 2, sm: 1, base: 1 }}
+                              minChildWidth="200px"
                               display={"flex"}
-                              flexDirection={{lg: "row", md: "row", sm: "column", base: "column"}}
+                              flexDirection={{
+                                lg: "row",
+                                md: "row",
+                                sm: "column",
+                                base: "column",
+                              }}
                               gapY={7}
                               gapX={2}
                             >
@@ -402,35 +417,30 @@ export default function Page() {
                                     inline={true}
                                   />
 
-
-                                  
                                   <LatexRenderer
-                                    expression={
-                                      "= \\frac{3-1}{3-2}"
-                                    }
+                                    expression={"= \\frac{3-1}{3-2}"}
                                     inline={true}
                                   />
                                   <LatexRenderer
-                                    expression={
-                                      "= \\frac{2}{1}"
-                                    }
+                                    expression={"= \\frac{2}{1}"}
                                     inline={true}
                                   />
                                   <LatexRenderer
-                                    expression={
-                                      "= 2"
-                                    }
+                                    expression={"= 2"}
                                     inline={true}
                                   />
-
                                 </Flex>
                               </Box>
                             </SimpleGrid>
                           </Text>
                           <Text as="li">
-                            <LatexRenderer expression={"\\lim_{x\\to-3}\\frac{x+3}{x^2-3x} = \\frac{-3+3}{-3^2-3(-3)} = \\frac{0}{9+9} = \\frac{0}{18} = 0"} inline={true}/>
+                            <LatexRenderer
+                              expression={
+                                "\\lim_{x\\to-3}\\frac{x+3}{x^2-3x} = \\frac{-3+3}{-3^2-3(-3)} = \\frac{0}{9+9} = \\frac{0}{18} = 0"
+                              }
+                              inline={true}
+                            />
                           </Text>
-                         
                         </Container>
                       </Box>
                     </Box>

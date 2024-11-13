@@ -9,7 +9,7 @@ export default function Hero() {
       <Container>
         <Flex gap={8} alignItems={"center"} height={"40vh"}>
           <Box flexBasis="55%">
-            <Text textStyle={"6xl"} fontWeight={"bolder"}>Buat belajar Limit anda menjadi lebih Mudah !</Text>
+            <Text textStyle={{lg: "6xl", md: "4xl", sm: "4xl", base: "4xl"}} fontWeight={"bolder"}>Buat belajar Limit anda menjadi lebih Mudah !</Text>
             <Button mt={8} colorPalette={"yellow"} size={"xl"}><Text fontWeight={"bold"}>Lihat Materi </Text></Button>
           </Box>
           <Box flexBasis="45%">

@@ -9,7 +9,6 @@ export default function Navbar() {
   type NavItems = {
     href: string;
     navTitle: string;
-    // event: (event: MouseEvent<HTMLAnchorElement>) => void;
   };
 
 
@@ -31,7 +30,7 @@ export default function Navbar() {
         zIndex={"3"}
         left={0}
         shadow={"xs"}
-        backgroundColor={"whiteAlpha.700"}
+        backgroundColor={"white"}
       >
         <Box flexDirection="row" w={"dvw"} px={{ lg: 10, base: 0 }}>
           <Container display={"flex"} py={4} px={5} alignItems={"center"}>
@@ -52,11 +51,7 @@ export default function Navbar() {
                 return (
                   <Box flexBasis={"10%"} key={index}>
                     <Link
-                      // color={{ base: "gray ", _hover: "black" }}
-                      // transition={"all 0.2s ease-in-out "}
-                      // className={}
                       href={menu.href}
-                      // onClick={menu.event}
                     >
                       <Text fontWeight={"semibold"} style={{color: "black"}}>{menu.navTitle}</Text>
                     </Link>

@@ -1,27 +1,38 @@
-import { Container, Image } from "@chakra-ui/react";
+import { Container, Box } from "@chakra-ui/react";
 import Hero from "@/components/page/root/hero";
 import Cards from "@/components/page/root/cards";
 import { metadata } from "./layout";
+import Image from "next/image";
 
 export default function Page() {
-  metadata.title = 'LearnLimit - Home';
+  metadata.title = "LearnLimit | Home";
   return (
-    <div>
-      <Image
-        src={"/images/2346969.jpg"}
-        pos={"absolute"}
-        w={"dvw"}
+    <>
+      <Box
+        pos="absolute"
+        w="100vw"
+        h={{ lg: "80vh", md: "115vh", sm: "180vh", base: "180vh" }}
         zIndex={1}
-        height={{ lg: "80vh", base: "dvh" }}
-        top={"70px"}
-        opacity={"0.3"}
+        top="70px"
         left={0}
-        alt={"Hero Image"}
-      />
-      <Container mt={{ lg: "13%", base: "15%" }} zIndex={2}>
+        opacity="0.3"
+        overflow="hidden"
+      >
+        <Image
+          src="/images/2346969.jpg"
+          alt="Hero Image"
+          layout="fill"
+          objectFit="cover"
+          quality={75}
+          sizes="100vw"
+          loading="lazy"
+        />
+      </Box>
+
+      <Container mt={{ lg: "13%", md: "250px", sm: "300px", base: "200px" }} zIndex={2}>
         <Hero />
         <Cards />
       </Container>
-    </div>
+    </>
   );
 }

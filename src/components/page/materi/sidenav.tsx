@@ -23,6 +23,7 @@ export default function Sidenav({ content }: SidenavProps) {
   type Menus = {
     konsepDasar: Array<MenuContent>;
     limitSukuBanyak: Array<MenuContent>;
+    limitFungsiTrigonometri: Array<MenuContent>;
   };
 
   let menus: Array<MenuContent> = [];
@@ -41,13 +42,26 @@ export default function Sidenav({ content }: SidenavProps) {
       ],
       limitSukuBanyak: [
         {
-          menuSelection: ["Pengertian"],
+          menuSelection: ["Pengertian", "Latihan"],
           menuLink: [
             `${prefixPageUrls}/limit-suku-banyak`,
+            `${prefixPageUrls}/limit-suku-banyak/latihan`,
           ],
           sections: ["Pengertian"],
         },
-      ]
+      ],
+      limitFungsiTrigonometri: [
+        {
+          menuSelection: ["Pengertian", "Menentukan Nilai", "Bentuk Istimewa"],
+          menuLink: [
+            `${prefixPageUrls}/limit-fungsi-trigonometri`,
+            `${prefixPageUrls}/limit-fungsi-trigonometri/menentukan-nilai-limit-fungsi-trigonometri`,
+            `${prefixPageUrls}/limit-fungsi-trigonometri/bentuk-umum`,
+            // `${prefixPageUrls}/limit-suku-banyak/latihan`,
+          ],
+          sections: ["Pengertian"],
+        },
+      ],
     },
   ];
 
@@ -61,6 +75,10 @@ export default function Sidenav({ content }: SidenavProps) {
     case "Limit Suku Banyak":
       menus = [];
       menus.push(menuElements[0].limitSukuBanyak[0]);
+      break;
+    case "Limit Fungsi Trigonometri":
+      menus = [];
+      menus.push(menuElements[0].limitFungsiTrigonometri[0]);
       break;
   }
 

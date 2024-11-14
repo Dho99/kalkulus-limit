@@ -19,7 +19,7 @@ export default function Page() {
         overflow="hidden"
       >
         <Image
-          src="/images/2346969.jpg"
+          src={"/images/2346969.jpg"}
           alt="Hero Image"
           layout="fill"
           objectFit="cover"

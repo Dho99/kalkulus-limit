@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Box, Text, Flex } from "@chakra-ui/react";
+import { Box, Text, Flex, For } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
 import {
   TimelineConnector,
@@ -20,191 +20,127 @@ export default function Cards() {
 
   return (
     <>
-      <Box mt={{ lg: "20%", md: "20%", sm: "40%", base: "50%" }} minH={"svh"}>
+      <Box
+        mt={{ lg: "20%", md: "20%", sm: "40%", base: "50%" }}
+        minH={"svh"}
+        w="svw"
+      >
         <Text
           textStyle={{ lg: "5xl", md: "4xl", sm: "3xl", base: "3xl" }}
           textAlign={{ base: "center" }}
           fontWeight={"bold"}
           display={"flex"}
-          mb={"60px"}
+          mb={8}
           justifyContent={"center"}
+          mx="auto"
         >
           Kumpulan Materi Fungsi Limit Kalkulus
         </Text>
         <Flex gap={4} justifyContent={"center"}>
-          <Box flexBasis={"50%"}>
+          <Box flexBasis={"90%"}>
             <QuizProvider>
-              <TimelineRoot>
-                <TimelineItem>
-                  <TimelineConnector bg={"black"} mt={3}></TimelineConnector>
-                  <TimelineContent>
-                    <TimelineTitle>
-                      <Text
-                        textStyle={{
-                          lg: "4xl",
-                          md: "3xl",
-                          sm: "2xl",
-                          base: "2xl",
-                        }}
-                        fontWeight={"bold"}
+              <Flex gap={7} flexDirection={"column"}>
+                <For
+                  each={[
+                    {
+                      cardTitle: "Konsep Dasar Limit Fungsi Aljabar",
+                      align: "start",
+                      cardDescription:
+                        "Disini kita akan belajar dasar - dasar mengenai Fungsi limit sebelum ke tingkat selanjutnya",
+                      level: level.konsepDasar,
+                      endPoint: "/materi/konsep-dasar-limit-fungsi-aljabar",
+                    },
+                    {
+                      cardTitle: "Limit Suku Banyak",
+                      align: "end",
+                      cardDescription:
+                        "Sudah menguasai Dasar ? Ayo Lanjutkan ke materi ini ",
+                      level: level.sukuBanyak,
+                      endPoint: "/materi/limit-suku-banyak",
+                    },
+                    {
+                      cardTitle: "Limit Fungsi Trigonometri",
+                      align: "start",
+                      cardDescription:
+                        "Wow sudah sampai sini, Hebat ! Yuk, lanjut ke materi ini",
+                      level: level.trigonometri,
+                      endPoint: "/materi/limit-fungsi-trigonometri",
+                    },
+                  ]}
+                >
+                  {(item, index) => (
+                    <Box
+                    key={index}
+                      display={"flex"}
+                      maxW="dvw"
+                      minH="35vh"
+                      h="fit-content"
+                      shadow={"sm"}
+                      py={10}
+                      px={{xl: "60px", lg: "60px", md: "40px", sm: "40px", base: "30px"}}
+                      rounded={"xl"}
+                      justifyContent={item.align}
                       >
-                        Konsep Dasar Limit Fungsi Aljabar
-                      </Text>
-                    </TimelineTitle>
-                    <Text
-                      textStyle={{ lg: "xl", md: "lg", sm: "md", base: "md" }}
-                      mt={3}
-                    >
-                      Pelajari dasar - dasar mengenai Konsep Dasar Limit
-                      terlebih dahulu sebelum berlanjut ke langkah berikutnya
-                    </Text>
-                    <Button
-                      // disabled={!level.konsepDasar}
-                      mt={4}
-                      maxW={"170px"}
-                      colorPalette={"yellow"}
-                      size={{ lg: "xl", md: "md", sm: "sm", base: "sm" }}
-                      onClick={() => {
-                        router.push(
-                          "/materi/konsep-dasar-limit-fungsi-aljabar"
-                        );
-                      }}
-                    >
-                      <Text fontWeight={"bold"}>Mulai Belajar</Text>
-                    </Button>
-                  </TimelineContent>
-                </TimelineItem>
-
-                <TimelineItem>
-                  <TimelineConnector
-                    bg={"black"}
-                    mt={"65px"}
-                  ></TimelineConnector>
-                  <TimelineContent mt={"50px"}>
-                    <TimelineTitle>
-                      <Text
-                        textStyle={{
-                          lg: "4xl",
-                          md: "3xl",
-                          sm: "2xl",
-                          base: "2xl",
-                        }}
-                        fontWeight={"bold"}
+                      {/* {JSON.stringify(item)} */}
+                      <Flex
+                        my={"auto"}
+                        alignItems={item.align}
+                        flexDir={"column"}
                       >
-                        Limit Suku Banyak
-                      </Text>
-                    </TimelineTitle>
-                    <Text
-                      textStyle={{ lg: "xl", md: "lg", sm: "md", base: "md" }}
-                      mt={3}
-                    >
-                      Sudah menguasai materi sebelumnya? Hebat! Mari kita lanjut
-                      ke materi selanjutnya !
-                    </Text>
-                    {(() => {
-                      if (level.trigonometri) {
-                        return (
-                          <Button
-                            mt={4}
-                            maxW={"170px"}
-                            colorPalette={"yellow"}
-                            size={{ lg: "xl", md: "md", sm: "sm", base: "sm" }}
-                            onClick={() => {
-                              router.push("/materi/limit-suku-banyak");
-                            }}
-                          >
-                            <Text fontWeight={"bold"}>Mulai Belajar</Text>
-                          </Button>
-                        );
-                      } else {
-                        return (
-                          <Box mt={4}>
-                            <Dialog
-                              body={
-                                "Selesaikan Materi sebelum ini terlebih dahulu, Yuk"
-                              }
-                              title={"Peringatan"}
-                              buttonText={"Mulai Belajar"}
-                              buttonColor="yellow"
-                              dialogColor={"yellow"}
-                              size={{ lg: "xl", md: "md", sm: "sm", base: "sm" }}
-                              maxW={"170px"}
-                              showCancelButton={false}
-                            ></Dialog>
-
-                          </Box>
-                        );
-                      }
-                    })()}
-                  </TimelineContent>
-                </TimelineItem>
-
-                <TimelineItem>
-                  <TimelineConnector
-                    bg={"black"}
-                    mt={"65px"}
-                  ></TimelineConnector>
-                  <TimelineContent mt={"50px"}>
-                    <TimelineTitle>
-                      <Text
-                        textStyle={{
-                          lg: "4xl",
-                          md: "3xl",
-                          sm: "2xl",
-                          base: "2xl",
-                        }}
-                        fontWeight={"bold"}
-                      >
-                        Limit Fungsi Trigonometri
-                      </Text>
-                    </TimelineTitle>
-                    <Text
-                      textStyle={{ lg: "xl", md: "lg", sm: "md", base: "md" }}
-                      mt={3}
-                    >
-                      Sudah menguasai materi sebelumnya? Hebat! Mari kita lanjut
-                      ke materi selanjutnya !
-                    </Text>
-                    {(() => {
-                      if (level.trigonometri) {
-                        return (
-                          <Button
-                            mt={4}
-                            maxW={"170px"}
-                            colorPalette={"yellow"}
-                            size={{ lg: "xl", md: "md", sm: "sm", base: "sm" }}
-                            onClick={() => {
-                              router.push("/materi/limit-fungsi-trigonometri");
-                            }}
-                          >
-                            <Text fontWeight={"bold"}>Mulai Belajar</Text>
-                          </Button>
-                        );
-                      } else {
-                        return (
-                          <Box mt={4}>
-                            <Dialog
-                              body={
-                                "Selesaikan Materi sebelum ini terlebih dahulu, Yuk"
-                              }
-                              title={"Peringatan"}
-                              buttonText={"Mulai Belajar"}
-                              buttonColor="yellow"
-                              dialogColor={"yellow"}
-                              size={{ lg: "xl", md: "md", sm: "sm", base: "sm" }}
-                              maxW={"170px"}
-                              showCancelButton={false}
-                            ></Dialog>
-
-                          </Box>
-                        );
-                      }
-                    })()}
-                  </TimelineContent>
-                </TimelineItem>
-
-                <TimelineItem display={"none"} />
-              </TimelineRoot>
+                        <Text textStyle={"4xl"} fontWeight={"bold"}>
+                          {item.cardTitle}
+                        </Text>
+                        <Text>{item.cardDescription}</Text>
+                        {(() => {
+                          if (item.level) {
+                            return (
+                              <Button
+                                mt={7}
+                                maxW={"170px"}
+                                colorPalette={"yellow"}
+                                size={{
+                                  lg: "xl",
+                                  md: "md",
+                                  sm: "sm",
+                                  base: "sm",
+                                }}
+                                onClick={() => {
+                                  router.push(item.endPoint);
+                                }}
+                              >
+                                <Text fontWeight={"bold"}>Mulai Belajar</Text>
+                              </Button>
+                            );
+                          } else {
+                            return (
+                              <Box mt={7}>
+                                <Dialog
+                                  body={
+                                    "Selesaikan Materi sebelum ini terlebih dahulu, Yuk"
+                                  }
+                                  title={"Peringatan"}
+                                  buttonText={"Mulai Belajar"}
+                                  buttonColor="yellow"
+                                  dialogColor={"yellow"}
+                                  size={{
+                                    lg: "xl",
+                                    md: "md",
+                                    sm: "sm",
+                                    base: "sm",
+                                  }}
+                                  maxW={"170px"}
+                                  showCancelButton={false}
+                                ></Dialog>
+                              </Box>
+                            );
+                          }
+                        })()}
+                      </Flex>
+                    </Box>
+                  )}
+                </For>
+              </Flex>
+         
             </QuizProvider>
           </Box>
         </Flex>

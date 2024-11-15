@@ -89,7 +89,7 @@ export default function Sidenav({ content }: SidenavProps) {
       <Box
         position={"absolute"}
         display={{ lg: "none", sm: "block", base: "block" }}
-        left={sidebarPos ? 215 : {md: -2, sm: -1, base: 0}}
+        left={sidebarPos ? {md: 220, sm: 210, base: 250} : {md: -2, sm: -1, base: 2}}
         top={-2}
       >
         <Button
@@ -101,7 +101,7 @@ export default function Sidenav({ content }: SidenavProps) {
             setSidebarPos(!sidebarPos);
           }}
         >
-          {sidebarPos ? "show" : "hidden"}
+          {!sidebarPos ? "show" : "hide"}
         </Button>
       </Box>
       <Box

@@ -8,7 +8,7 @@ export default function Page() {
   metadata.title = "LearnLimit | Home";
   return (
     <>
-      <Box
+      {/* <Box
         pos="absolute"
         maxW="dvw"
         h={{ lg: "80vh", md: "115vh", sm: "180vh", base: "180vh" }}
@@ -18,20 +18,26 @@ export default function Page() {
         opacity="0.3"
         overflow="hidden"
         w={"full"}
-      >
-        <Image
+      > */}
+        {/* <Image
           src={"/Images/2346969.png"}
           alt="Hero Image"
           layout="fill"
           objectFit="cover"
           quality={75}
           loading="lazy"
-        />
-      </Box>
+        /> */}
+      {/* </Box> */}
 
-      <Container mt={{ lg: "13%", md: "250px", sm: "300px", base: "200px" }} zIndex={2}>
-        <Hero />
-        <Cards />
+      <Container
+        mt={{ xl: "13%", lg: "20%", md: "200px", sm: "70px", base: "70px" }}
+        // zIndex={2}
+        pos={"relative"}
+        display={"flex"}
+        flexWrap={"wrap"}
+      >
+          <Hero />
+          <Cards />
       </Container>
     </>
   );

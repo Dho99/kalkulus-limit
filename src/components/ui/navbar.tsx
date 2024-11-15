@@ -3,6 +3,7 @@
 import { Box, Container, Link as ChakraUILinker, Text } from "@chakra-ui/react";
 import Link from 'next/link' 
 import {useRouter} from 'next/navigation';
+import MenuDrawer from "../drawer";
 
 export default function Navbar() {
   const router = useRouter();
@@ -14,11 +15,15 @@ export default function Navbar() {
 
   const navMenu: Array<NavItems> = [
     {
-      navTitle: "Item 1",
+      navTitle: "Sumber",
       href: "/materi/konsep-dasar-limit-fungsi-aljabar"
     },
+    {
+      navTitle: "Tentang",
+      href: "/tentang"
+    },
     {  
-      navTitle: "Item 2",
+      navTitle: "Materi",
       href: "/konz1" 
     },
   ];
@@ -44,12 +49,13 @@ export default function Navbar() {
             <Box
               flexBasis={"50%"}
               flexDirection="row"
-              display={{ lg: "flex", base: "none" }}
+              display={{ lg: "flex", md: "flex", base: "none" }}
               justifyContent={"right"}
+              gap={7}
             >
               {navMenu.map((menu, index) => {
                 return (
-                  <Box flexBasis={"10%"} key={index}>
+                  <Box key={index}>
                     <Link
                       href={menu.href}
                     >
@@ -59,6 +65,7 @@ export default function Navbar() {
                 );
               })}
             </Box>
+            <MenuDrawer listMenu={navMenu}/>
           </Container>
         </Box>
       </Box>

@@ -3,7 +3,7 @@
 import { createContext } from "react";
 
 const levelFinish = {
-  konsepDasar: false,
+  konsepDasar: true,
   sukuBanyak: false,
   trigonometri: false,
 };

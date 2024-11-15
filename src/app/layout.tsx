@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Provider } from "@/components/ui/provider";
-import { Container, Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/page/root/footer";
 import { Suspense } from "react";

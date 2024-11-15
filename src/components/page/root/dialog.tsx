@@ -1,4 +1,4 @@
-import { For, HStack, Text } from "@chakra-ui/react";
+import { HStack, Text } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
 import {
   DialogActionTrigger,
@@ -17,7 +17,7 @@ type DialogProps = {
   title: string;
   body: string;
   buttonColor: string;
-  size: any;
+  size: object;
   maxW: number | string;
   dialogColor: string;
   showCancelButton: boolean;

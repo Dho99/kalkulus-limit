@@ -80,7 +80,7 @@ const BasicTable = () => {
               </Table.Cell>
             </Table.Row>
           </Table.Body>
-        </Table.Root>
+        </Table.Root> 
       </Table.ScrollArea>
     </Theme>
   );

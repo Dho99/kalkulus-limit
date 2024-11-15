@@ -21,25 +21,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter} antialiased`}>
         <Provider>
-          <Box maxW={"dvw"} overflow={"hidden"}>
+          <Box bgColor="white" maxW={"dvw"} overflowX={"hidden"}>
             <Navbar />
             <Suspense fallback={<Loading />}>
-              <Container
-                fluid={true}
-                minH="dvh"
-                w={"dvw"}
-                px="2"
-                centerContent={false}
-                bgColor={"white"}
-                color={"black"}
-                py="4"
+              <Box
+                minH="100vh"
+                maxW="100vw"
+                bgColor="white"
+                color="black"
+                py={{xl: 4, lg: 4, md: 4, sm: 10, base: 10}} 
+                ms={{xl: 0, lg: 0, md: 0, sm: 0, base: -4}}
               >
-                {children}
-              </Container>
+                  {children}   
+              </Box>
             </Suspense>
             <Footer />
           </Box>

@@ -24,7 +24,7 @@ export default function Navbar() {
   ];
 
   return (
-    <Container pos="relative" maxW={"dvw"}>
+    <Container pos="relative">
       <Box
         position={"fixed"}
         zIndex={"3"}
@@ -32,7 +32,7 @@ export default function Navbar() {
         shadow={"xs"}
         backgroundColor={"white"}
       >
-        <Box flexDirection="row" w={"dvw"} px={{ lg: 10, base: 0 }}>
+        <Box flexDirection="row" w={"100vw"} px={{ lg: 10, base: 0 }}>
           <Container display={"flex"} py={4} px={5} alignItems={"center"}>
             <Box flexBasis={"50%"}>
               <ChakraUILinker variant={"plain"} colorPalette={"cyan"} onClick={() => {router.push('/')}}>

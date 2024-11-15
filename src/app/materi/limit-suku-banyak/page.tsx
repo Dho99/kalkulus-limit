@@ -13,7 +13,7 @@ export default function Page() {
     >
       <Flex direction={"row"} gap={10}>
         <Sidenav content={"Limit Suku Banyak"} />
-        <Box flexBasis={"100%"}>
+        <Box>
           <Text
             textStyle={"5xl"}
             color={"black"}

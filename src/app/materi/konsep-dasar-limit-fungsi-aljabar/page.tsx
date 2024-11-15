@@ -12,8 +12,8 @@ export default function Page() {
 
   return (
     <>
-      <Container fluid={true} mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%"}} zIndex={2}>
-        <Flex direction={"row"} gap={10}>
+      <Container mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%"}} zIndex={2}>
+        <Box direction={"row"} gap={10} maxW={"dvw"} display={{xl: "flex", lg: "flex", md: "flex", sm: "flex", base: "block"}}>
           <Sidenav content={"Konsep Dasar Limit"}/>
           <Box flexBasis={"100%"}>
             <Text
@@ -24,11 +24,13 @@ export default function Page() {
               fontWeight={"bold"}
               mb={"3%"}
               textAlign={"center"}
+              w="full"
+              ms={3}
             >
               Konsep Dasar Limit Fungsi Aljabar
             </Text>
 
-            <Box mt={10}>
+            <Container mt={10}>
               <Text textStyle={"2xl"} fontWeight={"bold"}>
                 A. Pengertian
               </Text>
@@ -65,24 +67,24 @@ export default function Page() {
                 />
                 <Text fontWeight={"bold"}>Contoh : </Text>
                 <br />
-                <Flex justifyContent={"center"}>
+                <Flex justifyContent={"center"} flexDirection={{xl: "row", lg: "row", md: "row", sm: "column", base: "column"}}>
                   <LatexRenderer
                     expression={"\\lim_{x \\to 1} = \\frac{x^2 - 1}{x - 1} ="}
                   />
-                  <Box border={"1px solid "} ms={3} px={2} py={3}>
-                    <Flex mb={3}>
+                  <Box border={"1px solid "} ms={3} px={2} pt={3} pb={5}>
                       Fungsi{" "}
-                      <Box mx={3}>
+                    <Box mb={3}>
+                      <Box my={3} me={2} display={"flex"}>
                         <LatexRenderer
                           expression={"f(x) = \\frac{x^2-1}{x-1}"}
                           inline={true}
                         />
                       </Box>
                       terdefinisi untuk semua x bilangan real kecuali x = 1.{" "}
-                    </Flex>
-                    <Flex justifyContent={"start"}>
+                    </Box>
                       Contoh :{" "}
-                      <Flex mx={3}>
+                    <Flex justifyContent={"start"} mt={3}>
+                      <Flex mx={0}>
                         <LatexRenderer
                           expression={
                             "f(x) = \\frac{1^2-1}{1-1} = \\frac{0}{0}"
@@ -108,19 +110,9 @@ export default function Page() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-            </Box>
+            </Container>
           </Box>
-        </Flex>
+        </Box>
       </Container>
     </>
   );

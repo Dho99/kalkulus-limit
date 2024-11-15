@@ -10,21 +10,21 @@ export default function Page() {
     <>
       <Box
         pos="absolute"
-        w="100vw"
+        maxW="dvw"
         h={{ lg: "80vh", md: "115vh", sm: "180vh", base: "180vh" }}
         zIndex={1}
         top="70px"
         left={0}
         opacity="0.3"
         overflow="hidden"
+        w={"full"}
       >
         <Image
-          src={"/images/2346969.jpg"}
+          src={"/Images/2346969.png"}
           alt="Hero Image"
           layout="fill"
           objectFit="cover"
           quality={75}
-          sizes="100vw"
           loading="lazy"
         />
       </Box>

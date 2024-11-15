@@ -19,67 +19,69 @@ const BasicTable = () => {
 
   return (
     <Theme appearance={"light"}>
-      <Table.Root size="sm" showColumnBorder={true}>
-        <Table.Header>
-          <Table.Row>
-            {items.map((item, key) => {
-                  if (key == 0) {
-                    return (
-                      <Table.ColumnHeader key={key}>
-                        <LatexRenderer expression={item.th} />
-                      </Table.ColumnHeader>
-                    );
-                  } else {
-                    return <Table.ColumnHeader key={key}>{item.th}</Table.ColumnHeader>;
-                  }
-            })}
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          <Table.Row>
-            {items.map((item, key) => {
-              if (key == 0) {
-                return (
-                  <Table.Cell key={key}>
-                    <LatexRenderer expression={item.td} />
-                  </Table.Cell>
-                );
-              } else {
-                return <Table.Cell key={key}>{item.td}</Table.Cell>;
-              }
-            })}
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell colSpan={5} textAlign={"end"}>
-              <BiArrowBack
-                style={{ fontSize: "30px", rotate: "180deg", margin: "0 auto" }}
-              />
-            </Table.Cell>
-            <Table.Cell colSpan={5}>
-              <BiArrowBack style={{ fontSize: "30px", margin: "0 auto" }} />
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell colSpan={5}>
-              <LatexRenderer
-                expression={"\\lim_{x-1^-} = \\frac{x^2-1}{x-1} = 2"}
-              />
-            </Table.Cell>
-            <Table.Cell colSpan={5}>
-              <LatexRenderer
-                expression={"\\lim_{x-1^+} = \\frac{x^2-1}{x-1} = 2"}
-              />
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell colSpan={10}>
-              <LatexRenderer
-                expression={"\\lim_{x-1} = \\frac{x^2-1}{x-1} = 2"}
-              />
-            </Table.Cell>
-          </Table.Row>
-        </Table.Body>
-      </Table.Root>
+      <Table.ScrollArea borderWidth="1px" maxW="dvw">
+        <Table.Root size="lg" showColumnBorder={true}>
+          <Table.Header>
+            <Table.Row>
+              {items.map((item, key) => {
+                    if (key == 0) {
+                      return (
+                        <Table.ColumnHeader key={key}>
+                          <LatexRenderer expression={item.th} />
+                        </Table.ColumnHeader>
+                      );
+                    } else {
+                      return <Table.ColumnHeader key={key}>{item.th}</Table.ColumnHeader>;
+                    }
+              })}
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            <Table.Row>
+              {items.map((item, key) => {
+                if (key == 0) {
+                  return (
+                    <Table.Cell key={key}>
+                      <LatexRenderer expression={item.td} />
+                    </Table.Cell>
+                  );
+                } else {
+                  return <Table.Cell key={key}>{item.td}</Table.Cell>;
+                }
+              })}
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell colSpan={5} textAlign={"end"}>
+                <BiArrowBack
+                  style={{ fontSize: "30px", rotate: "180deg", margin: "0 auto" }}
+                />
+              </Table.Cell>
+              <Table.Cell colSpan={5}>
+                <BiArrowBack style={{ fontSize: "30px", margin: "0 auto" }} />
+              </Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell colSpan={5}>
+                <LatexRenderer
+                  expression={"\\lim_{x-1^-} = \\frac{x^2-1}{x-1} = 2"}
+                />
+              </Table.Cell>
+              <Table.Cell colSpan={5}>
+                <LatexRenderer
+                  expression={"\\lim_{x-1^+} = \\frac{x^2-1}{x-1} = 2"}
+                />
+              </Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell colSpan={10}>
+                <LatexRenderer
+                  expression={"\\lim_{x-1} = \\frac{x^2-1}{x-1} = 2"}
+                />
+              </Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table.Root>
+      </Table.ScrollArea>
     </Theme>
   );
 };

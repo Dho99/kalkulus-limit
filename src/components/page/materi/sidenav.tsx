@@ -89,13 +89,13 @@ export default function Sidenav({ content }: SidenavProps) {
       <Box
         position={"absolute"}
         display={{ lg: "none", sm: "block", base: "block" }}
-        left={sidebarPos ? 230 : 0}
-        top={70}
+        left={sidebarPos ? 215 : {md: -2, sm: -1, base: 0}}
+        top={-2}
       >
         <Button
           type="button"
           position={"fixed"}
-          zIndex={11}
+          zIndex={8}
           shadow={"sm"}
           onClick={() => {
             setSidebarPos(!sidebarPos);
@@ -110,7 +110,9 @@ export default function Sidenav({ content }: SidenavProps) {
         minW={"200px"}
         borderRight={"2px solid"}
         minH={"dvh"}
-        pt={{lg: 8, md: 0, sm: 0, base: 0}}
+        mt={{xl: -5, lg: -8, md: -10, sm: -10, base: -10}}
+        pt={{xl: 8, lg: 8, md: 0, sm: 0, base: 5}}
+        px={{xl: 0, lg: 0, md: 0, sm: 0, base:5}}
         display={{
           lg: "block",
           md: sidebarPos ? "block" : "none",

@@ -10,9 +10,13 @@ import {
   TimelineRoot,
   TimelineTitle,
 } from "@/components/ui/timeline";
+import QuizProvider, { QuizContext } from "@/app/quiz-context";
+import { useContext } from "react";
+import Dialog from "./dialog";
 
 export default function Cards() {
   const router = useRouter();
+  const level = useContext(QuizContext);
 
   return (
     <>
@@ -29,120 +33,179 @@ export default function Cards() {
         </Text>
         <Flex gap={4} justifyContent={"center"}>
           <Box flexBasis={"50%"}>
-            <TimelineRoot>
-              <TimelineItem>
-                <TimelineConnector bg={"black"} mt={3}></TimelineConnector>
-                <TimelineContent>
-                  <TimelineTitle>
+            <QuizProvider>
+              <TimelineRoot>
+                <TimelineItem>
+                  <TimelineConnector bg={"black"} mt={3}></TimelineConnector>
+                  <TimelineContent>
+                    <TimelineTitle>
+                      <Text
+                        textStyle={{
+                          lg: "4xl",
+                          md: "3xl",
+                          sm: "2xl",
+                          base: "2xl",
+                        }}
+                        fontWeight={"bold"}
+                      >
+                        Konsep Dasar Limit Fungsi Aljabar
+                      </Text>
+                    </TimelineTitle>
                     <Text
-                      textStyle={{
-                        lg: "4xl",
-                        md: "3xl",
-                        sm: "2xl",
-                        base: "2xl",
-                      }}
-                      fontWeight={"bold"}
+                      textStyle={{ lg: "xl", md: "lg", sm: "md", base: "md" }}
+                      mt={3}
                     >
-                      Konsep Dasar Limit Fungsi Aljabar
+                      Pelajari dasar - dasar mengenai Konsep Dasar Limit
+                      terlebih dahulu sebelum berlanjut ke langkah berikutnya
                     </Text>
-                  </TimelineTitle>
-                  <Text
-                    textStyle={{ lg: "xl", md: "lg", sm: "md", base: "md" }}
-                    mt={3}
-                  >
-                    Pelajari dasar - dasar mengenai Konsep Dasar Limit terlebih
-                    dahulu sebelum berlanjut ke langkah berikutnya
-                  </Text>
-                  <Button
-                    mt={4}
-                    maxW={"170px"}
-                    colorPalette={"yellow"}
-                    size={{ lg: "xl", md: "md", sm: "sm", base: "sm" }}
-                    onClick={() => {
-                      router.push("/materi/konsep-dasar-limit-fungsi-aljabar");
-                    }}
-                  >
-                    <Text fontWeight={"bold"}>Mulai Belajar</Text>
-                  </Button>
-                </TimelineContent>
-              </TimelineItem>
+                    <Button
+                      // disabled={!level.konsepDasar}
+                      mt={4}
+                      maxW={"170px"}
+                      colorPalette={"yellow"}
+                      size={{ lg: "xl", md: "md", sm: "sm", base: "sm" }}
+                      onClick={() => {
+                        router.push(
+                          "/materi/konsep-dasar-limit-fungsi-aljabar"
+                        );
+                      }}
+                    >
+                      <Text fontWeight={"bold"}>Mulai Belajar</Text>
+                    </Button>
+                  </TimelineContent>
+                </TimelineItem>
 
-              <TimelineItem>
-                <TimelineConnector bg={"black"} mt={"65px"}></TimelineConnector>
-                <TimelineContent mt={"50px"}>
-                  <TimelineTitle>
+                <TimelineItem>
+                  <TimelineConnector
+                    bg={"black"}
+                    mt={"65px"}
+                  ></TimelineConnector>
+                  <TimelineContent mt={"50px"}>
+                    <TimelineTitle>
+                      <Text
+                        textStyle={{
+                          lg: "4xl",
+                          md: "3xl",
+                          sm: "2xl",
+                          base: "2xl",
+                        }}
+                        fontWeight={"bold"}
+                      >
+                        Limit Suku Banyak
+                      </Text>
+                    </TimelineTitle>
                     <Text
-                      textStyle={{
-                        lg: "4xl",
-                        md: "3xl",
-                        sm: "2xl",
-                        base: "2xl",
-                      }}
-                      fontWeight={"bold"}
+                      textStyle={{ lg: "xl", md: "lg", sm: "md", base: "md" }}
+                      mt={3}
                     >
-                      Limit Suku Banyak
+                      Sudah menguasai materi sebelumnya? Hebat! Mari kita lanjut
+                      ke materi selanjutnya !
                     </Text>
-                  </TimelineTitle>
-                  <Text
-                    textStyle={{ lg: "xl", md: "lg", sm: "md", base: "md" }}
-                    mt={3}
-                  >
-                    Sudah menguasai materi sebelumnya? Hebat! Mari kita lanjut
-                    ke materi selanjutnya !
-                  </Text>
-                  <Button
-                    mt={4}
-                    maxW={"170px"}
-                    colorPalette={"yellow"}
-                    size={{ lg: "xl", md: "md", sm: "sm", base: "sm" }}
-                    onClick={() => {
-                      router.push("/materi/limit-suku-banyak");
-                    }}
-                  >
-                    <Text fontWeight={"bold"}>Mulai Belajar</Text>
-                  </Button>
-                </TimelineContent>
-              </TimelineItem>
+                    {(() => {
+                      if (level.trigonometri) {
+                        return (
+                          <Button
+                            mt={4}
+                            maxW={"170px"}
+                            colorPalette={"yellow"}
+                            size={{ lg: "xl", md: "md", sm: "sm", base: "sm" }}
+                            onClick={() => {
+                              router.push("/materi/limit-suku-banyak");
+                            }}
+                          >
+                            <Text fontWeight={"bold"}>Mulai Belajar</Text>
+                          </Button>
+                        );
+                      } else {
+                        return (
+                          <Box mt={4}>
+                            <Dialog
+                              body={
+                                "Selesaikan Materi sebelum ini terlebih dahulu, Yuk"
+                              }
+                              title={"Peringatan"}
+                              buttonText={"Mulai Belajar"}
+                              buttonColor="yellow"
+                              dialogColor={"yellow"}
+                              size={{ lg: "xl", md: "md", sm: "sm", base: "sm" }}
+                              maxW={"170px"}
+                              showCancelButton={false}
+                            ></Dialog>
 
-              <TimelineItem>
-                <TimelineConnector bg={"black"} mt={"65px"}></TimelineConnector>
-                <TimelineContent mt={"50px"}>
-                  <TimelineTitle>
+                          </Box>
+                        );
+                      }
+                    })()}
+                  </TimelineContent>
+                </TimelineItem>
+
+                <TimelineItem>
+                  <TimelineConnector
+                    bg={"black"}
+                    mt={"65px"}
+                  ></TimelineConnector>
+                  <TimelineContent mt={"50px"}>
+                    <TimelineTitle>
+                      <Text
+                        textStyle={{
+                          lg: "4xl",
+                          md: "3xl",
+                          sm: "2xl",
+                          base: "2xl",
+                        }}
+                        fontWeight={"bold"}
+                      >
+                        Limit Fungsi Trigonometri
+                      </Text>
+                    </TimelineTitle>
                     <Text
-                      textStyle={{
-                        lg: "4xl",
-                        md: "3xl",
-                        sm: "2xl",
-                        base: "2xl",
-                      }}
-                      fontWeight={"bold"}
+                      textStyle={{ lg: "xl", md: "lg", sm: "md", base: "md" }}
+                      mt={3}
                     >
-                      Limit Fungsi Trigonometri
+                      Sudah menguasai materi sebelumnya? Hebat! Mari kita lanjut
+                      ke materi selanjutnya !
                     </Text>
-                  </TimelineTitle>
-                  <Text
-                    textStyle={{ lg: "xl", md: "lg", sm: "md", base: "md" }}
-                    mt={3}
-                  >
-                    Sudah menguasai materi sebelumnya? Hebat! Mari kita lanjut
-                    ke materi selanjutnya !
-                  </Text>
-                  <Button
-                    mt={4}
-                    maxW={"170px"}
-                    colorPalette={"yellow"}
-                    size={{ lg: "xl", md: "md", sm: "sm", base: "sm" }}
-                    onClick={() => {
-                      router.push("/materi/limit-fungsi-trigonometri");
-                    }}
-                  >
-                    <Text fontWeight={"bold"}>Mulai Belajar</Text>
-                  </Button>
-                </TimelineContent>
-              </TimelineItem>
+                    {(() => {
+                      if (level.trigonometri) {
+                        return (
+                          <Button
+                            mt={4}
+                            maxW={"170px"}
+                            colorPalette={"yellow"}
+                            size={{ lg: "xl", md: "md", sm: "sm", base: "sm" }}
+                            onClick={() => {
+                              router.push("/materi/limit-fungsi-trigonometri");
+                            }}
+                          >
+                            <Text fontWeight={"bold"}>Mulai Belajar</Text>
+                          </Button>
+                        );
+                      } else {
+                        return (
+                          <Box mt={4}>
+                            <Dialog
+                              body={
+                                "Selesaikan Materi sebelum ini terlebih dahulu, Yuk"
+                              }
+                              title={"Peringatan"}
+                              buttonText={"Mulai Belajar"}
+                              buttonColor="yellow"
+                              dialogColor={"yellow"}
+                              size={{ lg: "xl", md: "md", sm: "sm", base: "sm" }}
+                              maxW={"170px"}
+                              showCancelButton={false}
+                            ></Dialog>
 
-              <TimelineItem display={"none"} />
-            </TimelineRoot>
+                          </Box>
+                        );
+                      }
+                    })()}
+                  </TimelineContent>
+                </TimelineItem>
+
+                <TimelineItem display={"none"} />
+              </TimelineRoot>
+            </QuizProvider>
           </Box>
         </Flex>
       </Box>

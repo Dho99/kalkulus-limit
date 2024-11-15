@@ -30,7 +30,7 @@ export default function Cards() {
           Kumpulan Materi Fungsi Limit Kalkulus
         </Text>
         <Flex gap={4} justifyContent={"center"}>
-          <Box flexBasis={"90%"}>
+          <Box flexBasis={"90%"} m="auto">
             <QuizProvider>
               <Flex gap={7} flexDirection={"column"}>
                 <For

@@ -36,7 +36,9 @@ export default function RootLayout({
                 bgColor="white"
                 color="black"
                 py={{xl: 4, lg: 4, md: 4, sm: 10, base: 10}} 
-                ms={{xl: 0, lg: 0, md: 0, sm: 0, base: -4}}
+                display={"flex"}
+                // justifyContent={"center"}
+                m="auto"
               >
                   {children}   
               </Box>

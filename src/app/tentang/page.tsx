@@ -1,6 +1,6 @@
 import { Card, Container, Box, Text, For, SimpleGrid, Flex } from "@chakra-ui/react";
 import { Avatar } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 
 export default function Page() {
   return (

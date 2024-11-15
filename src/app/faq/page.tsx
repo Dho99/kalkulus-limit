@@ -1,5 +1,5 @@
 import { Box, Text, Container, For } from "@chakra-ui/react";
-import Sidenav from "@/components/page/materi/sidenav";
+
 import {
   AccordionItem,
   AccordionItemContent,
@@ -8,11 +8,6 @@ import {
 } from "@/components/ui/accordion";
 
 export default function Page() {
-  // const items = [
-  //     { value: "a", title: "First Item", text: "Some value 1..." },
-  //     { value: "b", title: "Second Item", text: "Some value 2..." },
-  //     { value: "c", title: "Third Item", text: "Some value 3..." },
-  //   ]
   return (
     <Container mt={{ xl: "7%", lg: "7%", md: "8%", sm: "8%", base: "14%" }}>
       <Box mb={10}>

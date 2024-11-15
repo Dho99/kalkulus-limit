@@ -3,13 +3,6 @@
 import { useRouter } from "next/navigation";
 import { Box, Text, Flex, For } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
-import {
-  TimelineConnector,
-  TimelineContent,
-  TimelineItem,
-  TimelineRoot,
-  TimelineTitle,
-} from "@/components/ui/timeline";
 import QuizProvider, { QuizContext } from "@/app/quiz-context";
 import { useContext } from "react";
 import Dialog from "./dialog";

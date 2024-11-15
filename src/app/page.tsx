@@ -1,8 +1,8 @@
-import { Container, Box } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 import Hero from "@/components/page/root/hero";
 import Cards from "@/components/page/root/cards";
 import { metadata } from "./layout";
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function Page() {
   metadata.title = "LearnLimit | Home";

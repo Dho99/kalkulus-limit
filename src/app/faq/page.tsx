@@ -79,7 +79,7 @@ export default function Page() {
             ]}
           >
             {(item, index) => (
-              <AccordionItem key={index} value={item.value} py={2}>
+              <AccordionItem key={index} value={JSON.stringify(item.value)} py={2}>
                 <AccordionItemTrigger>
                   <Text fontWeight={"semibold"} textStyle={"lg"}>
                     {item.q}

@@ -2,15 +2,30 @@ import { Container, Flex, Box, Text, SimpleGrid } from "@chakra-ui/react";
 import Sidenav from "@/components/page/materi/sidenav";
 import LatexRenderer from "@/components/LatexRenderer";
 import { metadata } from "@/app/layout";
-
+import NextPrevButton from "@/components/page/nextPrevButton";
 
 export default function Page() {
-  metadata.title = 'Learn Limit | Menentukan Nilai Limit Fungsi'
+  metadata.title = "Learn Limit | Menentukan Nilai Limit Fungsi";
   return (
     <>
-       <Container mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%"}} zIndex={2}>
-        <Box direction={"row"} gap={10} maxW={"dvw"} display={{xl: "flex", lg: "flex", md: "flex", sm: "flex", base: "block"}}>
-          <Sidenav content={"Konsep Dasar Limit"}/>
+      <Container
+        mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%" }}
+        zIndex={2}
+        fluid
+      >
+        <Box
+          direction={"row"}
+          gap={10}
+          maxW={"dvw"}
+          display={{
+            xl: "flex",
+            lg: "flex",
+            md: "flex",
+            sm: "flex",
+            base: "block",
+          }}
+        >
+          <Sidenav content={"Konsep Dasar Limit"} />
           <Box flexBasis={"100%"}>
             <Text
               textStyle={"5xl"}
@@ -32,13 +47,14 @@ export default function Page() {
                 </Text>
                 <Text textStyle={"lg"}>
                   <Text>
-                    Mencari atau menentukan nilai limit fungsi adalah proses untuk
-                    menemukan nilai yang didekati oleh suatu fungsi 𝑓 ( 𝑥 ) ketika
-                    variabel 𝑥 mendekati nilai tertentu, tetapi tidak harus persis
-                    pada nilai tersebut. Limit membantu kita memahami perilaku
-                    suatu fungsi saat mendekati titik tertentu, terutama ketika
-                    fungsi tersebut tidak didefinisikan pada titik tersebut atau
-                    saat titik itu menghasilkan bentuk tak tentu.
+                    Mencari atau menentukan nilai limit fungsi adalah proses
+                    untuk menemukan nilai yang didekati oleh suatu fungsi 𝑓 ( 𝑥
+                    ) ketika variabel 𝑥 mendekati nilai tertentu, tetapi tidak
+                    harus persis pada nilai tersebut. Limit membantu kita
+                    memahami perilaku suatu fungsi saat mendekati titik
+                    tertentu, terutama ketika fungsi tersebut tidak
+                    didefinisikan pada titik tersebut atau saat titik itu
+                    menghasilkan bentuk tak tentu.
                   </Text>
                   <Box my={2}>
                     <Text>
@@ -98,7 +114,8 @@ export default function Page() {
                       expression={"f(x) = \\lim_{x \\to 2}(3x + 1)"}
                     />
                     <Text my={2}>
-                      Subtitusikan 𝑥 dengan angka 2, sehingga Rumus akan menjadi :{" "}
+                      Subtitusikan 𝑥 dengan angka 2, sehingga Rumus akan menjadi
+                      :{" "}
                     </Text>
                     <LatexRenderer
                       expression={"f(2) = \\lim_{x \\to 2}(3(2) + 1) = 7"}
@@ -116,16 +133,33 @@ export default function Page() {
 
                   <Box my={2}>
                     <Text>
-                      <Box display={{xl: "flex", lg: "flex", md: "flex", sm: "block", base: "block"}} alignItems={"center"}>
-                        <Box my={2} me={2} display={"flex"} alignItems={"center"}>
-                        Jika
+                      <Box
+                        display={{
+                          xl: "flex",
+                          lg: "flex",
+                          md: "flex",
+                          sm: "block",
+                          base: "block",
+                        }}
+                        alignItems={"center"}
+                      >
+                        <Box
+                          my={2}
+                          me={2}
+                          display={"flex"}
+                          alignItems={"center"}
+                        >
+                          Jika
                           <Box mx={1}>
                             <LatexRenderer expression={"f(a)"} inline={true} />{" "}
-
                           </Box>
                         </Box>
-                        tidak terdefinisi, 
-                        <Box me={2} my={2} ms={{xl: 2, lg: 2, md: 2, sm: 0, base: 0}}>
+                        tidak terdefinisi,
+                        <Box
+                          me={2}
+                          my={2}
+                          ms={{ xl: 2, lg: 2, md: 2, sm: 0, base: 0 }}
+                        >
                           <Box display={"inline-flex"} alignItems={"center"}>
                             maka{" "}
                             <Box mx={2}>
@@ -133,10 +167,9 @@ export default function Page() {
                                 expression={"\\lim_{x \\to a} f(x)"}
                                 inline={true}
                               />{" "}
-
                             </Box>
                           </Box>
-                        Tidak ada
+                          Tidak ada
                         </Box>
                       </Box>
                     </Text>
@@ -151,8 +184,8 @@ export default function Page() {
                       />
                       <Box>
                         <Box display={{ lg: "flex", sm: "block" }}>
-                          Dalam contoh ini, kita mencoba mencari nilai limit dari
-                          fungsi{" "}
+                          Dalam contoh ini, kita mencoba mencari nilai limit
+                          dari fungsi{" "}
                           <Box mx={{ lg: 2, sm: 0 }} my={2}>
                             <LatexRenderer
                               expression={"\\lim_{x \\to 1}\\frac{3x+4}{2x-2}"}
@@ -188,7 +221,8 @@ export default function Page() {
                               inline={true}
                             />
                           </Box>
-                          Maka kita memerlukan strategi penyelesaian dengan cara :{" "}
+                          Maka kita memerlukan strategi penyelesaian dengan cara
+                          :{" "}
                         </Box>
                         <Box my="4">
                           <Text fontWeight={"bold"} textStyle={"xl"} mb={1}>
@@ -227,11 +261,11 @@ export default function Page() {
                           </Text>
                           <Box>
                             Strategi ini biasanya digunakan untuk menyelesaikan
-                            limit yang mengandung bentuk tak tentu, khususnya yang
-                            melibatkan akar kuadrat (radikal) pada pembilang atau
-                            penyebutnya. Dengan mengalikan dengan bentuk sekawan,
-                            kita menghilangkan akar kuadrat, sehingga kita bisa
-                            menemukan limit lebih mudah.
+                            limit yang mengandung bentuk tak tentu, khususnya
+                            yang melibatkan akar kuadrat (radikal) pada
+                            pembilang atau penyebutnya. Dengan mengalikan dengan
+                            bentuk sekawan, kita menghilangkan akar kuadrat,
+                            sehingga kita bisa menemukan limit lebih mudah.
                             <Text fontWeight={"bold"} mt={4} mb={2}>
                               Berikut adalah Langkah - Langkahnya :{" "}
                             </Text>
@@ -256,14 +290,24 @@ export default function Page() {
                                   ).
                                 </Box>
                               </Box>
-                              <Box >
+                              <Box>
                                 2. Kalikan pembilang dan penyebut dengan bentuk
                                 sekawan.{" "}
-                                <Container as="ul" ms={2} listStyleType="circle">
+                                <Container
+                                  as="ul"
+                                  ms={2}
+                                  listStyleType="circle"
+                                >
                                   <Box as="li">
                                     Jika terdapat expresi seperti{" "}
                                     <Box
-                                      display={{xl: "flex", lg: "flex", md: "flex", sm: "block", base: "block"}}
+                                      display={{
+                                        xl: "flex",
+                                        lg: "flex",
+                                        md: "flex",
+                                        sm: "block",
+                                        base: "block",
+                                      }}
                                       alignItems={"center"}
                                       mt={2}
                                       gap={3}
@@ -290,7 +334,8 @@ export default function Page() {
                                 bagian yang mengandung akar kuadrat
                               </Box>
                               <Box>
-                                4. Hitung Limitnya setelah bentuk tak tentu hilang
+                                4. Hitung Limitnya setelah bentuk tak tentu
+                                hilang
                               </Box>
                             </Flex>
                           </Box>
@@ -456,6 +501,18 @@ export default function Page() {
                     </Text>
                   </Box>
                 </Text>
+              </Box>
+
+              <Box>
+                <NextPrevButton
+                  isDoubleBtn={false}
+                  nextPath={
+                    "/materi/konsep-dasar-limit-fungsi-aljabar/menentukan-nilai-limit"
+                  }
+                  prevPath={"/materi/konsep-dasar-limit-fungsi-aljabar"}
+                  isFinishButton={true}
+                  nextMateri={"sukuBanyak"}
+                />
               </Box>
             </Container>
           </Box>

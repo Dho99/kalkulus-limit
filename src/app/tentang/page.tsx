@@ -1,7 +1,5 @@
 import { Card, Container, Box, Text, For, SimpleGrid, Flex } from "@chakra-ui/react";
 import { Avatar } from "@/components/ui/avatar";
-// import { Button } from "@/components/ui/button";
-
 export default function Page() {
   return (
     <Container mt={{ xl: "7%", lg: "7%", md: "10%", sm: "10%", base: "14%" }}>

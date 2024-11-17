@@ -1,32 +1,31 @@
 import { metadata } from "@/app/layout";
-import { Text, Container, Flex, Box, SimpleGrid } from "@chakra-ui/react";
+import { Text, Container, Box, SimpleGrid } from "@chakra-ui/react";
 import Sidenav from "@/components/page/materi/sidenav";
 import LatexRenderer from "@/components/LatexRenderer";
+import NextPrevButton from "@/components/page/nextPrevButton";
 
 export default function Page() {
   metadata.title = "LearnLimit | Limit Suku Banyak";
   return (
-    <Container
-      fluid={true}
-      mt={{ xl: "5%", lg: "8%", md: "8%", sm: "8%" }}
-      zIndex={2}
-    >
-      <Flex direction={"row"} gap={10}>
-        <Sidenav content={"Limit Suku Banyak"} />
-        <Box>
-          <Text
-            textStyle={"5xl"}
-            color={"black"}
-            justifyContent={"center"}
-            display={"flex"}
-            fontWeight={"bold"}
-            mb={"3%"}
-            textAlign={"center"}
-          >
-            Menentukan Nilai Limit Fungsi
-          </Text>
+    <Container mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%"}} zIndex={2} fluid>
+        <Box direction={"row"} gap={10} maxW={"dvw"} display={{xl: "flex", lg: "flex", md: "flex", sm: "flex", base: "block"}}>
+          <Sidenav content={"Limit Suku Banyak"}/>
+          <Box flexBasis={"100%"}>
+            <Text
+              textStyle={"5xl"}
+              color={"black"}
+              justifyContent={"center"}
+              display={"flex"}
+              fontWeight={"bold"}
+              mb={"3%"}
+              textAlign={"center"}
+              w="full"
+              ms={3}
+            >
+              Fungsi Limit Suku Banyak
+            </Text>
 
-          <Box>
+          <Box mt={10}>
             <Text textStyle={"2xl"} fontWeight={"bold"} mb={2}>
               A. Pengertian
             </Text>
@@ -342,7 +341,19 @@ export default function Page() {
             </Container>
           </Box>
         </Box>
-      </Flex>
+
+      </Box>
+        <Box>
+            <NextPrevButton
+              isDoubleBtn={false}
+              nextPath={
+                "/"
+              }
+              prevPath={"/"}
+              isFinishButton={true}
+              nextMateri={"trigonometri"}
+            />
+          </Box>
     </Container>
   );
 }

@@ -40,7 +40,7 @@ export default function Cards() {
                       align: "start",
                       cardDescription:
                         "Disini kita akan belajar dasar - dasar mengenai Fungsi limit sebelum ke tingkat selanjutnya",
-                      level: level.konsepDasar,
+                      level: level.levelFinish.konsepDasar,
                       endPoint: "/materi/konsep-dasar-limit-fungsi-aljabar",
                     },
                     {
@@ -48,7 +48,7 @@ export default function Cards() {
                       align: "end",
                       cardDescription:
                         "Sudah menguasai Dasar ? Ayo Lanjutkan ke materi ini ",
-                      level: level.sukuBanyak,
+                      level: level.levelFinish.sukuBanyak,
                       endPoint: "/materi/limit-suku-banyak",
                     },
                     {
@@ -56,7 +56,7 @@ export default function Cards() {
                       align: "start",
                       cardDescription:
                         "Wow sudah sampai sini, Hebat ! Yuk, lanjut ke materi ini",
-                      level: level.trigonometri,
+                      level: level.levelFinish.trigonometri,
                       endPoint: "/materi/limit-fungsi-trigonometri",
                     },
                   ]}
@@ -109,7 +109,7 @@ export default function Cards() {
                               <Box mt={7}>
                                 <Dialog
                                   body={
-                                    "Selesaikan Materi sebelum ini terlebih dahulu, Yuk"
+                                    "Selesaikan Materi sebelumnya terlebih dahulu, Yuk"
                                   }
                                   title={"Peringatan"}
                                   buttonText={"Mulai Belajar"}

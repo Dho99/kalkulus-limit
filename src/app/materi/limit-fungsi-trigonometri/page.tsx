@@ -1,20 +1,17 @@
 import { metadata } from "@/app/layout";
-import { Text, Container, Flex, Box, For } from "@chakra-ui/react";
+import { Text, Container, Box, For } from "@chakra-ui/react";
 import Sidenav from "@/components/page/materi/sidenav";
 import Link from "next/link";
 import LatexRenderer from "@/components/LatexRenderer";
+import NextPrevButton from "@/components/page/nextPrevButton";
 
 export default function Page() {
   metadata.title = "LearnLimit | Limit Fungsi Trigonometri";
   return (
     <>
-      <Container
-        fluid={true}
-        mt={{ xl: "5%", lg: "8%", md: "8%", sm: "8%" }}
-        zIndex={2}
-      >
-        <Flex direction={"row"} gap={10}>
-          <Sidenav content={"Limit Fungsi Trigonometri"} />
+      <Container mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%"}} zIndex={2} fluid>
+        <Box direction={"row"} gap={10} maxW={"dvw"} display={{xl: "flex", lg: "flex", md: "flex", sm: "flex", base: "block"}}>
+          <Sidenav content={"Limit Fungsi Trigonometri"}/>
           <Box flexBasis={"100%"}>
             <Text
               textStyle={"5xl"}
@@ -24,11 +21,13 @@ export default function Page() {
               fontWeight={"bold"}
               mb={"3%"}
               textAlign={"center"}
+              w="full"
+              ms={3}
             >
-              Limit Fungsi Trigonometri
+             Limit Fungsi Trigonometri
             </Text>
 
-            <Box>
+            <Box mt={10}>
               <Text textStyle={"2xl"} fontWeight={"bold"} mb={2}>
                 A. Pengertian
               </Text>
@@ -118,8 +117,21 @@ export default function Page() {
                 </Box>
               </Text>
             </Box>
+          <Box>
+          <NextPrevButton
+            isDoubleBtn={true}
+            nextPath={
+              "/materi/limit-fungsi-trigonometri/menentukan-nilai-limit-fungsi-trigonometri"
+            }
+            prevPath={"/"}
+            isFinishButton={false}
+            nextMateri={""}
+          />
+        </Box>
           </Box>
-        </Flex>
+
+        
+        </Box>
       </Container>
     </>
   );

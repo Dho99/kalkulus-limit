@@ -1,10 +1,12 @@
 "use client";
 
-import { Box, Flex, Button } from "@chakra-ui/react";
+import { Box, Flex, Button, Text } from "@chakra-ui/react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import sidenav from "../../../../public/sidenav.module.css";
 import { useState } from "react";
+import { FaChevronRight } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 
 interface SidenavProps {
   content: string;
@@ -32,7 +34,7 @@ export default function Sidenav({ content }: SidenavProps) {
     {
       konsepDasar: [
         {
-          menuSelection: ["Konsep Dasar", "Menentukan Nilai Limit"],
+          menuSelection: ["Konsep Dasar", "Menentukan Nilai"],
           menuLink: [
             `${prefixPageUrls}/konsep-dasar-limit-fungsi-aljabar`,
             `${prefixPageUrls}/konsep-dasar-limit-fungsi-aljabar/menentukan-nilai-limit`,
@@ -91,24 +93,27 @@ export default function Sidenav({ content }: SidenavProps) {
         display={{ lg: "none", sm: "block", base: "block" }}
         left={sidebarPos ? {md: 220, sm: 210, base: 250} : {md: -2, sm: -1, base: 2}}
         top={-2}
+        opacity={sidebarPos ? 1 : 0.75}
+        zIndex={15}
       >
         <Button
           type="button"
           position={"fixed"}
-          zIndex={8}
           shadow={"sm"}
+          colorPalette={"yellow"}
           onClick={() => {
             setSidebarPos(!sidebarPos);
           }}
         >
-          {!sidebarPos ? "show" : "hide"}
+          {!sidebarPos ? <FaChevronRight/> : <IoClose />}
         </Button>
       </Box>
       <Box
-        marginLeft={"-10px"}
+        marginLeft={"-30px"}
         flexBasis={"22%"}
         minW={"200px"}
-        borderRight={"2px solid"}
+        // borderRight={"2px solid"}
+        
         minH={"dvh"}
         mt={{xl: -5, lg: -8, md: -10, sm: -10, base: -10}}
         pt={{xl: 8, lg: 8, md: 0, sm: 0, base: 5}}
@@ -120,40 +125,54 @@ export default function Sidenav({ content }: SidenavProps) {
           base: sidebarPos ? "block" : "none",
         }}
         position={{lg: "relative" , md: sidebarPos ? "fixed" : "relative", sm: sidebarPos ? "fixed" : "relative",  base: sidebarPos ? "fixed" : "relative"}}
-        backgroundColor={"white"}
+        backgroundColor={"gray.100"}
         zIndex={10}
       >
         <Flex
           direction={"column"}
           gap={2}
-          pos={{ xl: "fixed", lg: "relative" }}
-          ms={"7px"}
+          // pos={{ xl: "fixed", lg: "relative" }}
+          ms={"8px"}
           me={{ sm: "10px", base: "10px" }}
           pe={{lg: 2}}
         >
           <Box
             as="ul"
-            listStyleType={"circle"}
             display={"inline-flex"}
             flexDirection={"column"}
             gapY={2}
             mt={{lg: 0, sm: 10}}
+            ms={3}
+            // mx={-1}
           >
             {menus[0].menuSelection.map((item, key) => {
-              return (
-                <Box as="li" key={key}>
-                  <Link
-                    href={menus[0].menuLink[key]}
-                    className={
-                      currLoc == menus[0].menuLink[key]
-                        ? sidenav.active
-                        : sidenav.basic
-                    }
-                  >
-                    {item}
-                  </Link>
-                </Box>
-              );
+              if(currLoc == menus[0].menuLink[key]){
+                return (
+                  <Button as="li" key={key} justifyContent={"start"} colorPalette={"yellow"} variant={"solid"}>
+                    <Link
+                      href={menus[0].menuLink[key]}
+                      className={sidenav.active}
+                    >
+                      <Text display={"flex"} textOverflow={"clip"}>
+                        <Text me={2}>{key+1}.</Text>{item}  
+                      </Text>
+                    </Link>
+                  </Button>
+                );
+              }else{
+                return (
+                  <Button as="li" key={key} justifyContent={"start"} variant={"solid"}>
+                    <Link
+                      href={menus[0].menuLink[key]}
+                      className={sidenav.basic}
+                    >
+                      <Text display={"flex"} textOverflow={"clip"} textStyle={"md"}>
+                        <Text me={2}>{key+1}.</Text>{item}  
+                      </Text>
+                    </Link>
+                  </Button>
+                )
+              }
             })}
           </Box>
         </Flex>

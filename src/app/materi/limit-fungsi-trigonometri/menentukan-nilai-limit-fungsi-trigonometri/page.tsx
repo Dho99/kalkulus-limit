@@ -1,30 +1,29 @@
-import { Container, Box, Text, Flex, SimpleGrid, For } from "@chakra-ui/react";
+import { Container, Box, Text, SimpleGrid, For } from "@chakra-ui/react";
 import Sidenav from "@/components/page/materi/sidenav";
 import LatexRenderer from "@/components/LatexRenderer";
+import NextPrevButton from "@/components/page/nextPrevButton";
 
 export default function Page() {
   return (
-    <Container
-      fluid={true}
-      mt={{ xl: "5%", lg: "8%", md: "8%", sm: "8%" }}
-      zIndex={2}
-    >
-      <Flex direction={"row"} gap={10}>
-        <Sidenav content={"Limit Fungsi Trigonometri"} />
-        <Box flexBasis={"100%"}>
-          <Text
-            textStyle={"5xl"}
-            color={"black"}
-            justifyContent={"center"}
-            display={"flex"}
-            fontWeight={"bold"}
-            mb={"3%"}
-            textAlign={"center"}
-          >
-            Menentukan Nilai Limit Fungsi Trigonometri
-          </Text>
+    <Container mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%"}} zIndex={2} fluid>
+    <Box direction={"row"} gap={10} maxW={"dvw"} display={{xl: "flex", lg: "flex", md: "flex", sm: "flex", base: "block"}}>
+      <Sidenav content={"Limit Fungsi Trigonometri"}/>
+      <Box flexBasis={"100%"}>
+        <Text
+          textStyle={"5xl"}
+          color={"black"}
+          justifyContent={"center"}
+          display={"flex"}
+          fontWeight={"bold"}
+          mb={"3%"}
+          textAlign={"center"}
+          w="full"
+          ms={3}
+        >
+         Menentukan Nilai Limit Fungsi Trigonometri
+        </Text>
 
-          <Box>
+          <Box mt={10}>
             <Text textStyle={"xl"}>
               Menentukan nilai limit fungsi trigonometri adalah proses menemukan
               nilai yang mendekati suatu fungsi trigonometri ketika variabel
@@ -301,8 +300,19 @@ export default function Page() {
               </Container>
             </Text>
           </Box>
+      <Box>
+          <NextPrevButton
+            isDoubleBtn={true}
+            nextPath={
+              "/materi/limit-fungsi-trigonometri/bentuk-umum"
+            }
+            prevPath={"/materi/limit-fungsi-trigonometri/"}
+            isFinishButton={false}
+            nextMateri={""}
+          />
         </Box>
-      </Flex>
+        </Box>
+      </Box>
     </Container>
   );
 }

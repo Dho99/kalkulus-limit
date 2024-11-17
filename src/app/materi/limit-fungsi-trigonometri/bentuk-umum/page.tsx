@@ -1,31 +1,30 @@
-import { Text, Flex, Box, Container } from "@chakra-ui/react";
+import { Text, Box, Container } from "@chakra-ui/react";
 import Sidenav from "@/components/page/materi/sidenav";
 import { metadata } from "@/app/layout";
 import Image from "next/image";
+import NextPrevButton from "@/components/page/nextPrevButton";
 
 export default function Page() {
   metadata.title = "LearnLimit | Sudut Istimewa";
   return (
-    <Container
-      fluid={true}
-      mt={{ xl: "5%", lg: "8%", md: "8%", sm: "8%" }}
-      zIndex={2}
-    >
-      <Flex direction={"row"} gap={10}>
-        <Sidenav content={"Limit Fungsi Trigonometri"} />
-        <Box flexBasis={"100%"}>
-          <Text
-            textStyle={"5xl"}
-            color={"black"}
-            justifyContent={"center"}
-            display={"flex"}
-            fontWeight={"bold"}
-            mb={"3%"}
-            textAlign={"center"}
-          >
-            Bentuk Istimewa Fungsi Trigonometri
-          </Text>
-          <Box display={"flex"} alignItems={"center"} gap={5} flexDirection={"column"}>
+    <Container mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%"}} zIndex={2} fluid>
+    <Box direction={"row"} gap={10} maxW={"dvw"} display={{xl: "flex", lg: "flex", md: "flex", sm: "flex", base: "block"}}>
+      <Sidenav content={"Limit Fungsi Trigonometri"}/>
+      <Box flexBasis={"100%"}>
+        <Text
+          textStyle={"5xl"}
+          color={"black"}
+          justifyContent={"center"}
+          display={"flex"}
+          fontWeight={"bold"}
+          mb={"3%"}
+          textAlign={"center"}
+          w="full"
+          ms={3}
+        >
+         Bentuk Istimewa Fungsi Trigonometri
+        </Text>
+          <Box display={"flex"} alignItems={"center"} gap={5} flexDirection={"column"} mt={10}>
             <Image
               height={900}
               width={900}
@@ -50,7 +49,19 @@ export default function Page() {
             ></Image>
           </Box>
         </Box>
-      </Flex>
+
+      </Box>
+        <Box>
+          <NextPrevButton
+            isDoubleBtn={false}
+            nextPath={
+              "/"
+            }
+            prevPath={"/materi/limit-fungsi-trigonometri/menentukan-nilai-limit-fungsi-trigonometri"}
+            isFinishButton={true}
+            nextMateri={"sukuBanyak"}
+          />
+        </Box>
     </Container>
   );
 }

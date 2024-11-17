@@ -2,12 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import {
-  // DrawerActionTrigger,
   DrawerBackdrop,
   DrawerBody,
   DrawerCloseTrigger,
   DrawerContent,
-  // DrawerFooter,
   DrawerHeader,
   DrawerRoot,
   DrawerTitle,

@@ -4,6 +4,8 @@ import LatexRenderer from "../../../components/LatexRenderer";
 import Sidenav from "@/components/page/materi/sidenav";
 import BasicTable from "@/components/page/materi/konsep-dasar/table";
 
+import NextPrevButton from "@/components/page/nextPrevButton";
+
 export default function Page() {
   metadata.title = "LearnLimit | Konsep Dasar Limit Fungsi Aljabar";
 
@@ -12,10 +14,25 @@ export default function Page() {
 
   return (
     <>
-      <Container mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%"}} zIndex={2}>
-        <Box direction={"row"} gap={10} maxW={"dvw"} display={{xl: "flex", lg: "flex", md: "flex", sm: "flex", base: "block"}}>
-          <Sidenav content={"Konsep Dasar Limit"}/>
-          <Box flexBasis={"100%"}>
+      <Container
+        mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%" }}
+        zIndex={2}
+        fluid
+      >
+        <Box
+          direction={"row"}
+          gap={10}
+          maxW={"dvw"}
+          display={{
+            xl: "flex",
+            lg: "flex",
+            md: "flex",
+            sm: "flex",
+            base: "block",
+          }}
+        >
+          <Sidenav content={"Konsep Dasar Limit"} />
+          <Container flexBasis={"100%"}>
             <Text
               textStyle={"5xl"}
               color={"black"}
@@ -67,12 +84,21 @@ export default function Page() {
                 />
                 <Text fontWeight={"bold"}>Contoh : </Text>
                 <br />
-                <Flex justifyContent={"center"} flexDirection={{xl: "row", lg: "row", md: "row", sm: "column", base: "column"}}>
+                <Flex
+                  justifyContent={"center"}
+                  flexDirection={{
+                    xl: "row",
+                    lg: "row",
+                    md: "row",
+                    sm: "column",
+                    base: "column",
+                  }}
+                >
                   <LatexRenderer
                     expression={"\\lim_{x \\to 1} = \\frac{x^2 - 1}{x - 1} ="}
                   />
                   <Box border={"1px solid "} ms={3} px={2} pt={3} pb={5}>
-                      Fungsi{" "}
+                    Fungsi{" "}
                     <Box mb={3}>
                       <Box my={3} me={2} display={"flex"}>
                         <LatexRenderer
@@ -82,7 +108,7 @@ export default function Page() {
                       </Box>
                       terdefinisi untuk semua x bilangan real kecuali x = 1.{" "}
                     </Box>
-                      Contoh :{" "}
+                    Contoh :{" "}
                     <Flex justifyContent={"start"} mt={3}>
                       <Flex mx={0}>
                         <LatexRenderer
@@ -95,7 +121,6 @@ export default function Page() {
                     </Flex>
                   </Box>
                 </Flex>
-
                 <Box mt={7}>
                   <Text fontWeight={"bold"}>Contoh menggunakan tabel : </Text>
                   <Container my={3}>
@@ -106,12 +131,12 @@ export default function Page() {
 
 
 
+                <Box>
+                  <NextPrevButton isDoubleBtn={true} nextPath={'/materi/konsep-dasar-limit-fungsi-aljabar/menentukan-nilai-limit'} prevPath={'/'} isFinishButton={false} nextMateri={''} />
+                </Box>
               </Box>
-
-
-
             </Container>
-          </Box>
+          </Container>
         </Box>
       </Container>
     </>

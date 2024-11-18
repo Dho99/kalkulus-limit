@@ -26,6 +26,8 @@ export default function Sidenav({ content }: SidenavProps) {
     konsepDasar: Array<MenuContent>;
     limitSukuBanyak: Array<MenuContent>;
     limitFungsiTrigonometri: Array<MenuContent>;
+    limitSepihak: Array<MenuContent>;
+    limitTakHingga: Array<MenuContent>;
   };
 
   let menus: Array<MenuContent> = [];
@@ -38,6 +40,7 @@ export default function Sidenav({ content }: SidenavProps) {
           menuLink: [
             `${prefixPageUrls}/konsep-dasar-limit-fungsi-aljabar`,
             `${prefixPageUrls}/konsep-dasar-limit-fungsi-aljabar/menentukan-nilai-limit`,
+            `${prefixPageUrls}/konsep-dasar-limit-fungsi-aljabar/aplikasi-fungsi-limit`,
           ],
           sections: ["Pengertian"],
         },
@@ -59,11 +62,31 @@ export default function Sidenav({ content }: SidenavProps) {
             `${prefixPageUrls}/limit-fungsi-trigonometri`,
             `${prefixPageUrls}/limit-fungsi-trigonometri/menentukan-nilai-limit-fungsi-trigonometri`,
             `${prefixPageUrls}/limit-fungsi-trigonometri/bentuk-umum`,
-            // `${prefixPageUrls}/limit-suku-banyak/latihan`,
           ],
           sections: ["Pengertian"],
         },
       ],
+      limitSepihak : [
+        {
+          menuSelection: ["Pengertian", "Contoh"],
+          menuLink: [
+            `${prefixPageUrls}/limit-sepihak`,
+            `${prefixPageUrls}/limit-sepihak/contoh`,
+          ],
+          sections: ["Pengertian"],
+        },
+      ],
+      limitTakHingga : [
+        {
+          menuSelection: ["Pengertian", "Contoh"],
+          menuLink: [
+            `${prefixPageUrls}/limit-tak-hingga`,
+            `${prefixPageUrls}/limit-tak-hingga/contoh`,
+          ],
+          sections: ["Pengertian"],
+        },
+      ],
+      
     },
   ];
 
@@ -81,6 +104,10 @@ export default function Sidenav({ content }: SidenavProps) {
     case "Limit Fungsi Trigonometri":
       menus = [];
       menus.push(menuElements[0].limitFungsiTrigonometri[0]);
+      break;
+    case "Limit Sepihak":
+      menus = [];
+      menus.push(menuElements[0].limitSepihak[0]);
       break;
   }
 

@@ -2,6 +2,7 @@ import { Container, Box, Text } from "@chakra-ui/react";
 import Sidenav from "@/components/page/materi/sidenav";
 import { metadata } from "@/app/layout";
 import LatexRenderer from "@/components/LatexRenderer";
+import NextPrevButton from "@/components/page/nextPrevButton";
 
 export default function Page() {
   metadata.title = "LearnLimit | Aplikasi Limit Fungsi";
@@ -110,8 +111,42 @@ export default function Page() {
                     </Container>
                   </Box>
                 </Box>
+                <Box as={"li"}>
+                  <Text fontWeight="bold" mb={3}>Aplikasi dalam Komputer dan Informatika</Text>
+                  <Box as={"ul"} listStyle={"circle"}>
+                    <Container mx={-4}>
+                      <Box as={"li"}>
+                        <Text fontWeight={"bold"}>
+                          Analisis Algoritma
+                        </Text>
+                        <Text>
+                          Dalam ilmu komputer, limit digunakan untuk analisis kompleksitas algoritma. Limit memberikan dasar matematis untuk menghitung dan membandingkan efisiensi algoritma dalam skala besar data.
+                        </Text>
+                      </Box>
+                      <Box as={"li"}>
+                        <Text fontWeight={"bold"}>
+                          Pembelajaran Mesin
+                        </Text>
+                        <Text>
+                          Algoritma pembelajaran mesin, khususnya yang melibatkan pembaruan gradien, menggunakan konsep limit untuk mengoptimalkan fungsi kehilangan.
+                        </Text>
+                      </Box>
+                    </Container>
+                  </Box>
+                </Box>
               </Box>
             </Container>
+              <Box>
+                <NextPrevButton
+                  isDoubleBtn={true}
+                  nextPath={
+                    "/materi/konsep-dasar-limit-fungsi-aljabar/aplikasi-fungsi-limit/contoh"
+                  }
+                  prevPath={"/materi/konsep-dasar-limit-fungsi-aljabar/menentukan-nilai-limit"}
+                  isFinishButton={false}
+                  nextMateri={""}
+                />
+              </Box>
           </Text>
         </Container>
       </Box>

@@ -505,13 +505,13 @@ export default function Page() {
 
               <Box>
                 <NextPrevButton
-                  isDoubleBtn={false}
+                  isDoubleBtn={true}
                   nextPath={
-                    "/materi/konsep-dasar-limit-fungsi-aljabar/menentukan-nilai-limit"
+                    "/materi/konsep-dasar-limit-fungsi-aljabar/aplikasi-fungsi-limit"
                   }
                   prevPath={"/materi/konsep-dasar-limit-fungsi-aljabar"}
-                  isFinishButton={true}
-                  nextMateri={"sukuBanyak"}
+                  isFinishButton={false}
+                  nextMateri={""}
                 />
               </Box>
             </Container>

@@ -144,9 +144,9 @@ export default function NextPrevButton({
                   </DialogActionTrigger>
                   <Button
                     onClick={() => {
-                        updateLevelFinish(nextMateri, true);
-                        updateLocalStorage(nextMateri);
-                        router.push('/');
+                        // updateLevelFinish(nextMateri, true);
+                        // updateLocalStorage(nextMateri);
+                        // router.push('/');
                     }}
                   >
                     Sudah

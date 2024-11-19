@@ -24,7 +24,7 @@ export default function Page() {
           base: "block",
         }}
       >
-        <Sidenav content={"Konsep Dasar Limit"} />
+        <Sidenav content={"Limit Sepihak"} />
         <Container flexBasis={"100%"}>
           <Text
             textStyle={"5xl"}

@@ -2,7 +2,7 @@ import { Container, Box, Text } from "@chakra-ui/react";
 import Sidenav from "@/components/page/materi/sidenav";
 import { metadata } from "@/app/layout";
 import LatexRenderer from "@/components/LatexRenderer";
-// import NextPrevButton from "@/components/page/nextPrevButton";
+import NextPrevButton from "@/components/page/nextPrevButton";
 import Image from "next/image";
 
 export default function Page() {
@@ -26,7 +26,7 @@ export default function Page() {
           base: "block",
         }}
       >
-        <Sidenav content={"Konsep Dasar Limit"} />
+        <Sidenav content={"Limit Sepihak"} />
         <Container flexBasis={"100%"}>
           <Text
             textStyle={"5xl"}
@@ -204,6 +204,7 @@ export default function Page() {
               </Box>
             </Box>
           </Text>
+          <NextPrevButton nextPath={'/materi/limit-sepihak/mini-quiz'} prevPath={"/materi/limit-sepihak"} isFinishButton={false} isDoubleBtn={true} nextMateri={""}/>
         </Container>
       </Box>
     </Container>

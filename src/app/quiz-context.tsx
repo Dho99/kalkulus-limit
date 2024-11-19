@@ -8,7 +8,9 @@ const parsedValue = localValue ? JSON.parse(localValue) : null;
 
 const initialLevelFinish = {
   konsepDasar: parsedValue && parsedValue.konsepDasar ? parsedValue.konsepDasar : true,
+  sepihak: parsedValue && parsedValue.sepihak ? parsedValue.sepihak : false,
   sukuBanyak: parsedValue && parsedValue.sukuBanyak ? parsedValue.sukuBanyak : false,
+  takHingga: parsedValue && parsedValue.takHingga ? parsedValue.takHingga : false,
   trigonometri: parsedValue && parsedValue.trigonometri ? parsedValue.trigonometri : false,
 };
 

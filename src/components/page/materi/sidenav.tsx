@@ -36,21 +36,23 @@ export default function Sidenav({ content }: SidenavProps) {
     {
       konsepDasar: [
         {
-          menuSelection: ["Konsep Dasar", "Menentukan Nilai"],
+          menuSelection: ["Konsep Dasar", "Menentukan Nilai", "Aplikasi Limit", "Contoh Aplikasi", "Mini Quiz"],
           menuLink: [
             `${prefixPageUrls}/konsep-dasar-limit-fungsi-aljabar`,
             `${prefixPageUrls}/konsep-dasar-limit-fungsi-aljabar/menentukan-nilai-limit`,
             `${prefixPageUrls}/konsep-dasar-limit-fungsi-aljabar/aplikasi-fungsi-limit`,
+            `${prefixPageUrls}/konsep-dasar-limit-fungsi-aljabar/aplikasi-fungsi-limit/contoh`,
+            `${prefixPageUrls}/konsep-dasar-limit-fungsi-aljabar/mini-quiz`,
           ],
           sections: ["Pengertian"],
         },
       ],
       limitSukuBanyak: [
         {
-          menuSelection: ["Pengertian", "Latihan"],
+          menuSelection: ["Pengertian", "Mini Quiz"],
           menuLink: [
             `${prefixPageUrls}/limit-suku-banyak`,
-            `${prefixPageUrls}/limit-suku-banyak/latihan`,
+            `${prefixPageUrls}/limit-suku-banyak/mini-quiz`,
           ],
           sections: ["Pengertian"],
         },
@@ -68,10 +70,11 @@ export default function Sidenav({ content }: SidenavProps) {
       ],
       limitSepihak : [
         {
-          menuSelection: ["Pengertian", "Contoh"],
+          menuSelection: ["Pengertian", "Contoh", "Mini Quiz"],
           menuLink: [
             `${prefixPageUrls}/limit-sepihak`,
             `${prefixPageUrls}/limit-sepihak/contoh`,
+            `${prefixPageUrls}/limit-sepihak/mini-quiz`,
           ],
           sections: ["Pengertian"],
         },
@@ -108,6 +111,10 @@ export default function Sidenav({ content }: SidenavProps) {
     case "Limit Sepihak":
       menus = [];
       menus.push(menuElements[0].limitSepihak[0]);
+      break;
+    case "Limit Tak Hingga":
+      menus = [];
+      menus.push(menuElements[0].limitTakHingga[0]);
       break;
   }
 
@@ -151,7 +158,7 @@ export default function Sidenav({ content }: SidenavProps) {
           sm: sidebarPos ? "block" : "none",
           base: sidebarPos ? "block" : "none",
         }}
-        position={{lg: "relative" , md: sidebarPos ? "fixed" : "relative", sm: sidebarPos ? "fixed" : "relative",  base: sidebarPos ? "fixed" : "relative"}}
+        position={{xl: "relative", lg: "relative" , md: sidebarPos ? "fixed" : "relative", sm: sidebarPos ? "fixed" : "relative",  base: sidebarPos ? "fixed" : "relative"}}
         backgroundColor={"gray.100"}
         zIndex={10}
       >

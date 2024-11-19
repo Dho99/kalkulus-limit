@@ -44,12 +44,28 @@ export default function Cards() {
                       endPoint: "/materi/konsep-dasar-limit-fungsi-aljabar",
                     },
                     {
-                      cardTitle: "Limit Suku Banyak",
+                      cardTitle: "Limit Sepihak",
                       align: "end",
                       cardDescription:
-                        "Sudah menguasai Dasar ? Ayo Lanjutkan ke materi ini ",
+                        "Disini kita akan belajar Mengenai Limit sepihak atau Limit Kanan dan Kiri",
+                      level: level.levelFinish.sepihak,
+                      endPoint: "/materi/limit-sepihak",
+                    },
+                    {
+                      cardTitle: "Limit Suku Banyak",
+                      align: "start",
+                      cardDescription:
+                        "Sudah menguasai Materi Sebelumnya ? Ayo Lanjutkan ke materi ini ",
                       level: level.levelFinish.sukuBanyak,
                       endPoint: "/materi/limit-suku-banyak",
+                    },
+                    {
+                      cardTitle: "Limit Tak Hingga",
+                      align: "end",
+                      cardDescription:
+                        "Tinggal selangkah lagi untuk menyelesaikan belajar Limit ini, Ayo lanjut !",
+                      level: level.levelFinish.takHingga,
+                      endPoint: "/materi/limit-tak-hingga",
                     },
                     {
                       cardTitle: "Limit Fungsi Trigonometri",

@@ -7,23 +7,38 @@ import NextPrevButton from "@/components/page/nextPrevButton";
 export default function Page() {
   metadata.title = "LearnLimit | Limit Suku Banyak";
   return (
-    <Container mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%"}} zIndex={2} fluid>
-        <Box direction={"row"} gap={10} maxW={"dvw"} display={{xl: "flex", lg: "flex", md: "flex", sm: "flex", base: "block"}}>
-          <Sidenav content={"Limit Suku Banyak"}/>
-          <Box flexBasis={"100%"}>
-            <Text
-              textStyle={"5xl"}
-              color={"black"}
-              justifyContent={"center"}
-              display={"flex"}
-              fontWeight={"bold"}
-              mb={"3%"}
-              textAlign={"center"}
-              w="full"
-              ms={3}
-            >
-              Fungsi Limit Suku Banyak
-            </Text>
+    <Container
+      mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%" }}
+      zIndex={2}
+      fluid
+    >
+      <Box
+        direction={"row"}
+        gap={10}
+        maxW={"dvw"}
+        display={{
+          xl: "flex",
+          lg: "flex",
+          md: "flex",
+          sm: "flex",
+          base: "block",
+        }}
+      >
+        <Sidenav content={"Limit Suku Banyak"} />
+        <Box flexBasis={"100%"}>
+          <Text
+            textStyle={"5xl"}
+            color={"black"}
+            justifyContent={"center"}
+            display={"flex"}
+            fontWeight={"bold"}
+            mb={"3%"}
+            textAlign={"center"}
+            w="full"
+            ms={3}
+          >
+            Fungsi Limit Suku Banyak
+          </Text>
 
           <Box mt={10}>
             <Text textStyle={"2xl"} fontWeight={"bold"} mb={2}>
@@ -287,11 +302,21 @@ export default function Page() {
                       my={8}
                     >
                       <Box>
-                        <LatexRenderer inline expression={"\\lim_{x \\to 2}(\\frac{2x^2-8}{x-2} + \\frac{x^2-2x}{2x-2})"}/>
+                        <LatexRenderer
+                          inline
+                          expression={
+                            "\\lim_{x \\to 2}(\\frac{2x^2-8}{x-2} + \\frac{x^2-2x}{2x-2})"
+                          }
+                        />
                       </Box>
                       <Box mt={{ xl: 0, lg: 0, md: 0, sm: 8, base: 8 }}>
                         <Box my={{ xl: 0, lg: 0, md: 0, sm: 8, base: 8 }}>
-                        <LatexRenderer inline expression={"= \\lim_{x \\to 2}\\frac{2(x^2-4)}{x-2} + \\frac{x(x-2}{2(x-2)}"}/>
+                          <LatexRenderer
+                            inline
+                            expression={
+                              "= \\lim_{x \\to 2}\\frac{2(x^2-4)}{x-2} + \\frac{x(x-2}{2(x-2)}"
+                            }
+                          />
                         </Box>
                         <Box my={{ xl: 5, lg: 5, md: 5, sm: 8, base: 8 }}>
                           <LatexRenderer
@@ -304,34 +329,20 @@ export default function Page() {
                         <Box my={{ xl: 5, lg: 5, md: 5, sm: 8, base: 8 }}>
                           <LatexRenderer
                             inline
-                            expression={
-                              "= \\lim_{x \\to 2}2(x+2)+\\frac{x}{2}"
-                            }
+                            expression={"= \\lim_{x \\to 2}2(x+2)+\\frac{x}{2}"}
                           />
                         </Box>
                         <Box my={{ xl: 5, lg: 5, md: 5, sm: 8, base: 8 }}>
                           <LatexRenderer
                             inline
-                            expression={
-                              "= 2(2+2)+\\frac{2}{2}"
-                            }
+                            expression={"= 2(2+2)+\\frac{2}{2}"}
                           />
                         </Box>
                         <Box my={{ xl: 5, lg: 5, md: 5, sm: 8, base: 8 }}>
-                          <LatexRenderer
-                            inline
-                            expression={
-                              "= 8 + 1"
-                            }
-                          />
+                          <LatexRenderer inline expression={"= 8 + 1"} />
                         </Box>
                         <Box my={{ xl: 5, lg: 5, md: 5, sm: 8, base: 8 }}>
-                          <LatexRenderer
-                            inline
-                            expression={
-                              "= 9"
-                            }
-                          />
+                          <LatexRenderer inline expression={"= 9"} />
                         </Box>
                       </Box>
                     </SimpleGrid>
@@ -339,21 +350,16 @@ export default function Page() {
                 </Box>
               </Text>
             </Container>
+              <NextPrevButton
+                isDoubleBtn={true}
+                nextPath={"/materi/limit-suku-banyak/mini-quiz"}
+                prevPath={"/"}
+                isFinishButton={false}
+                nextMateri={"trigonometri"}
+              />
           </Box>
         </Box>
-
       </Box>
-        <Box>
-            <NextPrevButton
-              isDoubleBtn={false}
-              nextPath={
-                "/"
-              }
-              prevPath={"/"}
-              isFinishButton={true}
-              nextMateri={"trigonometri"}
-            />
-          </Box>
     </Container>
   );
 }

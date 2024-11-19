@@ -177,7 +177,7 @@ export default function Page() {
                                     exp: "= (6t + 1)"
                                 },
                             ]}>
-                               {(item, key) => (
+                               {(item) => (
                                 <Text textStyle={"xl"}><LatexRenderer expression={item.exp} inline={true}/></Text>
                                )}
                             </For>

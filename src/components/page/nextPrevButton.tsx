@@ -2,9 +2,9 @@
 
 import { Button, Box, Container, Text } from "@chakra-ui/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
-import { QuizContext } from "@/app/quiz-context";
+// import { useRouter } from "next/navigation";
+// import { useContext } from "react";
+// import { QuizContext } from "@/app/quiz-context";
 import { FaChevronLeft, FaCheck, FaChevronRight } from "react-icons/fa";
 import {
   DialogActionTrigger,
@@ -31,19 +31,19 @@ export default function NextPrevButton({
   nextPath,
   prevPath,
   isFinishButton,
-  nextMateri,
+  nextMateri, //eslint-disable-line
 }: FNprops) {
-  const router = useRouter();
-  const { levelFinish, updateLevelFinish } = useContext(QuizContext);
+  // const router = useRouter();
+  // const { levelFinish, updateLevelFinish } = useContext(QuizContext); //eslint-disable-line
 
-  const updateLocalStorage = (materi :string) => {
-    localStorage.removeItem("progress");
-    const levelObj: { [key: string]: boolean } = {...levelFinish};
-    levelObj[materi] = true;
+  // const updateLocalStorage = (materi :string) => { 
+  //   localStorage.removeItem("progress");
+  //   const levelObj: { [key: string]: boolean } = {...levelFinish};
+  //   levelObj[materi] = true;
 
-    localStorage.setItem("progress", JSON.stringify(levelObj));
+  //   localStorage.setItem("progress", JSON.stringify(levelObj));
     
-  }
+  // }
 
 
   if (isDoubleBtn) {

@@ -1,7 +1,7 @@
 import { Container, Box, Text } from "@chakra-ui/react";
 import Sidenav from "@/components/page/materi/sidenav";
 import { metadata } from "@/app/layout";
-import LatexRenderer from "@/components/LatexRenderer";
+// import LatexRenderer from "@/components/LatexRenderer";
 
 export default function Page() {
   metadata.title = "LearnLimit | Limit Tak Hingga";

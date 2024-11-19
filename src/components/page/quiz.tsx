@@ -1,5 +1,5 @@
 "use client";
-import { Text, For, Box, Container, Button } from "@chakra-ui/react";
+import { Text, For, Box, Button } from "@chakra-ui/react";
 import LatexRenderer from "@/components/LatexRenderer";
 import { SimpleGrid } from "@chakra-ui/react";
 import {
@@ -63,7 +63,7 @@ export default function QuizComponent({ answerProps, correctValue, nextMateri, n
         <RadioCardLabel>Pilih Jawaban</RadioCardLabel>
         <SimpleGrid columns={{xl: 4, lg: 4, md: 4, sm: 2, base: 1}}>
           <For each={answerProps}>
-            {(item, key) => (
+            {(item) => (
               <RadioCardItem
                 icon={<Text textStyle={"xl"}>{item.value}.</Text>}
                 indicator={false}

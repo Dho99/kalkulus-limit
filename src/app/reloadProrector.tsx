@@ -18,31 +18,31 @@ export default function ReloadProtector() {
   const menuElements: Array<Endpoints> = [
     {
       endPoints: `${prefixPageUrls}/konsep-dasar-limit-fungsi-aljabar`,
-      level: level.levelFinish.konsepDasar,
+      level: level.levelFinish.konsepDasar.open,
     },
     {
       endPoints: `${prefixPageUrls}/konsep-dasar-limit-fungsi-aljabar/menentukan-nilai-limit`,
-      level: level.levelFinish.konsepDasar,
+      level: level.levelFinish.konsepDasar.open,
     },
     {
       endPoints: `${prefixPageUrls}/limit-suku-banyak`,
-      level: level.levelFinish.sukuBanyak,
+      level: level.levelFinish.sukuBanyak.open,
     },
     {
       endPoints: `${prefixPageUrls}/limit-suku-banyak/latihan`,
-      level: level.levelFinish.sukuBanyak,
+      level: level.levelFinish.sukuBanyak.open,
     },
     {
       endPoints: `${prefixPageUrls}/limit-fungsi-trigonometri`,
-      level: level.levelFinish.trigonometri,
+      level: level.levelFinish.trigonometri.open,
     },
     {
       endPoints: `${prefixPageUrls}/limit-fungsi-trigonometri/menentukan-nilai-limit-fungsi-trigonometri`,
-      level: level.levelFinish.trigonometri,
+      level: level.levelFinish.trigonometri.open,
     },
     {
       endPoints: `${prefixPageUrls}/limit-fungsi-trigonometri/bentuk-umum`,
-      level: level.levelFinish.trigonometri,
+      level: level.levelFinish.trigonometri.open,
     },
 
   ];

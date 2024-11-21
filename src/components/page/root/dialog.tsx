@@ -21,6 +21,8 @@ type DialogProps = {
   maxW: number | string;
   dialogColor: string;
   showCancelButton: boolean;
+  variant: "solid" | "subtle" | "surface" | "outline" | "ghost" | "plain";
+  color: string;
 };
 
 export default function Dialog({
@@ -32,12 +34,14 @@ export default function Dialog({
   maxW,
   dialogColor,
   showCancelButton,
+  variant = "solid",
+  color
 }: DialogProps) {
   return (
     <HStack wrap="wrap" gap="4">
       <DialogRoot placement={"center"} motionPreset="slide-in-bottom">
         <DialogTrigger asChild>
-          <Button colorPalette={buttonColor} size={size} maxW={maxW}>
+          <Button colorPalette={buttonColor} size={size} maxW={maxW} variant={variant} color={color}>
             <Text fontWeight={"bold"}>{buttonText}</Text>
           </Button>
         </DialogTrigger>

@@ -125,7 +125,7 @@ export default function Page() {
             }
             prevPath={"/"}
             isFinishButton={false}
-            nextMateri={""}
+            nextMateri={"finish"}
           />
         </Box>
           </Box>

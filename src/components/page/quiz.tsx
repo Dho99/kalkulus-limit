@@ -34,65 +34,73 @@ type Answer = {
   answerProps: Array<AnswerArray>;
   correctValue: string;
   nextMateri: string;
-  nextPath: string
+  nextPath: string;
+  currentMateri: string
 };
 
-export default function QuizComponent({ answerProps, correctValue, nextMateri, nextPath }: Answer) {
+export default function QuizComponent({
+  answerProps,
+  correctValue,
+  nextMateri,
+  nextPath,
+  currentMateri
+}: Answer) {
   const [answer, setAnswer] = useState("");
   const [isCorrect, setCorrect] = useState(false);
   const router = useRouter();
   const { levelFinish, updateLevelFinish } = useContext(QuizContext);
 
-  const updateLocalStorage = (materi :string) => {
+  const updateLocalStorage = (materi: string) => {
     localStorage.removeItem("progress");
-    const levelObj: { [key: string]: boolean } = {...levelFinish};
-    levelObj[materi] = true;
+    const levelObj: { [key: string]: { open: boolean; finish: boolean } } = { ...levelFinish };
+    levelObj[materi].open = true;
+    levelObj[currentMateri].finish = true;
 
     localStorage.setItem("progress", JSON.stringify(levelObj));
-    
-  }
+  };
 
   return (
     <>
       <RadioCardRoot
         colorPalette={"yellow"}
         variant={"solid"}
-        my={5}
-        orientation={{lg: "vertical", md: "vertical", sm: "horizontal", base: "horizontal"}}
+        mt={8}
+        orientation={"horizontal"}
+        
       >
         <RadioCardLabel>Pilih Jawaban</RadioCardLabel>
-        <SimpleGrid columns={{xl: 4, lg: 4, md: 4, sm: 2, base: 1}}>
-          <For each={answerProps}>
-            {(item) => (
-              <RadioCardItem
-                icon={<Text textStyle={"xl"}>{item.value}.</Text>}
-                indicator={false}
-                label={
-                  <Text textStyle={"xl"}>
-                    {(() => {
-                      if (item.latex) {
-                        return (
-                          <Text textStyle={"2xl"}>
-                              <LatexRenderer
-                                expression={item.description}
-                                inline={true}
-                              />
-                          </Text>
-                        );
-                      } else {
-                        return <Text textStyle={"xl"}>{item.description}</Text>;
-                      }
-                    })()}
-                  </Text>
-                }
-                key={item.value}
-                value={item.value}
-                onClick={() => {
-                  setAnswer(item.value);
-                }}
-              />
-            )}
-          </For>
+        <SimpleGrid columns={{xl: 4, lg: 4, md: 4, sm: 2, base: 1}} gap={4}>
+        <For each={answerProps}>
+          {(item) => (
+            <RadioCardItem
+              icon={<Text textStyle={"xl"}>{item.value}.</Text>}
+              indicator={false}
+              label={
+                <Text textStyle={"xl"}>
+                  {(() => {
+                    if (item.latex) {
+                      return (
+                        <Text textStyle={"2xl"}>
+                          <LatexRenderer
+                            expression={item.description}
+                            inline={true}
+                          />
+                        </Text>
+                      );
+                    } else {
+                      return <Text textStyle={"xl"}>{item.description}</Text>;
+                    }
+                  })()}
+                </Text>
+              }
+              key={item.value}
+              value={item.value}
+              onClick={() => {
+                setAnswer(item.value);
+              }}
+            />
+          )}
+        </For>
         </SimpleGrid>
       </RadioCardRoot>
 
@@ -100,7 +108,18 @@ export default function QuizComponent({ answerProps, correctValue, nextMateri, n
         <Box ms={"auto"}>
           <DialogRoot placement={"center"} motionPreset="slide-in-bottom">
             <DialogTrigger asChild>
-              <Button colorPalette={"yellow"} size={"md"}>
+              <Button
+                colorPalette={"yellow"}
+                size={"md"}
+                onClick={() => {
+                  if(answer == correctValue){
+                    setCorrect(true);
+                    updateLevelFinish(nextMateri[0], true);
+                    updateLevelFinish(currentMateri[1], true);
+                    updateLocalStorage(nextMateri);
+                  }
+                }}
+              >
                 <Text
                   textStyle={"lg"}
                   fontWeight={"bold"}
@@ -110,9 +129,6 @@ export default function QuizComponent({ answerProps, correctValue, nextMateri, n
                     md: "block",
                     sm: "none",
                     base: "none",
-                  }}
-                  onClick={() => {
-                    setCorrect(answer == correctValue ? true : false);
                   }}
                 >
                   Selesaikan{" "}
@@ -135,17 +151,21 @@ export default function QuizComponent({ answerProps, correctValue, nextMateri, n
                       <DialogTitle>Jawaban Benar</DialogTitle>
                     </DialogHeader>
                     <DialogBody>
-                      <Text>Selamat Jawaban anda Benar ! Anda dipersilakan lanjut ke Materi Selanjutnya</Text>
+                      <Text>
+                        Selamat Jawaban anda Benar ! Anda dipersilakan lanjut ke
+                        Materi Selanjutnya
+                      </Text>
                     </DialogBody>
                     <DialogFooter>
+                    <DialogActionTrigger asChild>
+                      <Button variant="outline" color={"black"} _hover={{background: "black", color: "white"}} colorPalette={"black"}>Tetap disini</Button>
+                    </DialogActionTrigger>
                       <Button
                         onClick={() => {
-                          updateLevelFinish(nextMateri, true);
-                          updateLocalStorage(nextMateri);
                           router.push(nextPath);
                         }}
                       >
-                        Horee
+                        Lanjutkan Materi
                       </Button>
                     </DialogFooter>
                     <DialogCloseTrigger />
@@ -168,11 +188,7 @@ export default function QuizComponent({ answerProps, correctValue, nextMateri, n
                     </DialogBody>
                     <DialogFooter>
                       <DialogActionTrigger asChild>
-                        <Button
-                          color={"black"}
-                        >
-                          Coba Lagi
-                        </Button>
+                        <Button color={"black"}>Coba Lagi</Button>
                       </DialogActionTrigger>
                     </DialogFooter>
                     <DialogCloseTrigger />

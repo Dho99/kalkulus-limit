@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { Box, Text, Flex, For } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
 import QuizProvider, { QuizContext } from "@/app/quiz-context";
+import Image from "next/image";
 import { useContext } from "react";
 import Dialog from "./dialog";
 
@@ -30,7 +31,7 @@ export default function Cards() {
           Kumpulan Materi Fungsi Limit Kalkulus
         </Text>
         <Flex gap={4} justifyContent={"center"}>
-          <Box flexBasis={"90%"} m="auto">
+          <Box flexBasis={"100%"} m="auto">
             <QuizProvider>
               <Flex gap={7} flexDirection={"column"}>
                 <For
@@ -42,6 +43,7 @@ export default function Cards() {
                         "Disini kita akan belajar dasar - dasar mengenai Fungsi limit sebelum ke tingkat selanjutnya",
                       level: level.levelFinish.konsepDasar,
                       endPoint: "/materi/konsep-dasar-limit-fungsi-aljabar",
+                      imagePath: "/Images/assetsMateri/konsepDasar.png",
                     },
                     {
                       cardTitle: "Limit Sepihak",
@@ -50,6 +52,7 @@ export default function Cards() {
                         "Disini kita akan belajar Mengenai Limit sepihak atau Limit Kanan dan Kiri",
                       level: level.levelFinish.sepihak,
                       endPoint: "/materi/limit-sepihak",
+                      imagePath: null,
                     },
                     {
                       cardTitle: "Limit Suku Banyak",
@@ -58,6 +61,7 @@ export default function Cards() {
                         "Sudah menguasai Materi Sebelumnya ? Ayo Lanjutkan ke materi ini ",
                       level: level.levelFinish.sukuBanyak,
                       endPoint: "/materi/limit-suku-banyak",
+                      imagePath: null,
                     },
                     {
                       cardTitle: "Limit Tak Hingga",
@@ -66,6 +70,7 @@ export default function Cards() {
                         "Tinggal selangkah lagi untuk menyelesaikan belajar Limit ini, Ayo lanjut !",
                       level: level.levelFinish.takHingga,
                       endPoint: "/materi/limit-tak-hingga",
+                      imagePath: null,
                     },
                     {
                       cardTitle: "Limit Fungsi Trigonometri",
@@ -74,82 +79,121 @@ export default function Cards() {
                         "Wow sudah sampai sini, Hebat ! Yuk, lanjut ke materi ini",
                       level: level.levelFinish.trigonometri,
                       endPoint: "/materi/limit-fungsi-trigonometri",
+                      imagePath: "/Images/assetsMateri/trigonometri.png",
                     },
                   ]}
                 >
                   {(item, index) => (
                     <Box
                     key={index}
-                      display={"flex"}
-                      maxW="dvw"
-                      minH="35vh"
-                      h="fit-content"
-                      shadow={"sm"}
-                      py={10}
-                      px={{xl: "60px", lg: "60px", md: "40px", sm: "40px", base: "30px"}}
-                      rounded={"xl"}
-                      justifyContent={item.align}
-                      >
-                      {/* {JSON.stringify(item)} */}
-                      <Flex
-                        my={"auto"}
-                        alignItems={item.align}
-                        flexDir={"column"}
-                      >
+                    display={"flex"}
+                    maxW="dvw"
+                    minH="35vh"
+                    h="fit-content"
+                    shadow={"sm"}
+                    py={10}
+                    px={{
+                      xl: "60px",
+                      lg: "60px",
+                      md: "40px",
+                      sm: "40px",
+                      base: "30px",
+                    }}
+                    rounded={"xl"}
+                    justifyContent={item.align}
+                  >
+                    <Flex my={"auto"} textAlign={item.align} w="full" alignItems={"center"}>
+                      <Box flex="1">
                         <Text textStyle={"4xl"} fontWeight={"bold"}>
                           {item.cardTitle}
                         </Text>
                         <Text>{item.cardDescription}</Text>
                         {(() => {
                           if (item.level) {
-                            return (
-                              <Button
-                                mt={7}
-                                maxW={"170px"}
-                                colorPalette={"yellow"}
-                                size={{
-                                  lg: "xl",
-                                  md: "md",
-                                  sm: "sm",
-                                  base: "sm",
-                                }}
-                                onClick={() => {
-                                  router.push(item.endPoint);
-                                }}
-                              >
-                                <Text fontWeight={"bold"}>Mulai Belajar</Text>
-                              </Button>
-                            );
-                          } else {
-                            return (
-                              <Box mt={7}>
-                                <Dialog
-                                  body={
-                                    "Selesaikan Materi sebelumnya terlebih dahulu, Yuk"
-                                  }
-                                  title={"Peringatan"}
-                                  buttonText={"Mulai Belajar"}
-                                  buttonColor="yellow"
-                                  dialogColor={"yellow"}
+                            if (!item.level.open) {
+                              return (
+                                <Box
+                                  mt={7}
+                                  display={"flex"}
+                                  justifyContent={item.align == "end" ? "end" : ""}
+                                >
+                                  <Dialog
+                                    body={
+                                      "Selesaikan Materi sebelumnya terlebih dahulu, Yuk"
+                                    }
+                                    title={"Peringatan"}
+                                    buttonText={"Terkunci"}
+                                    buttonColor="yellow"
+                                    color=""
+                                    dialogColor={"yellow"}
+                                    variant={"solid"}
+                                    size={{
+                                      lg: "xl",
+                                      md: "md",
+                                      sm: "sm",
+                                      base: "sm",
+                                    }}
+                                    maxW={"170px"}
+                                    showCancelButton={false}
+                                  ></Dialog>
+                                </Box>
+                              );
+                            } else {
+                              return (
+                                <Button
+                                  mt={7}
+                                  maxW={"170px"}
+                                  colorPalette={"yellow"}
                                   size={{
                                     lg: "xl",
                                     md: "md",
                                     sm: "sm",
                                     base: "sm",
                                   }}
-                                  maxW={"170px"}
-                                  showCancelButton={false}
-                                ></Dialog>
-                              </Box>
-                            );
+                                  justifyContent={
+                                    item.align == "end" ? "end" : ""
+                                  }
+                                  onClick={() => {
+                                    router.push(item.endPoint);
+                                  }}
+                                >
+                                  <Text fontWeight={"bold"}>
+                                    {item.level.finish && item.level.open
+                                      ? "Selesai"
+                                      : item.level.open
+                                      ? "Mulai Belajar"
+                                      : "Terkunci"}
+                                  </Text>
+                                </Button>
+                              );
+                            }
                           }
                         })()}
-                      </Flex>
-                    </Box>
+                      </Box>
+                      {item.imagePath ? (
+                        <Flex
+                          flex="1"
+                          justifyContent="flex-end"
+                          alignItems="center"
+                          maxH={"250px"}
+                          maxW={"400px"}
+                          overflow={"hidden"}
+                          rounded={"xl"}
+                        >
+                          <Image
+                            src={item.imagePath}
+                            width={"700"}
+                            height={"700"}
+                            alt={item.cardTitle}
+                          />
+                        </Flex>
+                      ) : null}
+                    </Flex>
+                  </Box>
+                  
                   )}
                 </For>
               </Flex>
-         
             </QuizProvider>
           </Box>
         </Flex>

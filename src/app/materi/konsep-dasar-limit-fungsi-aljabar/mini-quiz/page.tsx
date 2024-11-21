@@ -3,6 +3,8 @@ import Sidenav from "@/components/page/materi/sidenav";
 import { metadata } from "@/app/layout";
 import QuizComponent from "@/components/page/quiz";
 import LatexRenderer from "@/components/LatexRenderer";
+
+
 export default function Page() {
   metadata.title = "LearnLimit | Mini Quiz Limit";
 
@@ -74,7 +76,7 @@ export default function Page() {
             <Text>
               Lanju Perubahan dari titik asal saat t = 7 detik adalah ...{" "}
             </Text>
-            <QuizComponent answerProps={answerArray} correctValue={correctValue} nextMateri={"sepihak"} nextPath={"/materi/limit-sepihak"}/>
+            <QuizComponent answerProps={answerArray} correctValue={correctValue} currentMateri={"konsepDasar"} nextMateri={"sepihak"} nextPath={"/materi/limit-sepihak"}/>
           </Box>
         </Container>
       </Box>

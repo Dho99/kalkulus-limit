@@ -32,7 +32,7 @@ export default function Page() {
           }}
         >
           <Sidenav content={"Konsep Dasar Limit"} />
-          <Container flexBasis={"100%"}>
+          <Box flexBasis={"100%"}>
             <Text
               textStyle={"5xl"}
               color={"black"}
@@ -128,15 +128,12 @@ export default function Page() {
                   </Container>
                 </Box>
 
-
-
-
                 <Box>
                   <NextPrevButton isDoubleBtn={true} nextPath={'/materi/konsep-dasar-limit-fungsi-aljabar/menentukan-nilai-limit'} prevPath={'/'} isFinishButton={false} nextMateri={''} />
                 </Box>
               </Box>
             </Container>
-          </Container>
+          </Box>
         </Box>
       </Container>
     </>

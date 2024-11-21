@@ -71,6 +71,7 @@ export default function Page() {
               expression={'\\lim_{x \\to 2}\\frac{x^2 - 5x + 6}{x^2+2x-8} = '}
             />
             <QuizComponent
+            currentMateri="sukuBanyak"
               answerProps={answerArray}
               correctValue={correctValue}
               nextMateri={"takHingga"}

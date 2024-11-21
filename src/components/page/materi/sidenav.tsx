@@ -59,11 +59,12 @@ export default function Sidenav({ content }: SidenavProps) {
       ],
       limitFungsiTrigonometri: [
         {
-          menuSelection: ["Pengertian", "Menentukan Nilai", "Bentuk Istimewa"],
+          menuSelection: ["Pengertian", "Menentukan Nilai", "Bentuk Istimewa", "Mini Quiz"],
           menuLink: [
             `${prefixPageUrls}/limit-fungsi-trigonometri`,
             `${prefixPageUrls}/limit-fungsi-trigonometri/menentukan-nilai-limit-fungsi-trigonometri`,
             `${prefixPageUrls}/limit-fungsi-trigonometri/bentuk-umum`,
+            `${prefixPageUrls}/limit-fungsi-trigonometri/mini-quiz`,
           ],
           sections: ["Pengertian"],
         },
@@ -81,10 +82,10 @@ export default function Sidenav({ content }: SidenavProps) {
       ],
       limitTakHingga : [
         {
-          menuSelection: ["Pengertian", "Contoh"],
+          menuSelection: ["Pengertian", "Mini Quiz"],
           menuLink: [
             `${prefixPageUrls}/limit-tak-hingga`,
-            `${prefixPageUrls}/limit-tak-hingga/contoh`,
+            `${prefixPageUrls}/limit-tak-hingga/mini-quiz`,
           ],
           sections: ["Pengertian"],
         },

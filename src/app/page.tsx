@@ -2,6 +2,7 @@ import { Container } from "@chakra-ui/react";
 import Hero from "@/components/page/root/hero";
 import Cards from "@/components/page/root/cards";
 import { metadata } from "./layout";
+import Calculator from "@/components/page/root/calculator";
 // import Image from "next/image";
 
 export default function Page() {
@@ -37,9 +38,11 @@ export default function Page() {
         pos={"relative"}
         display={"flex"}
         flexWrap={"wrap"}
+        mb={"10%"}
       >
           <Hero />
           <Cards />
+          <Calculator />
       </Container>
     </>
   );

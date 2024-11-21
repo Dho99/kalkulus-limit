@@ -82,6 +82,7 @@ export default function Page() {
               answerProps={answerArray}
               correctValue={correctValue}
               nextMateri={"sukuBanyak"}
+              currentMateri="sepihak"
               nextPath={"/materi/limit-suku-banyak"}
             />
           </Box>

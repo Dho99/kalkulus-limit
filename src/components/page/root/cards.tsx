@@ -88,10 +88,10 @@ export default function Cards() {
                     key={index}
                     display={"flex"}
                     maxW="dvw"
-                    minH="35vh"
+                    // minH="35vh"
                     h="fit-content"
                     shadow={"sm"}
-                    py={10}
+                    py={5}
                     px={{
                       xl: "60px",
                       lg: "60px",
@@ -99,11 +99,12 @@ export default function Cards() {
                       sm: "40px",
                       base: "30px",
                     }}
+                    
                     rounded={"xl"}
                     justifyContent={item.align}
                   >
-                    <Flex my={"auto"} textAlign={item.align} w="full" alignItems={"center"}>
-                      <Box flex="1">
+                    <Flex my={"auto"} textAlign={item.align} w="full" alignItems={"center"} flexDir={{xl: "row", lg: "row", md: "column", sm: "column", base: "column"}} >
+                      <Box flex="1" order={{xl: 1, lg: 1, md: 2, sm: 2, base: 2}}>
                         <Text textStyle={"4xl"} fontWeight={"bold"}>
                           {item.cardTitle}
                         </Text>
@@ -176,9 +177,10 @@ export default function Cards() {
                           justifyContent="flex-end"
                           alignItems="center"
                           maxH={"250px"}
-                          maxW={"400px"}
+                          // maxW={"500px"}
                           overflow={"hidden"}
                           rounded={"xl"}
+                          order={{xl: 2, lg: 2, md: 1, sm: 1, base: 1}}
                         >
                           <Image
                             src={item.imagePath}

@@ -33,7 +33,7 @@ export default function Calculator() {
           </Box>
         </Text>
       </Flex>
-      <Container p={5} shadow={"md"} rounded={"md"}>
+      <Container p={5}>
         <Chart />
       </Container>
     </Box>

@@ -34,8 +34,8 @@ export default function Navbar() {
         position={"fixed"}
         zIndex={"3"}
         left={0}
-        shadow={"xs"}
-        backgroundColor={"white"}
+        shadow={"sm"}
+        backgroundColor={"blue.700"}
       >
         <Box flexDirection="row" w={"100vw"} px={{ lg: 10, base: 0 }}>
           <Container display={"flex"} py={4} px={5} alignItems={"center"}>
@@ -59,7 +59,7 @@ export default function Navbar() {
                     <Link
                       href={menu.href}
                     >
-                      <Text fontWeight={"semibold"} style={{color: "black"}}>{menu.navTitle}</Text>
+                      <Text fontWeight={"semibold"} style={{color: "white"}}>{menu.navTitle}</Text>
                     </Link>
                   </Box>
                 );

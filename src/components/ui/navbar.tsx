@@ -39,7 +39,6 @@ export default function Navbar() {
        zIndex="3"
        left={0}
        right={0}
-       mx={2}
        mt={2}
        backgroundColor="rgba(30, 64, 175, 0.85)" // blue.800 with opacity
        backdropFilter="auto"
@@ -48,7 +47,8 @@ export default function Navbar() {
        borderColor="whiteAlpha.500"
        borderRadius="2xl"
        boxShadow="sm"
-       width="calc(100vw - 40px)"
+       width="95vw"
+       mx="auto"
       >
         <Box flexDirection="row"  px={{ lg: 10, base: 0 }}>
           <Container display={"flex"} py={2} px={5} alignItems={"center"}>

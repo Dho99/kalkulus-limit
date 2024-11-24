@@ -6,7 +6,7 @@ import { FaArrowCircleDown } from "react-icons/fa";
 export default function Hero() {
   return (
     <>
-      <Container mb={{xl: "10%", lg: "10%", md: "15%", sm: "90%", base: "150%"}}>
+      <Container mb={{xl: "10%", lg: "10%", md: "15%", sm: "90%", base: "150%"}} mt={10}>
         <Box display="flex" gap={8} flexDirection={{xl: "row", lg: "row", md: "row", sm: "column", base: "column"}} alignItems={"center"} height={"40vh"}>
           <Box width={{xl: "50vw", lg: "50vw", md: "50vw", sm: "75vw", base: "75vw"}} order={{xl: "1", lg: "1", md: "1", sm: "2", base: "2"}}>
             <Text

@@ -30,12 +30,13 @@ export default function Page() {
             sm: "flex",
             base: "block",
           }}
+          color={"white"}
         >
           <Sidenav content={"Konsep Dasar Limit"} />
           <Box flexBasis={"100%"}>
             <Text
               textStyle={"5xl"}
-              color={"black"}
+              color={"white"}
               justifyContent={"center"}
               display={"flex"}
               fontWeight={"bold"}
@@ -43,6 +44,7 @@ export default function Page() {
               textAlign={"center"}
               w="full"
               ms={3}
+              mt={5}
             >
               Konsep Dasar Limit Fungsi Aljabar
             </Text>

@@ -55,7 +55,7 @@ export default function TakHingga({
 
   return (
     <Box minH={"10vh"} display={"flex"} flexDirection={"column"} gap={4}>
-      <Field label="Masukkan Ekspresi Fungsi Limit Tak Hinngga">
+      <Field label="Masukkan Ekspresi Fungsi Limit Tak Hinngga" helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)">
         <Input
           placeholder="Contoh : x^2-1"
           onInput={(e) => {
@@ -98,7 +98,7 @@ export default function TakHingga({
         </RadioCardRoot>
       </Field>
 
-      <Button w={"full"} colorPalette={"yellow"} onClick={calculatePolinomials}>
+      <Button w={"full"} colorPalette={"blue"} onClick={calculatePolinomials}>
         Hitung Limit{" "}
       </Button>
     </Box>

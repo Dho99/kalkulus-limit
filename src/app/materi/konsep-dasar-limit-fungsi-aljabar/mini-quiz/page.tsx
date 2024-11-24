@@ -50,12 +50,13 @@ export default function Page() {
           sm: "flex",
           base: "block",
         }}
+        color="white"
       >
         <Sidenav content={"Konsep Dasar Limit"} />
         <Container flexBasis={"100%"}>
           <Text
             textStyle={"5xl"}
-            color={"black"}
+            color={"white"}
             justifyContent={"center"}
             display={"flex"}
             fontWeight={"bold"}
@@ -63,18 +64,19 @@ export default function Page() {
             textAlign={"center"}
             w="full"
             ms={3}
+            mt={5}
           >
             Mini Quiz Konsep Dasar Nilai Limit
           </Text>
 
-          <Box p={5} shadow={"sm"} borderRadius={"lg"}>
+          <Box p={5} shadow={"lg"} border={"1px solid white"} borderRadius={"lg"}>
             <Text>
               Suatu partikel bergerak meninggalkan titik asal. Jarak dari titik
               asal setelah t detik dinyatakan dengan
             </Text>
             <LatexRenderer expression={"f(t) = \\frac{1}{2}t^2cm"} />
             <Text>
-              Lanju Perubahan dari titik asal saat t = 7 detik adalah ...{" "}
+              Laju Perubahan dari titik asal saat t = 7 detik adalah ...{" "}
             </Text>
             <QuizComponent answerProps={answerArray} correctValue={correctValue} currentMateri={"konsepDasar"} nextMateri={"sepihak"} nextPath={"/materi/limit-sepihak"}/>
           </Box>

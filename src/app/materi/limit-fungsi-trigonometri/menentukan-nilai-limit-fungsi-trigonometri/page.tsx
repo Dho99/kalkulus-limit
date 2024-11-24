@@ -6,12 +6,12 @@ import NextPrevButton from "@/components/page/nextPrevButton";
 export default function Page() {
   return (
     <Container mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%"}} zIndex={2} fluid>
-    <Box direction={"row"} gap={10} maxW={"dvw"} display={{xl: "flex", lg: "flex", md: "flex", sm: "flex", base: "block"}}>
+    <Box direction={"row"} gap={10} maxW={"dvw"} display={{xl: "flex", lg: "flex", md: "flex", sm: "flex", base: "block"}} color={"white"}>
       <Sidenav content={"Limit Fungsi Trigonometri"}/>
       <Box flexBasis={"100%"}>
         <Text
           textStyle={"5xl"}
-          color={"black"}
+          color={"white"}
           justifyContent={"center"}
           display={"flex"}
           fontWeight={"bold"}
@@ -19,6 +19,7 @@ export default function Page() {
           textAlign={"center"}
           w="full"
           ms={3}
+          mt={3}
         >
          Menentukan Nilai Limit Fungsi Trigonometri
         </Text>

@@ -22,12 +22,13 @@ export default function Page() {
           sm: "flex",
           base: "block",
         }}
+        color={"white"}
       >
         <Sidenav content={"Limit Tak Hingga"} />
         <Container flexBasis={"100%"}>
           <Text
             textStyle={"5xl"}
-            color={"black"}
+            color={"white"}
             justifyContent={"center"}
             display={"flex"}
             fontWeight={"bold"}
@@ -35,6 +36,7 @@ export default function Page() {
             textAlign={"center"}
             w="full"
             ms={3}
+            mt={5}
           >
             Limit Tak Hingga
           </Text>

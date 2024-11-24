@@ -58,12 +58,13 @@ export default function TakHingga({
 
   return (
     <Box minH={"10vh"} display={"flex"} flexDirection={"column"} gap={4}>
-      <Field label="Masukkan Ekspresi Fungsi Limit Tak Hinngga">
+      <Field label="Masukkan Ekspresi Fungsi Limit Polinom" helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)">
         <Input
-          placeholder="Contoh : 4x^3 + 5x^2 - 3*x^2"
+          placeholder="Contoh : 4*x^3 + 5*x^2 - 3*x^2"
           onInput={(e) => {
             handleInput("key1", e.currentTarget.value);
           }}
+          
         />
       </Field>
       <Field label="Bentuk Fungsi Limit : ">
@@ -93,7 +94,7 @@ export default function TakHingga({
       </Field>
      
 
-      <Button w={"full"} colorPalette={"yellow"} onClick={calculatePolinomials}>
+      <Button w={"full"} colorPalette={"blue"} onClick={calculatePolinomials}>
         Hitung Limit{" "}
       </Button>
     </Box>

@@ -32,14 +32,14 @@ export default function RootLayout({
       <body className={`${inter} antialiased`}>
         <ReloadProtector />
         <Provider>
-          <Box bgColor="white" maxW={"dvw"} overflowX={"hidden"}>
+          <Box bgColor={"blue.900"} maxW={"dvw"} overflowX={"hidden"}>
             <Navbar />
               <Suspense fallback={<Loading />}>
                 <QuizProvider>
                   <Box
                     minH="100vh"
                     maxW="100vw"
-                    bgColor="white"
+                    bgColor="blue.900"
                     color="black"
                     py={{xl: 4, lg: 4, md: 4, sm: 10, base: 10}} 
                     display={"flex"}

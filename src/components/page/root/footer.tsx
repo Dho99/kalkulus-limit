@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <Box backgroundColor={"black"} position={"relative"} w={"dvw"} zIndex={12}>
+    <Box backgroundColor={"blue.800"} position={"relative"} w={"dvw"} zIndex={12} >
       <Container py={"5"}display={"flex"} justifyContent={"center"} textAlign={"center"}>
         <Text display={"inlne"}>
           <Box display="flex">

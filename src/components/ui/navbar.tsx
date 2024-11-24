@@ -1,48 +1,71 @@
-"use client"
+"use client";
 
 import { Box, Container, Link as ChakraUILinker, Text } from "@chakra-ui/react";
-import Link from 'next/link' 
-import {useRouter} from 'next/navigation';
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import MenuDrawer from "../drawer";
+import LatexRenderer from "../LatexRenderer";
 
 export default function Navbar() {
   const router = useRouter();
   type NavItems = {
     href: string;
     navTitle: string;
+    loading: boolean;
   };
-
 
   const navMenu: Array<NavItems> = [
     {
-      navTitle: "Sumber",
-      href: "/materi/konsep-dasar-limit-fungsi-aljabar"
+      navTitle: "Kalkulator",
+      href: "/#kalkulator",
+      loading: false,
+    },
+    {
+      navTitle: "Materi",
+      href: "/#materi",
+      loading: false,
     },
     {
       navTitle: "Tentang",
-      href: "/tentang"
-    },
-    {  
-      navTitle: "Materi",
-      href: "/konz1" 
+      href: "/tentang",
+      loading: true,
     },
   ];
 
   return (
     <Container pos="relative">
       <Box
-        position={"fixed"}
-        zIndex={"3"}
-        left={0}
-        shadow={"sm"}
-        backgroundColor={"blue.700"}
+       position="fixed"
+       zIndex="3"
+       left={0}
+       right={0}
+       mx={2}
+       mt={2}
+       backgroundColor="rgba(30, 64, 175, 0.85)" // blue.800 with opacity
+       backdropFilter="auto"
+       backdropBlur="8px"
+       borderWidth="1px"
+       borderColor="whiteAlpha.500"
+       borderRadius="2xl"
+       boxShadow="sm"
+       width="calc(100vw - 40px)"
       >
-        <Box flexDirection="row" w={"100vw"} px={{ lg: 10, base: 0 }}>
-          <Container display={"flex"} py={4} px={5} alignItems={"center"}>
+        <Box flexDirection="row"  px={{ lg: 10, base: 0 }}>
+          <Container display={"flex"} py={2} px={5} alignItems={"center"}>
             <Box flexBasis={"50%"}>
-              <ChakraUILinker variant={"plain"} colorPalette={"cyan"} onClick={() => {router.push('/')}}>
+              <ChakraUILinker
+                variant={"plain"}
+                bg={"blue.200"}
+                onClick={() => {
+                  router.push("/");
+                }}
+                p={4}
+                rounded={"full"}
+                color={"blue"}
+                shadow={"sm"}
+              >
                 <Text textStyle="3xl" fontWeight="bold">
-                  LearnLimit
+                  <LatexRenderer expression={"\\lim_{x \\to n}f(x)"} inline={true} />
                 </Text>
               </ChakraUILinker>
             </Box>
@@ -51,21 +74,52 @@ export default function Navbar() {
               flexDirection="row"
               display={{ lg: "flex", md: "flex", base: "none" }}
               justifyContent={"right"}
-              gap={7}
+              gapX={1}
             >
               {navMenu.map((menu, index) => {
                 return (
-                  <Box key={index}>
-                    <Link
-                      href={menu.href}
-                    >
-                      <Text fontWeight={"semibold"} style={{color: "white"}}>{menu.navTitle}</Text>
-                    </Link>
+                  <Box
+                    key={index}
+                    _hover={{ bgColor: "blue.600" }}
+                    py={3}
+                    px={4}
+                    m={0}
+                    rounded={"lg"}
+                    transition={"0.2s all"}
+                  >
+                    {(() => {
+                      if (menu.loading) {
+                        return (
+                          <Link href={menu.href}>
+                            <Text
+                              fontWeight={"bold"}
+                              style={{ color: "white" }}
+                              textStyle={"lg"}
+                            >
+                              {menu.navTitle}
+                            </Text>
+                          </Link>
+                        );
+                      } else {
+                        return (
+                          <a href={menu.href}>
+                            {" "}
+                            <Text
+                              fontWeight={"bold"}
+                              style={{ color: "white" }}
+                              textStyle={"lg"}
+                            >
+                              {menu.navTitle}
+                            </Text>
+                          </a>
+                        );
+                      }
+                    })()}
                   </Box>
                 );
               })}
             </Box>
-            <MenuDrawer listMenu={navMenu}/>
+            <MenuDrawer listMenu={navMenu} />
           </Container>
         </Box>
       </Box>

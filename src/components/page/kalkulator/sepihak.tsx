@@ -7,14 +7,27 @@ import { Field } from "@/components/ui/field";
 import nerdamer from "nerdamer";
 require('nerdamer/all'); //eslint-disable-line
 
+// type ChartProps = {
+//     type: string,
+//     data: {
+//         x: string,
+//         value: string,
+//         leftValue: string,
+//         rightValue: string,
+//         expression: string,
+//     }
+// }
+
 type ComponentProps = {
   setValue: Dispatch<SetStateAction<string>>;
   setValue1: Dispatch<SetStateAction<string>>;
   setExpression: Dispatch<SetStateAction<string>>;
   setExpression1: Dispatch<SetStateAction<string>>;
   setErrorMessage: Dispatch<SetStateAction<string>>;
+  // setChartData: Dispatch<SetStateAction<ChartProps>>;
 };
 
+// export default function Sepihak({ setValue, setExpression, setExpression1, setValue1, setErrorMessage, setChartData }: ComponentProps) {
 export default function Sepihak({ setValue, setExpression, setExpression1, setValue1, setErrorMessage }: ComponentProps) {
   const [input, setInput] = useState<Record<string, string>>({
     key1: '',
@@ -46,18 +59,27 @@ export default function Sepihak({ setValue, setExpression, setExpression1, setVa
       setValue(calculateResult)
       setValue1(calculateResult1)
 
+      // setChartData({
+      //   type: "Sepihak",
+      //   data: {
+      //     x: input["key4"],
+      //     value:  calculateResult,
+      //     leftValue: calculateResult,
+      //     rightValue: calculateResult1,
+      //     expression: input["key1"]
+      //   }
+      // })
 
 
     }catch(e: unknown){
       setErrorMessage(JSON.stringify(e));
     }
-
     
   };
 
   return (
     <Box minH={"10vh"} display={"flex"} flexDirection={"column"} gap={4}>
-      <Field label="Masukkan Ekspresi Fungsi Limit Kanan">
+      <Field label="Masukkan Ekspresi Fungsi Limit Kanan" helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)">
         <Input
           placeholder="Masukkan Ekspresi Fungsi Limit Kanan"
           onInput={(e) => {
@@ -101,7 +123,7 @@ export default function Sepihak({ setValue, setExpression, setExpression1, setVa
    
       <Button
         w={"full"}
-        colorPalette={"yellow"}
+        colorPalette={"blue"}
         onClick={calculateOneSidedLimit}
       >
         Hitung Limit{" "}

@@ -46,12 +46,14 @@ export default function Page() {
           sm: "flex",
           base: "block",
         }}
+        color={"white"}
+        
       >
         <Sidenav content={"Limit Tak Hingga"} />
         <Container flexBasis={"100%"}>
           <Text
             textStyle={"5xl"}
-            color={"black"}
+            color={"white"}
             justifyContent={"center"}
             display={"flex"}
             fontWeight={"bold"}
@@ -59,11 +61,12 @@ export default function Page() {
             textAlign={"center"}
             w="full"
             ms={3}
+            mt={5}
           >
             Mini Quiz Limit Tak Hingga
           </Text>
 
-          <Box p={5} shadow={"sm"} borderRadius={"lg"}>
+          <Box p={5} shadow={"lg"} border={"1px solid white"} borderRadius={"lg"}>
             <LatexRenderer expression={"\\lim_{x \\to 0}\\frac{1-cos^2x}{x^2\\tan(x+\\frac{\\pi}{4})}"} />
             <QuizComponent answerProps={answerArray} correctValue={correctValue} nextMateri={"trigonometri"} nextPath={"/materi/limit-fungsi-trigonometri"} currentMateri="takHingga"/>
           </Box>

@@ -51,7 +51,7 @@ export default function NextPrevButton({
       <Container my={10} display={"flex"}>
         <Box me={"auto"}>
           <Link href={`${prevPath}`}>
-            <Button colorPalette={"yellow"} size={"md"}>
+            <Button colorPalette={"blue"} size={"md"}>
               <Box me={2}>
                 <FaChevronLeft />
               </Box>
@@ -73,7 +73,7 @@ export default function NextPrevButton({
         </Box>
         <Box ms={"auto"}>
           <Link href={`${nextPath}`}>
-            <Button colorPalette={"yellow"} size={"md"}>
+            <Button colorPalette={"blue"} size={"md"}>
               <Text
                 textStyle={"lg"}
                 fontWeight={"bold"}
@@ -101,7 +101,7 @@ export default function NextPrevButton({
           <Box ms={"auto"}>
             <DialogRoot placement={"center"} motionPreset="slide-in-bottom">
               <DialogTrigger asChild>
-                <Button colorPalette={"yellow"} size={"md"}>
+                <Button colorPalette={"blue"} size={"md"}>
                   <Text
                     textStyle={"lg"}
                     fontWeight={"bold"}

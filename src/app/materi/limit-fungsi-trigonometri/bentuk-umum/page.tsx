@@ -7,24 +7,48 @@ import NextPrevButton from "@/components/page/nextPrevButton";
 export default function Page() {
   metadata.title = "LearnLimit | Sudut Istimewa";
   return (
-    <Container mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%"}} zIndex={2} fluid>
-    <Box direction={"row"} gap={10} maxW={"dvw"} display={{xl: "flex", lg: "flex", md: "flex", sm: "flex", base: "block"}}>
-      <Sidenav content={"Limit Fungsi Trigonometri"}/>
-      <Box flexBasis={"100%"}>
-        <Text
-          textStyle={"5xl"}
-          color={"black"}
-          justifyContent={"center"}
-          display={"flex"}
-          fontWeight={"bold"}
-          mb={"3%"}
-          textAlign={"center"}
-          w="full"
-          ms={3}
-        >
-         Bentuk Istimewa Fungsi Trigonometri
-        </Text>
-          <Box display={"flex"} alignItems={"center"} gap={5} flexDirection={"column"} mt={10}>
+    <Container
+      mt={{ xl: "5%", lg: "7%", md: "8%", sm: "8%", base: "14%" }}
+      zIndex={2}
+      fluid
+    >
+      <Box
+        direction={"row"}
+        gap={10}
+        maxW={"dvw"}
+        display={{
+          xl: "flex",
+          lg: "flex",
+          md: "flex",
+          sm: "flex",
+          base: "block",
+        }}
+        color={"white"}
+        // overflow={"hidden"}
+      >
+        <Sidenav content={"Limit Fungsi Trigonometri"} />
+        <Box flexBasis={"100%"}>
+          <Text
+            textStyle={"5xl"}
+            color={"white"}
+            justifyContent={"center"}
+            display={"flex"}
+            fontWeight={"bold"}
+            mb={"3%"}
+            textAlign={"center"}
+            w="full"
+            ms={3}
+            mt={5}
+          >
+            Bentuk Istimewa Fungsi Trigonometri
+          </Text>
+          <Box
+            display={"flex"}
+            alignItems={"center"}
+            gap={5}
+            flexDirection={"column"}
+            mt={10}
+          >
             <Image
               height={900}
               width={900}
@@ -48,20 +72,19 @@ export default function Page() {
               loading="lazy"
             ></Image>
           </Box>
-        </Box>
-
-      </Box>
         <Box>
           <NextPrevButton
-            isDoubleBtn={false}
-            nextPath={
-              "/"
+            isDoubleBtn={true}
+            nextPath={"/materi/limit-fungsi-trigonometri/mini-quiz"}
+            prevPath={
+              "/materi/limit-fungsi-trigonometri/menentukan-nilai-limit-fungsi-trigonometri"
             }
-            prevPath={"/materi/limit-fungsi-trigonometri/menentukan-nilai-limit-fungsi-trigonometri"}
             isFinishButton={true}
             nextMateri={"sukuBanyak"}
           />
         </Box>
+        </Box>
+      </Box>
     </Container>
   );
 }

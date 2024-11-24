@@ -49,12 +49,13 @@ export default function Page() {
           sm: "flex",
           base: "block",
         }}
+        color={"white"}
       >
         <Sidenav content={"Limit Suku Banyak"} />
         <Container flexBasis={"100%"}>
           <Text
             textStyle={"5xl"}
-            color={"black"}
+            color={"white"}
             justifyContent={"center"}
             display={"flex"}
             fontWeight={"bold"}
@@ -62,11 +63,12 @@ export default function Page() {
             textAlign={"center"}
             w="full"
             ms={3}
+            mt={5}
           >
-            Mini Quiz Konsep Limit Sepihak
+            Mini Quiz Konsep Limit Suku Banyak
           </Text>
 
-          <Box p={5} shadow={"sm"} borderRadius={"lg"}>
+          <Box p={5} shadow={"lg"} border={"1px solid white"} borderRadius={"lg"}>
             <LatexRenderer
               expression={'\\lim_{x \\to 2}\\frac{x^2 - 5x + 6}{x^2+2x-8} = '}
             />

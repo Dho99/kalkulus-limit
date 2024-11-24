@@ -34,7 +34,7 @@ export default function MenuDrawer({ listMenu }: NavArrayItems) {
       <DrawerTrigger asChild>
         <Button
           variant="solid"
-          colorPalette={"yellow"}
+          colorPalette={"blue"}
           size="sm"
           display={{
             xl: "none",
@@ -48,9 +48,9 @@ export default function MenuDrawer({ listMenu }: NavArrayItems) {
             <FiMenu/>
         </Button>
       </DrawerTrigger>
-      <DrawerContent bg="white">
+      <DrawerContent bg="blue.800">
         <DrawerHeader>
-          <DrawerTitle color={"black"}>Drawer Menu</DrawerTitle>
+          <DrawerTitle color={"white"}>Drawer Menu</DrawerTitle>
         </DrawerHeader>
         <DrawerBody>
           <Flex gapY={3} flexDirection={"column"} mx="-3">
@@ -58,7 +58,7 @@ export default function MenuDrawer({ listMenu }: NavArrayItems) {
               <Link href={item.href} key={index}>
                 <Button
                   w="full"
-                  colorPalette={"yellow"}
+                  colorPalette={"blue"}
                   variant={"solid"}
                   shadow="xs"
                   onClick={() => setOpen(false)}

@@ -135,7 +135,7 @@ export default function Sidenav({ content }: SidenavProps) {
           type="button"
           position={"fixed"}
           shadow={"sm"}
-          colorPalette={"yellow"}
+          colorPalette={"blue"}
           onClick={() => {
             setSidebarPos(!sidebarPos);
           }}
@@ -147,6 +147,7 @@ export default function Sidenav({ content }: SidenavProps) {
         marginLeft={"-30px"}
         flexBasis={"22%"}
         minW={"200px"}
+        rounded={"xl"}
         // borderRight={"2px solid"}
         
         minH={"dvh"}
@@ -160,7 +161,7 @@ export default function Sidenav({ content }: SidenavProps) {
           base: sidebarPos ? "block" : "none",
         }}
         position={{xl: "relative", lg: "relative" , md: sidebarPos ? "fixed" : "relative", sm: sidebarPos ? "fixed" : "relative",  base: sidebarPos ? "fixed" : "relative"}}
-        backgroundColor={"gray.100"}
+        backgroundColor={"blue.800"}
         zIndex={10}
       >
         <Flex
@@ -183,7 +184,7 @@ export default function Sidenav({ content }: SidenavProps) {
             {menus[0].menuSelection.map((item, key) => {
               if(currLoc == menus[0].menuLink[key]){
                 return (
-                  <Button as="li" key={key} justifyContent={"start"} colorPalette={"yellow"} variant={"solid"}>
+                  <Button as="li" key={key} justifyContent={"start"} colorPalette={"blue"} variant={"solid"}>
                     <Link
                       href={menus[0].menuLink[key]}
                       className={sidenav.active}

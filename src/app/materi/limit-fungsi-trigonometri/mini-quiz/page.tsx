@@ -46,12 +46,13 @@ export default function Page() {
           sm: "flex",
           base: "block",
         }}
+        color={"white"}
       >
         <Sidenav content={"Limit Fungsi Trigonometri"} />
         <Container flexBasis={"100%"}>
           <Text
             textStyle={"5xl"}
-            color={"black"}
+            color={"white"}
             justifyContent={"center"}
             display={"flex"}
             fontWeight={"bold"}
@@ -59,11 +60,12 @@ export default function Page() {
             textAlign={"center"}
             w="full"
             ms={3}
+            mt={5}
           >
             Mini Quiz Limit Fungsi Trigonometri
           </Text>
 
-          <Box p={5} shadow={"sm"} borderRadius={"lg"}>
+          <Box p={5} shadow={"lg"} border={"1px solid white"} borderRadius={"lg"}>
             <LatexRenderer expression={"\\lim_{x \\to \\infty} \\frac{2x \\cot \\frac{2}{x} - 3 \\cot \\frac{2}{x}}{(1 - \\cos \\frac{2}{x})x^2 \\sin \\frac{1}{x}} ="} />
             <QuizComponent answerProps={answerArray} correctValue={correctValue} nextMateri={"konsepDasar"} currentMateri="trigonometri" nextPath={"/"}/>
           </Box>

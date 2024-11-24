@@ -53,7 +53,7 @@ export default function Trigonometri({
 
   return (
     <Box minH={"10vh"} display={"flex"} flexDirection={"column"} gap={4}>
-      <Field label="Masukkan Ekspresi Fungsi Limit Tak Trigonometri">
+      <Field label="Masukkan Ekspresi Fungsi Limit Tak Trigonometri" helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)">
         <Input
           placeholder="Contoh : sin(x)/x"
           onInput={(e) => {
@@ -88,7 +88,7 @@ export default function Trigonometri({
       </Field>
      
 
-      <Button w={"full"} colorPalette={"yellow"} onClick={calculatePolinomials}>
+      <Button w={"full"} colorPalette={"blue"} onClick={calculatePolinomials}>
         Hitung Limit{" "}
       </Button>
     </Box>

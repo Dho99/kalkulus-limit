@@ -29,7 +29,7 @@ export default function Dialog({
   buttonText,
   title,
   body,
-  buttonColor,
+  buttonColor, //eslint-disable-line
   size,
   maxW,
   dialogColor,
@@ -41,7 +41,7 @@ export default function Dialog({
     <HStack wrap="wrap" gap="4">
       <DialogRoot placement={"center"} motionPreset="slide-in-bottom">
         <DialogTrigger asChild>
-          <Button colorPalette={buttonColor} size={size} maxW={maxW} variant={variant} color={color}>
+          <Button bg={"blue.300"}  size={size} maxW={maxW} variant={variant} color={color} shadow={"sm"} opacity={0.7}>
             <Text fontWeight={"bold"}>{buttonText}</Text>
           </Button>
         </DialogTrigger>

@@ -24,12 +24,14 @@ export default function Page() {
             sm: "flex",
             base: "block",
           }}
+          color={"white"}
+          mt={5}
         >
           <Sidenav content={"Konsep Dasar Limit"} />
           <Box flexBasis={"100%"}>
             <Text
               textStyle={"5xl"}
-              color={"black"}
+              color={"white"}
               justifyContent={"center"}
               display={"flex"}
               fontWeight={"bold"}

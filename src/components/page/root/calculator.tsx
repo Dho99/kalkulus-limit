@@ -5,7 +5,7 @@ import CalculatorChild from "../calculator";
 
 export default function Calculator() {
   return (
-    <Box mt={"10%"} maxW="dvw" w="full" id="kalkulator">
+    <Box mt={{xl: "10%", lg: "10%", md: "10%", sm: "20%", base: "20%"}} maxW="dvw" w="full" id="kalkulator">
       <Flex display={"flex"} justifyContent={"center"} mb={5}>
         <Text
           textStyle={"4xl"}
@@ -19,6 +19,7 @@ export default function Calculator() {
           }}
           alignItems={"center"}
           color={"white"}
+          textAlign={"center"}
         >
           Coba Fitur Fungsional -
           <Box
@@ -31,13 +32,15 @@ export default function Calculator() {
             rounded={"lg"}
             shadow={"sm"}
             color={"white"}
+            m="auto"
+            w="fit-content"
           >
             Kalkulator Limit
           </Box>
         </Text>
       </Flex>
       <Container p={5}>
-        <Flex>
+        <Flex justifyContent={"center"}>
           <CalculatorChild />
         </Flex>
       </Container>

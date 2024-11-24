@@ -2,7 +2,7 @@
 
 // import nerdamer from "nerdamer";
 import { useState } from "react";
-import { Text, Box, Tabs } from "@chakra-ui/react";
+import { Text, Box, Tabs, Container } from "@chakra-ui/react";
 import LatexRenderer from "@/components/LatexRenderer";
 import Sepihak from "./kalkulator/sepihak";
 import { Alert } from "@/components/ui/alert";
@@ -51,7 +51,7 @@ const CalculatorChild = () => {
   };
 
   return (
-    <Box
+    <Container
       display={"flex"}
       w="dvw"
       flexDir={{
@@ -62,10 +62,11 @@ const CalculatorChild = () => {
         base: "column",
       }}
       gap={3}
+      justifyContent={"center"}
 
     >
       <Box p={5} shadow={"lg"} rounded={"lg"} flexBasis={"50%"} bg={"whiteAlpha.900"}>
-        <Tabs.Root defaultValue="sepihak" variant={"enclosed"}>
+        <Tabs.Root defaultValue="sepihak" variant={"enclosed"}  overflow={"auto"}>
           <Tabs.List>
             <Tabs.Trigger
               value="sepihak"
@@ -261,7 +262,7 @@ const CalculatorChild = () => {
           />
         )} */}
       </Box>
-    </Box>
+    </Container>
   );
 };
 

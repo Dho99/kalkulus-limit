@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Box, Text, Flex, For, Container, SimpleGrid } from "@chakra-ui/react";
+import { Box, Text, Flex, For, SimpleGrid } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
 import QuizProvider, { QuizContext } from "@/app/quiz-context";
 import Image from "next/image";

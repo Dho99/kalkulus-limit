@@ -37,7 +37,7 @@ export default function Cards() {
         <Flex gap={4} justifyContent={"center"}>
           <Box flexBasis={"100%"} m="auto">
             <QuizProvider>
-              <SimpleGrid columns={{xl: 1, lg: 1, md: 2, sm: 2, base: 2}} gap={4} flexDirection={"column"}>
+              <SimpleGrid columns={{xl: 1, lg: 1, md: 2, sm: 1, base: 1}} gap={4} flexDirection={"column"}>
                 <For
                   each={[
                     {

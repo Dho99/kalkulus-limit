@@ -13,7 +13,7 @@ export default function Page() {
       <Box
         pos="absolute"
         maxW="dvw"
-        h={{ lg: "100vh", md: "115vh", sm: "280vh", base: "400vh" }}
+        h={"svh"}
         zIndex={0}
         top="70px"
         left={0}

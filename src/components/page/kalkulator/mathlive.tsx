@@ -4,17 +4,17 @@ import React from 'react';
 
 // Deklarasi tipe untuk props
 interface MathKeyboardProps {
-  onChange?: (value: string) => void;
-  initialValue?: string;
-  className?: string;
+  onChange: (value: string) => void;
+  initialValue: string;
+  className: string;
 }
 
-const MathKeyboard = React.memo(({ onChange, initialValue = '', className = '' }: MathKeyboardProps) =>  {
+const MathKeyboard = ({ onChange, initialValue = '', className = '' }: MathKeyboardProps) =>  { //eslint-disable-line
   const mathfieldRef = useRef<HTMLDivElement>(null);
   // const mathValueRef = useRef<string>(initialValue);
     
     useEffect(() => {
-      let mathfield: any = null;
+      let mathfield: any = null; //eslint-disable-line
       
       const initMathField = async () => {
         if (!mathfieldRef.current) return;
@@ -33,7 +33,6 @@ const MathKeyboard = React.memo(({ onChange, initialValue = '', className = '' }
         mathfield = new MathfieldElement();
         
         // Konfigurasi mathfield
-        mathfield.setValue(initialValue);
         mathfield.setOptions({
           virtualKeyboardMode: 'auto',
           virtualKeyboards: 'all',
@@ -41,6 +40,7 @@ const MathKeyboard = React.memo(({ onChange, initialValue = '', className = '' }
           virtualKeyboardLayout: 'qwerty',
         });
         
+        mathfield.setValue(initialValue);
         // mathfield = new Audio()
   
         // Event handler
@@ -56,9 +56,9 @@ const MathKeyboard = React.memo(({ onChange, initialValue = '', className = '' }
   
       initMathField();
   
-    }, []); // Dependency array yang minimal
+    }, [initialValue, onChange]); // Dependency array yang minimal
   
     return <div ref={mathfieldRef} className="math-keyboard-container" />; 
-  });
+  };
   
   export default MathKeyboard;

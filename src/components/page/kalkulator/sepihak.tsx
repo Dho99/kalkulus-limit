@@ -68,7 +68,7 @@ export default function Sepihak({ setValue, setExpression, setExpression1, setVa
     
   };
 
-  const [mathVal, setMathVal] = useState<string>('')
+  const [mathVal, setMathVal] = useState<string>('')//eslint-disable-line
 
   const handleKeyboardInput = (value: string) => {
     setMathVal(value);

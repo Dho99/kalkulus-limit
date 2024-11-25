@@ -1,22 +1,13 @@
 "use client";
 
-import { useState, Dispatch, SetStateAction } from "react";
+import { useState, Dispatch, SetStateAction, useEffect } from "react";
 import LatexRenderer from "@/components/LatexRenderer";
 import { Input, Box, Button } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
 import nerdamer from "nerdamer";
 require('nerdamer/all'); //eslint-disable-line
+import MathKeyboard from "./mathlive";
 
-// type ChartProps = {
-//     type: string,
-//     data: {
-//         x: string,
-//         value: string,
-//         leftValue: string,
-//         rightValue: string,
-//         expression: string,
-//     }
-// }
 
 type ComponentProps = {
   setValue: Dispatch<SetStateAction<string>>;
@@ -77,16 +68,29 @@ export default function Sepihak({ setValue, setExpression, setExpression1, setVa
     
   };
 
+  const [mathVal, setMathVal] = useState<string>('')
+
+  const handleKeyboardInput = (value: string) => {
+    setMathVal(value);
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setMathVal('f(x)');
+    }, 500);
+  },[])
+
   return (
     <Box minH={"10vh"} display={"flex"} flexDirection={"column"} gap={4}>
-      <Field label="Masukkan Ekspresi Fungsi Limit Kanan" helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)">
+      {/* <Field label="Masukkan Ekspresi Fungsi Limit Kanan" helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)">
         <Input
           placeholder="Masukkan Ekspresi Fungsi Limit Kanan"
           onInput={(e) => {
             handleInput("key1", e.currentTarget.value);
           }}
         />
-      </Field>
+      </Field> */}
+      <MathKeyboard onChange={(value) => handleKeyboardInput(value)} initialValue="" className="w-96"/>
       <Field label="Bentuk Fungsi Limit Kanan : ">
           {input["key1"] ? <LatexRenderer expression={input["key1"]} />: "Belum ada input "}
       </Field>      

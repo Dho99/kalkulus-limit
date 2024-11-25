@@ -34,10 +34,10 @@ export default function Cards() {
             Kumpulan Materi Fungsi Limit Kalkulus
           </Text>
           <Flex gap={4} justifyContent={"center"}>
-            <Box flexBasis={"100%"} m="auto" justifyContent={"center"}>
+            <Box flexBasis={"100%"} m="auto" maxW={"90vw"} justifyContent={"center"}>
               <QuizProvider>
                 <SimpleGrid
-                  columns={{ xl: 1, lg: 1, md: 2, sm: 1, base: 1 }}
+                  columns={{ xl: 2, lg: 1, md: 2, sm: 1, base: 1 }}
                   mx={{ xl: 0, lg: 0, md: 0, sm: 1, base: 1 }}
                   gap={4}
                   flexDirection={"column"}
@@ -111,6 +111,9 @@ export default function Cards() {
                         }}
                         rounded={"xl"}
                         justifyContent={item.align}
+                        _hover={{shadow: "xl", bgColor: "blue.500"}}
+                        transition={"all 0.2s"}
+                        
                       >
                         <Flex
                           textAlign={item.align}

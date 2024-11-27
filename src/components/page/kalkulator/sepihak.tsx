@@ -4,7 +4,7 @@ import { useState, Dispatch, SetStateAction } from "react";
 import LatexRenderer from "@/components/LatexRenderer";
 import { Input, Box, Button } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
-import nerdamer, { set } from "nerdamer";
+import nerdamer from "nerdamer";
 require("nerdamer/all"); //eslint-disable-line
 // import VirtualKeyboard from "./mathlive";
 

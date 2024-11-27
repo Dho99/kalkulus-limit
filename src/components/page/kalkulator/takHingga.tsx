@@ -4,9 +4,9 @@ import { useState, Dispatch, SetStateAction } from "react";
 import LatexRenderer from "@/components/LatexRenderer";
 import { Input, Box, Button } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
-import nerdamer from "nerdamer";
+// import nerdamer from "nerdamer";
 
-require("nerdamer/all"); //eslint-disable-line
+// require("nerdamer/all"); //eslint-disable-line
 import {
   RadioCardItem,
   RadioCardRoot,
@@ -25,7 +25,7 @@ export default function TakHingga({
   setErrorMessage,
   setTempInput,
 }: ComponentProps) {
-  const math = require("mathjs");
+  const math = require("mathjs"); //eslint-disable-line
 
   const [input, setInput] = useState<Record<string, string>>({
     key1: "",
@@ -63,7 +63,7 @@ export default function TakHingga({
   
         setTempInput(JSON.stringify(input));
   
-      } catch (e: unknown|any) {
+      } catch (e: unknown|any) { //eslint-disable-line
         setErrorMessage(JSON.stringify({message: e.message}));
       }
     }else{

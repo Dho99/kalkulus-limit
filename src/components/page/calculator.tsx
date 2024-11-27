@@ -15,18 +15,18 @@ const CalculatorChild = () => {
   const [value, setValue] = useState("");
   const [expression, setExpression] = useState("");
   const [errorMsg, setErrorMessage] = useState("");
-  const [eqType, setEqType] = useState("");
+  const [eqType, setEqType] = useState(""); //eslint-disable-line
   const [tempInput, setTempInput] = useState("");
-  const [chartData, setChartData] = useState({
-    type: "",
-    data: {
-      x: "",
-      value: "",
-      leftValue: "",
-      rightValue: "",
-      expression: "",
-    },
-  });
+  // const [chartData, setChartData] = useState({
+  //   type: "",
+  //   data: {
+  //     x: "",
+  //     value: "",
+  //     leftValue: "",
+  //     rightValue: "",
+  //     expression: "",
+  //   },
+  // });
 
 
   const clearAllState = () => {
@@ -35,16 +35,16 @@ const CalculatorChild = () => {
     setErrorMessage("");
     setEqType("");
     setTempInput("");
-    setChartData({
-      type: "",
-      data: {
-        x: "",
-        value: "",
-        leftValue: "",
-        rightValue: "",
-        expression: "",
-      },
-    });
+    // setChartData({
+    //   type: "",
+    //   data: {
+    //     x: "",
+    //     value: "",
+    //     leftValue: "",
+    //     rightValue: "",
+    //     expression: "",
+    //   },
+    // });
   };
 
   return (

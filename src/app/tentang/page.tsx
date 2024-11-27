@@ -25,9 +25,9 @@ export default function Page() {
         >
           Kontributor Projek
         </Text>
-        <Text textStyle={"lg"} textAlign={"center"} color={"white"} maxW="50vw" m="auto">
-          Kami dari Kelompok 3 Kalkulus, mempersembahkan Projek ini dengan
-          materi yang telah kami pelajari. Yaitu materi mengenai Fungsi Limit
+        <Text textStyle={"lg"} textAlign={"center"} color={"white"} maxW="50vw" m="auto" my={3}>
+          Kami dari Kelompok 3 Kalkulus, mempersembahkan Projek Web Pembelajaran Limit Fungsi ini dengan
+          materi yang telah kami pelajar untuk memenuhi kriteria penilaian UAS Kalkulus I
         </Text>
       </Box>
 

@@ -127,7 +127,7 @@ export default function Sidenav({ content }: SidenavProps) {
         position={"absolute"}
         display={{ lg: "none", sm: "block", base: "block" }}
         left={sidebarPos ? {md: 220, sm: 210, base: 250} : {md: -2, sm: -1, base: 2}}
-        top={-2}
+        top={5}
         opacity={sidebarPos ? 1 : 0.75}
         zIndex={15}
       >
@@ -151,7 +151,7 @@ export default function Sidenav({ content }: SidenavProps) {
         // borderRight={"2px solid"}
         
         minH={"dvh"}
-        mt={{xl: -5, lg: -8, md: -10, sm: -10, base: -10}}
+        mt={{xl: 5, lg: 2, md: 3, sm: 2, base: -5}}
         pt={{xl: 8, lg: 8, md: 0, sm: 0, base: 5}}
         px={{xl: 0, lg: 0, md: 0, sm: 0, base:5}}
         display={{

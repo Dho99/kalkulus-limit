@@ -25,7 +25,7 @@ export default function Page() {
             base: "block",
           }}
           color={"white"}
-          mt={5}
+          // mt={5}
         >
           <Sidenav content={"Konsep Dasar Limit"} />
           <Box flexBasis={"100%"}>
@@ -39,6 +39,7 @@ export default function Page() {
               textAlign={"center"}
               w="full"
               ms={3}
+              mt={5}
             >
               Menentukan Nilai Limit Fungsi
             </Text>

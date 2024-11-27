@@ -43,7 +43,6 @@ export default function Page() {
               mb={"3%"}
               textAlign={"center"}
               w="full"
-              ms={3}
               mt={5}
             >
               Konsep Dasar Limit Fungsi Aljabar

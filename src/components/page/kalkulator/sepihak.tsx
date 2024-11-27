@@ -1,30 +1,31 @@
 "use client";
 
-import { useState, Dispatch, SetStateAction, useEffect } from "react";
+import { useState, Dispatch, SetStateAction } from "react";
 import LatexRenderer from "@/components/LatexRenderer";
 import { Input, Box, Button } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
-import nerdamer from "nerdamer";
-require('nerdamer/all'); //eslint-disable-line
-import MathKeyboard from "./mathlive";
-
+import nerdamer, { set } from "nerdamer";
+require("nerdamer/all"); //eslint-disable-line
+// import VirtualKeyboard from "./mathlive";
 
 type ComponentProps = {
   setValue: Dispatch<SetStateAction<string>>;
-  setValue1: Dispatch<SetStateAction<string>>;
   setExpression: Dispatch<SetStateAction<string>>;
-  setExpression1: Dispatch<SetStateAction<string>>;
+  setTempInput: Dispatch<SetStateAction<string>>;
   setErrorMessage: Dispatch<SetStateAction<string>>;
-  // setChartData: Dispatch<SetStateAction<ChartProps>>;
 };
 
-// export default function Sepihak({ setValue, setExpression, setExpression1, setValue1, setErrorMessage, setChartData }: ComponentProps) {
-export default function Sepihak({ setValue, setExpression, setExpression1, setValue1, setErrorMessage }: ComponentProps) {
+export default function Sepihak({
+  setValue,
+  setExpression,
+  setErrorMessage,
+  setTempInput,
+}: ComponentProps) {
   const [input, setInput] = useState<Record<string, string>>({
-    key1: '',
-    key2: '',
-    key3: '',
-    key4: '',
+    key1: "",
+    key2: "",
+    key3: "",
+    key4: "",
   });
 
   const handleInput = (key: string, value: string) => {
@@ -32,102 +33,76 @@ export default function Sepihak({ setValue, setExpression, setExpression1, setVa
       ...prev,
       [key]: value,
     }));
-    
   };
 
   const calculateOneSidedLimit = () => {
-    setErrorMessage('');
-    const expression = `limit(${input["key1"]}, ${input["key3"]}, ${input["key4"]})`
-    const expression1 = `limit(${input["key2"]}, ${input["key3"]}, ${input["key4"]})`
-    try{
+    setErrorMessage("");
+    try {
+      const expression = `limit(${input["key1"]}, ${input["key2"]}, ${input["key3"]})`;
+
       const calculateResult = nerdamer(expression).toString();
-      const calculateResult1 = nerdamer(expression1).toString();
-  
-      const parseExpression = nerdamer.convertToLaTeX(expression+'= ')
-      const parseExpression1 = nerdamer.convertToLaTeX(expression1+'= ')
-      setExpression(parseExpression);
-      setExpression1(parseExpression1);
-      setValue(calculateResult)
-      setValue1(calculateResult1)
 
-      // setChartData({
-      //   type: "Sepihak",
-      //   data: {
-      //     x: input["key4"],
-      //     value:  calculateResult,
-      //     leftValue: calculateResult,
-      //     rightValue: calculateResult1,
-      //     expression: input["key1"]
-      //   }
-      // })
-
-
-    }catch(e: unknown){
+      setExpression("noLatex");
+      setValue(calculateResult);
+      setTempInput(JSON.stringify(input));
+    } catch (e: unknown) {
       setErrorMessage(JSON.stringify(e));
     }
-    
   };
-
-  const [mathVal, setMathVal] = useState<string>('')//eslint-disable-line
-
-  const handleKeyboardInput = (value: string) => {
-    setMathVal(value);
-  };
-
-  useEffect(() => {
-    setTimeout(() => {
-      setMathVal('f(x)');
-    }, 500);
-  },[])
 
   return (
     <Box minH={"10vh"} display={"flex"} flexDirection={"column"} gap={4}>
-      {/* <Field label="Masukkan Ekspresi Fungsi Limit Kanan" helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)">
+      <Field
+        label="Masukkan Ekspresi Fungsi Limit Kanan"
+        helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)"
+      >
         <Input
-          placeholder="Masukkan Ekspresi Fungsi Limit Kanan"
+          border={"1px solid white"}
+          placeholder="Masukkan Ekspresi Fungsi Limit"
+          shadow={"sm"}
           onInput={(e) => {
             handleInput("key1", e.currentTarget.value);
           }}
         />
-      </Field> */}
-      <MathKeyboard onChange={(value) => handleKeyboardInput(value)} initialValue="" className="w-96"/>
-      <Field label="Bentuk Fungsi Limit Kanan : ">
-          {input["key1"] ? <LatexRenderer expression={input["key1"]} />: "Belum ada input "}
-      </Field>      
-
-      <Field label="Masukkan Ekspresi Fungsi Limit Kiri">
-        <Input
-          placeholder="Masukkan Ekspresi Fungsi Limit Kiri"
-          onInput={(e) => {
-            handleInput("key2", e.currentTarget.value);
-          }}
-        />
+        {/* <VirtualKeyboard inputKey={"key1"} handleInput={handleInput}/> */}
       </Field>
-      
-      <Field label="Bentuk Fungsi Limit Kiri : ">
-          {input["key2"] ? <LatexRenderer expression={input["key2"]} />: "Belum ada input "}
-      </Field>      
+
+      <Field label="Bentuk Ekspresi Fungsi Limit : ">
+        {input["key1"] ? (
+          <LatexRenderer expression={input["key1"]} />
+        ) : (
+          "Belum ada input "
+        )}
+        {/* {JSON.stringify(input)} */}
+      </Field>
 
       <Field label="Masukkan Variabel">
         <Input
+          border={"1px solid white"}
+          shadow={"sm"}
           placeholder="Masukkan Variabel"
           onInput={(e) => {
-            handleInput("key3", e.currentTarget.value);
+            handleInput("key2", e.currentTarget.value);
           }}
         />
       </Field>
       <Field label="Masukkan Nilai Limit">
         <Input
           placeholder="Masukkan Nilai Limit"
+          border={"1px solid white"}
+          shadow={"sm"}
           onInput={(e) => {
-            handleInput("key4", e.currentTarget.value);
+            handleInput("key3", e.currentTarget.value);
           }}
         />
       </Field>
-   
       <Button
         w={"full"}
-        colorPalette={"blue"}
+        bg={"blue.500"}
+        mt={4}
+        color={"white"}
+        _hover={{ bg: "blue.600" }}
+        transition={"all 0.2s"}
         onClick={calculateOneSidedLimit}
       >
         Hitung Limit{" "}

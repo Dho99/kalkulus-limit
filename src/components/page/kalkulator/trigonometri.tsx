@@ -7,13 +7,11 @@ import { Field } from "@/components/ui/field";
 import nerdamer from "nerdamer";
 require("nerdamer/all"); //eslint-disable-line
 
-
 type ComponentProps = {
   setValue: Dispatch<SetStateAction<string>>;
   setExpression: Dispatch<SetStateAction<string>>;
   setErrorMessage: Dispatch<SetStateAction<string>>;
 };
-
 
 export default function Trigonometri({
   setValue,
@@ -40,11 +38,10 @@ export default function Trigonometri({
       const expression = `limit(${input["key1"]}, ${input["key2"]}, ${input["key3"]})`;
       const calculateResult = nerdamer(expression).toString();
 
-      const parseExpression = nerdamer.convertToLaTeX(expression+'=');
+      const parseExpression = nerdamer.convertToLaTeX(expression + "=");
 
       setExpression(parseExpression);
       setValue(calculateResult);
-
     } catch (e: unknown) {
       setErrorMessage(JSON.stringify(e));
       console.log(e);
@@ -53,8 +50,13 @@ export default function Trigonometri({
 
   return (
     <Box minH={"10vh"} display={"flex"} flexDirection={"column"} gap={4}>
-      <Field label="Masukkan Ekspresi Fungsi Limit Tak Trigonometri" helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)">
+      <Field
+        label="Masukkan Ekspresi Fungsi Limit Tak Trigonometri"
+        helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)"
+      >
         <Input
+          border={"1px solid white"}
+          shadow={"sm"}
           placeholder="Contoh : sin(x)/x"
           onInput={(e) => {
             handleInput("key1", e.currentTarget.value);
@@ -71,6 +73,8 @@ export default function Trigonometri({
 
       <Field label="Masukkan Variabel">
         <Input
+          border={"1px solid white"}
+          shadow={"sm"}
           placeholder="Masukkan Variabel"
           onInput={(e) => {
             handleInput("key2", e.currentTarget.value);
@@ -80,15 +84,24 @@ export default function Trigonometri({
 
       <Field label="Masukkan Nilai Limit">
         <Input
+          border={"1px solid white"}
+          shadow={"sm"}
           placeholder="Masukkan Nilai Limit"
           onInput={(e) => {
             handleInput("key3", e.currentTarget.value);
           }}
         />
       </Field>
-     
 
-      <Button w={"full"} colorPalette={"blue"} onClick={calculatePolinomials}>
+      <Button
+        w={"full"}
+        bg={"blue.500"}
+        color={"white"}
+        mt={4}
+        _hover={{ bg: "blue.600" }}
+        transition={"all 0.2s"}
+        onClick={calculatePolinomials}
+      >
         Hitung Limit{" "}
       </Button>
     </Box>

@@ -32,7 +32,7 @@ const CalculatorChart = ({ ChartData }: ChartProps) => {
         // Generate points around the limit point
         const leftPoints = [];
         const rightPoints = [];
-        const limitPoint = parseFloat(ChartData.data.x);
+        const limitPoint = parseInt(ChartData.data.x);
 
         // Generate 5 points on each side
         for (let i = -5; i <= 5; i++) {
@@ -109,6 +109,8 @@ const CalculatorChart = ({ ChartData }: ChartProps) => {
         <Box w={"full"} h={"50vh"}>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
+              width={730}
+              height={250}
               data={chartData}
               margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
             >
@@ -117,29 +119,8 @@ const CalculatorChart = ({ ChartData }: ChartProps) => {
               <YAxis />
               <Tooltip />
               <Legend />
-              {ChartData.type === "Sepihak" ? (
-                <>
-                  <Line
-                    type="monotone"
-                    dataKey="Limit Kiri"
-                    stroke="#8884d8"
-                    dot={true}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="Limit Kanan"
-                    stroke="#82ca9d"
-                    dot={true}
-                  />
-                </>
-              ) : (
-                <Line
-                  type="monotone"
-                  dataKey="Nilai"
-                  stroke="#8884d8"
-                  dot={true}
-                />
-              )}
+              <Line type="monotone" dataKey="Limit Kiri" stroke="#8884d8" />
+              <Line type="monotone" dataKey="Limit Kanan" stroke="#82ca9d" />
             </LineChart>
           </ResponsiveContainer>
         </Box>

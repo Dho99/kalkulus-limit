@@ -1,64 +1,61 @@
-import { useEffect, useRef } from 'react';
-import React from 'react';
-
-
-// Deklarasi tipe untuk props
-interface MathKeyboardProps {
-  onChange: (value: string) => void;
-  initialValue: string;
-  className: string;
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "math-field": React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
+        HTMLElement
+      > & {
+        onInput?: (event: CustomEvent) => void; // Tambahkan event handler khusus jika diperlukan
+      };
+    }
+  }
 }
 
-const MathKeyboard = ({ onChange, initialValue = '', className = '' }: MathKeyboardProps) =>  { //eslint-disable-line
-  const mathfieldRef = useRef<HTMLDivElement>(null);
-  // const mathValueRef = useRef<string>(initialValue);
-    
-    useEffect(() => {
-      let mathfield: any = null; //eslint-disable-line
-      
-      const initMathField = async () => {
-        if (!mathfieldRef.current) return;
-        
-        while (mathfieldRef.current.firstChild) {
-          mathfieldRef.current.removeChild(mathfieldRef.current.firstChild);
-        }
-        // Dynamic import
-        const { MathfieldElement } = await import('mathlive');
-        
-        // Register custom element jika belum terdaftar
-        if (!customElements.get('math-field')) {
-          customElements.define('math-field', MathfieldElement);
-        }
-  
-        mathfield = new MathfieldElement();
-        
-        // Konfigurasi mathfield
-        mathfield.setOptions({
-          virtualKeyboardMode: 'auto',
-          virtualKeyboards: 'all',
-          virtualKeyboardTheme: 'material',
-          virtualKeyboardLayout: 'qwerty',
-        });
-        
-        mathfield.setValue(initialValue);
-        // mathfield = new Audio()
-  
-        // Event handler
-        mathfield.addEventListener('input', () => {
-          const value = mathfield.value;
-          // mathValueRef.current = value; // Update ref dengan nilai terbaru
-          onChange?.(value);
-       });
-  
-        // Append ke DOM
-        mathfieldRef.current.appendChild(mathfield);
-      };
-  
-      initMathField();
-  
-    }, [initialValue, onChange]); // Dependency array yang minimal
-  
-    return <div ref={mathfieldRef} className="math-keyboard-container" />; 
-  };
-  
-  export default MathKeyboard;
+import "mathlive";
+import { useState, useEffect, useRef, Dispatch, SetStateAction } from "react";
+import nerdamer from "nerdamer"
+require('nerdamer/all'); //eslint-disable-line
+
+interface KeyboardProps{
+  inputKey: string,
+  handleInput: (key: string, value: string) => void;
+}
+
+
+function VirtualKeyboard({inputKey, handleInput}: KeyboardProps) {
+  const mf: any = useRef();
+  // Customize the mathfield when it is created
+  useEffect(() => {
+    mf.current.mathVirtualKeyboardPolicy = "manual";
+
+    mf.current.addEventListener("focusin", (evt: any) =>
+      window.mathVirtualKeyboard.show()
+    );
+
+    mf.current.addEventListener("focusout", (evt: any) =>
+      window.mathVirtualKeyboard.hide()
+    );
+
+  }, []);
+
+  const setValue = (value: string) => {
+    const parsedValue = nerdamer.convertFromLaTeX(value).toString();
+    handleInput(inputKey, parsedValue);
+    // alert(parsedValue)
+  }
+
+  return (
+    <>
+      <math-field 
+        ref={mf}
+        onInput={(evt: any)=> setValue(evt.target.value)}
+        style={{minWidth: "100%"}}
+      >
+      </math-field>
+        Value : {inputKey}
+    </>
+  );
+ 
+}
+
+export default VirtualKeyboard;

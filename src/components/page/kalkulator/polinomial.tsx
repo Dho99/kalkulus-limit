@@ -19,12 +19,11 @@ type ComponentProps = {
   setTempInput: Dispatch<SetStateAction<string>>;
 };
 
-
 export default function TakHingga({
   setValue,
   setExpression,
   setErrorMessage,
-  setTempInput
+  setTempInput,
 }: ComponentProps) {
   const [input, setInput] = useState<Record<string, string>>({
     key1: "",
@@ -58,13 +57,17 @@ export default function TakHingga({
 
   return (
     <Box minH={"10vh"} display={"flex"} flexDirection={"column"} gap={4}>
-      <Field label="Masukkan Ekspresi Fungsi Limit Polinom" helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)">
+      <Field
+        label="Masukkan Ekspresi Fungsi Limit Polinom"
+        helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)"
+      >
         <Input
+          border={"1px solid white"}
+          shadow={"sm"}
           placeholder="Contoh : 4*x^3 + 5*x^2 - 3*x^2"
           onInput={(e) => {
             handleInput("key1", e.currentTarget.value);
           }}
-          
         />
       </Field>
       <Field label="Bentuk Fungsi Limit : ">
@@ -77,6 +80,8 @@ export default function TakHingga({
 
       <Field label="Masukkan Variabel">
         <Input
+          border={"1px solid white"}
+          shadow={"sm"}
           placeholder="Masukkan Variabel"
           onInput={(e) => {
             handleInput("key2", e.currentTarget.value);
@@ -86,15 +91,24 @@ export default function TakHingga({
 
       <Field label="Masukkan Nilai Limit">
         <Input
+          border={"1px solid white"}
+          shadow={"sm"}
           placeholder="Masukkan Nilai Limit"
           onInput={(e) => {
             handleInput("key3", e.currentTarget.value);
           }}
         />
       </Field>
-     
 
-      <Button w={"full"} colorPalette={"blue"} onClick={calculatePolinomials}>
+      <Button
+        w={"full"}
+        bg={"blue.500"}
+        mt={4}
+        color={"white"}
+        _hover={{ bg: "blue.600" }}
+        transition={"all 0.2s"}
+        onClick={calculatePolinomials}
+      >
         Hitung Limit{" "}
       </Button>
     </Box>

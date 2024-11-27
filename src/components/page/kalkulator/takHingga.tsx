@@ -5,6 +5,7 @@ import LatexRenderer from "@/components/LatexRenderer";
 import { Input, Box, Button } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
 import nerdamer from "nerdamer";
+
 require("nerdamer/all"); //eslint-disable-line
 import {
   RadioCardItem,
@@ -15,13 +16,17 @@ type ComponentProps = {
   setValue: Dispatch<SetStateAction<string>>;
   setExpression: Dispatch<SetStateAction<string>>;
   setErrorMessage: Dispatch<SetStateAction<string>>;
+  setTempInput: Dispatch<SetStateAction<string>>;
 };
 
 export default function TakHingga({
   setValue,
   setExpression,
   setErrorMessage,
+  setTempInput,
 }: ComponentProps) {
+  const math = require("mathjs");
+
   const [input, setInput] = useState<Record<string, string>>({
     key1: "",
     key2: "",
@@ -35,21 +40,34 @@ export default function TakHingga({
     }));
   };
 
-  const calculatePolinomials = () => {
+  const calculateLimits = () => {
     setErrorMessage("");
 
-    const expression = `limit(${input["key1"]}, ${input["key2"]}, ${input["key3"]})`;
-
-    try {
-      const calculateResult = nerdamer(expression).toString();
-
-      const parseExpression = nerdamer.convertToLaTeX(expression + "= ");
-
-      setExpression(parseExpression);
-      setValue(calculateResult);
-      console.log(calculateResult)
-    } catch (e: unknown) {
-      setErrorMessage(JSON.stringify(e));
+    const approachValue = input["key3"].toLocaleLowerCase();
+    const variable = input["key2"];
+    const expression = input["key1"];
+    if(approachValue && variable && expression){
+      try {
+        const bigValue = approachValue === '+infinity' ? 1e10 : approachValue === '0' ? 0 : -1e10; // Dekati tak hingga dengan angka besar
+        const parsedExpr = math.parse(expression); // Parsing ekspresi
+        const compiled = parsedExpr.compile(); // Kompilasi ekspresi
+        const result = compiled.evaluate({ [variable]: bigValue });
+  
+        let calculatedResult: number|string = result;
+        if (Math.abs(result) > 1e8) {
+          calculatedResult = `${input["key3"].toLocaleLowerCase() === '+infinity' ? '' : '-'}Infinity`;
+        }
+  
+        setExpression("noLatex");
+        setValue(calculatedResult.toString());
+  
+        setTempInput(JSON.stringify(input));
+  
+      } catch (e: unknown|any) {
+        setErrorMessage(JSON.stringify({message: e.message}));
+      }
+    }else{
+      setErrorMessage(JSON.stringify({message: "Masukkan Semua input terlebih dahulu !"}));
     }
   };
 
@@ -58,6 +76,8 @@ export default function TakHingga({
       <Field label="Masukkan Ekspresi Fungsi Limit Tak Hinngga" helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)">
         <Input
           placeholder="Contoh : x^2-1"
+          border={"1px solid white"}
+          shadow={"sm"}
           onInput={(e) => {
             handleInput("key1", e.currentTarget.value);
           }}
@@ -74,6 +94,9 @@ export default function TakHingga({
       <Field label="Masukkan Variabel">
         <Input
           placeholder="Masukkan Variabel"
+          border={"1px solid white"}
+          shadow={"sm"}
+          color={"white"}
           onInput={(e) => {
             handleInput("key2", e.currentTarget.value);
           }}
@@ -85,20 +108,32 @@ export default function TakHingga({
               label={"Positif"}
               key={"Positif"}
               value={"inf"}
-              _checked={{bg: "yellow.300", color: "black"}}
-              onClick={() => {handleInput("key3", "+Infinity")}}
-            />
+              _checked={{bg: "blue.300", color: "black", shadow: "sm"}}
+              transition={"all 0.3s"}
+              
+              
+              onClick={() => {handleInput("key3", "+infinity")}}
+              />
             <RadioCardItem
               label={"Negatif"}
               key={"Negatif"}
               value={"-inf"}
-              _checked={{bg: "yellow.300", color: "black"}}
-              onClick={() => {handleInput("key3", "-Infinity")}}
+              _checked={{bg: "blue.300", color: "black", shadow: "sm"}}
+              onClick={() => {handleInput("key3", "-infinity")}}
+              transition={"all 0.3s"}
+              />
+            <RadioCardItem
+              label={"0"}
+              transition={"all 0.3s"}
+              key={"0"}
+              value={"0"}
+              _checked={{bg: "blue.300", color: "black", shadow: "sm"}}
+              onClick={() => {handleInput("key3", "0")}}
             />
         </RadioCardRoot>
       </Field>
 
-      <Button w={"full"} colorPalette={"blue"} onClick={calculatePolinomials}>
+      <Button w={"full"}  bg={"blue.500"} mt={4} color={"white"} _hover={{bg: "blue.600"}} transition={"all 0.2s"} onClick={calculateLimits}>
         Hitung Limit{" "}
       </Button>
     </Box>

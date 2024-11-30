@@ -2,12 +2,15 @@
 
 import { Box, Container, Link as ChakraUILinker, Text } from "@chakra-ui/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import MenuDrawer from "../drawer";
 import LatexRenderer from "../LatexRenderer";
 
 export default function Navbar() {
   const router = useRouter();
+  const pathName = usePathname();
+  const isExercise = pathName == "/latihan/soal";
+
   type NavItems = {
     href: string;
     navTitle: string;
@@ -30,45 +33,58 @@ export default function Navbar() {
       href: "/tentang",
       loading: true,
     },
+    {
+      navTitle: "Riwayat",
+      href: "/riwayat",
+      loading: true,
+    },
   ];
 
   return (
     <Container pos="relative">
       <Box
-       position="fixed"
-       zIndex="3"
-       left={0}
-       right={0}
-       mt={2}
-       backgroundColor="rgba(30, 64, 175, 0.85)" // blue.800 with opacity
-       backdropFilter="auto"
-       backdropBlur="8px"
-       borderWidth="1px"
-       borderColor="whiteAlpha.500"
-       borderRadius="2xl"
-       boxShadow="sm"
-       width="95vw"
-       mx="auto"
+        position="fixed"
+        zIndex="3"
+        left={0}
+        right={0}
+        mt={2}
+        backgroundColor="rgba(30, 64, 175, 0.85)" // blue.800 with opacity
+        backdropFilter="auto"
+        backdropBlur="8px"
+        borderWidth="1px"
+        borderColor="whiteAlpha.500"
+        borderRadius="2xl"
+        boxShadow="sm"
+        width="95vw"
+        mx="auto"
       >
-        <Box flexDirection="row"  px={{ lg: 10, base: 0 }}>
+        <Box flexDirection="row" px={{ lg: 10, base: 0 }}>
           <Container display={"flex"} py={2} px={5} alignItems={"center"}>
             <Box flexBasis={"50%"}>
               <ChakraUILinker
                 variant={"plain"}
                 bg={"blue.200"}
                 onClick={() => {
-                  router.push("/");
+                  if (!isExercise) {
+                    router.push("/");
+                  }
                 }}
                 p={4}
                 rounded={"full"}
                 color={"blue"}
                 shadow={"sm"}
+                _hover={{shadow: "lg"}}
+                transition={"all 0.3s"}
               >
-                <Text textStyle="3xl" fontWeight="bold">
-                  <LatexRenderer expression={"\\lim_{x \\to n}f(x)"} inline={true} />
+                <Text textStyle="xl" fontWeight="bold">
+                  <LatexRenderer
+                    expression={"\\lim_{x \\to n}f(x)"}
+                    inline={true}
+                  />
                 </Text>
               </ChakraUILinker>
             </Box>
+
             <Box
               flexBasis={"50%"}
               flexDirection="row"
@@ -80,46 +96,54 @@ export default function Navbar() {
                 return (
                   <Box
                     key={index}
-                    _hover={{ bgColor: "blue.600" }}
-                    py={3}
+                    _hover={{ bgColor: "blue.600", shadow: "sm" }}
+                    py={1}
                     px={4}
                     m={0}
                     rounded={"lg"}
                     transition={"0.2s all"}
                   >
                     {(() => {
-                      if (menu.loading) {
-                        return (
-                          <Link href={menu.href}>
-                            <Text
-                              fontWeight={"bold"}
-                              style={{ color: "white" }}
-                              textStyle={"lg"}
-                            >
-                              {menu.navTitle}
-                            </Text>
-                          </Link>
-                        );
-                      } else {
-                        return (
-                          <a href={menu.href}>
-                            {" "}
-                            <Text
-                              fontWeight={"bold"}
-                              style={{ color: "white" }}
-                              textStyle={"lg"}
-                            >
-                              {menu.navTitle}
-                            </Text>
-                          </a>
-                        );
+                      if (!isExercise) {
+                        if (menu.loading) {
+                          return (
+                            <Link href={menu.href}>
+                              <Text
+                                fontWeight={"bold"}
+                                style={{ color: "white" }}
+                                textStyle={"lg"}
+                              >
+                                {menu.navTitle}
+                              </Text>
+                            </Link>
+                          );
+                        } else {
+                          return (
+                            <a href={menu.href}>
+                              {" "}
+                              <Text
+                                fontWeight={"bold"}
+                                style={{ color: "white" }}
+                                textStyle={"lg"}
+                              >
+                                {menu.navTitle}
+                              </Text>
+                            </a>
+                          );
+                        }
                       }
                     })()}
                   </Box>
                 );
               })}
             </Box>
-            <MenuDrawer listMenu={navMenu} />
+            {(() => {
+              if(!isExercise){
+                return (
+                  <MenuDrawer listMenu={navMenu} />
+                )
+              }
+              })()}
           </Container>
         </Box>
       </Box>

@@ -28,30 +28,38 @@ type ObjType = {
     open: boolean;
     finish: boolean;
   },
+  exercise: {
+    open: boolean;
+    finish: boolean;
+  },
 
 }
 
 const initialLevelFinish: ObjType = {
   konsepDasar: {
     open: parsedValue && parsedValue.konsepDasar.open ? parsedValue.konsepDasar.open : true,
-    finish: parsedValue && parsedValue.konsepDasar.finish ? parsedValue.konsepDasar.finish : false,
+    finish: parsedValue && parsedValue.konsepDasar.finish ? parsedValue.konsepDasar.finish : true,
   },
 
   sepihak: {
-    open: parsedValue && parsedValue.sepihak.open ? parsedValue.sepihak.open : false,
-    finish: parsedValue && parsedValue.sepihak.finish ? parsedValue.sepihak.finish : false,
+    open: parsedValue && parsedValue.sepihak.open ? parsedValue.sepihak.open : true,
+    finish: parsedValue && parsedValue.sepihak.finish ? parsedValue.sepihak.finish : true,
   },
   sukuBanyak: {
-    open: parsedValue && parsedValue.sukuBanyak.open ? parsedValue.sukuBanyak.open : false,
-    finish: parsedValue && parsedValue.sukuBanyak.finish ? parsedValue.sukuBanyak.finish : false,
+    open: parsedValue && parsedValue.sukuBanyak.open ? parsedValue.sukuBanyak.open : true,
+    finish: parsedValue && parsedValue.sukuBanyak.finish ? parsedValue.sukuBanyak.finish : true,
   },
   takHingga: {
-    open: parsedValue && parsedValue.takHingga.open ? parsedValue.takHingga.open : false,
-    finish: parsedValue && parsedValue.takHingga.finish ? parsedValue.takHingga.finish : false,
+    open: parsedValue && parsedValue.takHingga.open ? parsedValue.takHingga.open : true,
+    finish: parsedValue && parsedValue.takHingga.finish ? parsedValue.takHingga.finish : true,
   },
   trigonometri: {
-    open: parsedValue && parsedValue.trigonometri.open ? parsedValue.trigonometri.open : false,
-    finish: parsedValue && parsedValue.trigonometri.finish ? parsedValue.trigonometri.finish : false,
+    open: parsedValue && parsedValue.trigonometri.open ? parsedValue.trigonometri.open : true,
+    finish: parsedValue && parsedValue.trigonometri.finish ? parsedValue.trigonometri.finish : true,
+  },
+  exercise: {
+    open: parsedValue && parsedValue.exercise.open ? parsedValue.exercise.open : false,
+    finish: parsedValue && parsedValue.exercise.finish ? parsedValue.exercise.finish : false,
   },
 };
 

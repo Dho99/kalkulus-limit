@@ -67,7 +67,7 @@ export default function Page() {
 
           <Box p={5} shadow={"lg"} border={"1px solid white"} borderRadius={"lg"}>
             <LatexRenderer expression={"\\lim_{x \\to \\infty} \\frac{2x \\cot \\frac{2}{x} - 3 \\cot \\frac{2}{x}}{(1 - \\cos \\frac{2}{x})x^2 \\sin \\frac{1}{x}} ="} />
-            <QuizComponent answerProps={answerArray} correctValue={correctValue} nextMateri={"konsepDasar"} currentMateri="trigonometri" nextPath={"/"}/>
+            <QuizComponent answerProps={answerArray} correctValue={correctValue} nextMateri={"exercise"} currentMateri="trigonometri" nextPath={"/latihan"}/>
           </Box>
         </Container>
       </Box>

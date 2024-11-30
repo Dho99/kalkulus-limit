@@ -3,8 +3,7 @@ import { Container, Box, Text, Flex } from "@chakra-ui/react";
 import { Table } from "@chakra-ui/react";
 
 export default function Page() {
-  const getFromLS: string | any = //eslint-disable-line
-    localStorage.getItem("history") && localStorage.getItem("history");
+  const getFromLS: string | null | any = typeof window !== 'undefined' ? localStorage.getItem('history') : null;  //eslint-disable-line
   const items: any[] = JSON.parse(getFromLS); //eslint-disable-line
 
   const formatDate = (rawDate: string) => {

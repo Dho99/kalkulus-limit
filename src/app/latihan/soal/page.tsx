@@ -188,7 +188,7 @@ export default function Page() {
     const storeToLocal = (correct: number, wrong: number) => {
         let histories: object[] = [];
         const now = new Date().toLocaleDateString();
-        const getItem: string|any = localStorage.getItem('history') && localStorage.getItem('history'); //eslint-disable-line
+        const getItem: string | null | any = typeof window !== 'undefined' ? localStorage.getItem('history') : null;//eslint-disable-line
         const parseItem: object = JSON.parse(getItem);
 
         if(getItem){

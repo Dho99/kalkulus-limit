@@ -3,8 +3,8 @@ import { Container, Box, Text, Flex } from "@chakra-ui/react";
 import { Table } from "@chakra-ui/react";
 
 export default function Page() {
-  const getFromLS: string | null | any = typeof window !== 'undefined' ? localStorage.getItem('history') : '';  //eslint-disable-line
-  const items: any[] = JSON.parse(getFromLS); //eslint-disable-line
+  const getFromLS: string | null | any = typeof window !== 'undefined' ? localStorage.getItem('history') : null;  //eslint-disable-line
+    const items: any[] = JSON.parse(getFromLS); //eslint-disable-line
 
   const formatDate = (rawDate: string) => {
     let dateString: string = "";

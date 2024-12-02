@@ -38,24 +38,24 @@ type ObjType = {
 const initialLevelFinish: ObjType = {
   konsepDasar: {
     open: parsedValue && parsedValue.konsepDasar.open ? parsedValue.konsepDasar.open : true,
-    finish: parsedValue && parsedValue.konsepDasar.finish ? parsedValue.konsepDasar.finish : true,
+    finish: parsedValue && parsedValue.konsepDasar.finish ? parsedValue.konsepDasar.finish : false,
   },
 
   sepihak: {
-    open: parsedValue && parsedValue.sepihak.open ? parsedValue.sepihak.open : true,
-    finish: parsedValue && parsedValue.sepihak.finish ? parsedValue.sepihak.finish : true,
+    open: parsedValue && parsedValue.sepihak.open ? parsedValue.sepihak.open : false,
+    finish: parsedValue && parsedValue.sepihak.finish ? parsedValue.sepihak.finish : false,
   },
   sukuBanyak: {
-    open: parsedValue && parsedValue.sukuBanyak.open ? parsedValue.sukuBanyak.open : true,
-    finish: parsedValue && parsedValue.sukuBanyak.finish ? parsedValue.sukuBanyak.finish : true,
+    open: parsedValue && parsedValue.sukuBanyak.open ? parsedValue.sukuBanyak.open : false,
+    finish: parsedValue && parsedValue.sukuBanyak.finish ? parsedValue.sukuBanyak.finish : false,
   },
   takHingga: {
-    open: parsedValue && parsedValue.takHingga.open ? parsedValue.takHingga.open : true,
-    finish: parsedValue && parsedValue.takHingga.finish ? parsedValue.takHingga.finish : true,
+    open: parsedValue && parsedValue.takHingga.open ? parsedValue.takHingga.open : false,
+    finish: parsedValue && parsedValue.takHingga.finish ? parsedValue.takHingga.finish : false,
   },
   trigonometri: {
-    open: parsedValue && parsedValue.trigonometri.open ? parsedValue.trigonometri.open : true,
-    finish: parsedValue && parsedValue.trigonometri.finish ? parsedValue.trigonometri.finish : true,
+    open: parsedValue && parsedValue.trigonometri.open ? parsedValue.trigonometri.open : false,
+    finish: parsedValue && parsedValue.trigonometri.finish ? parsedValue.trigonometri.finish : false,
   },
   exercise: {
     open: parsedValue && parsedValue.exercise.open ? parsedValue.exercise.open : false,

@@ -13,6 +13,12 @@ import GenerateText from "./kalkulator/generateText";
 
 const CalculatorChild = () => {
   const [value, setValue] = useState("");
+  const [values, setValues] = useState([
+    {
+      result: "",
+      result1: "",
+    },
+  ]);
   const [expression, setExpression] = useState("");
   const [errorMsg, setErrorMessage] = useState("");
   const [eqType, setEqType] = useState(""); //eslint-disable-line
@@ -28,13 +34,18 @@ const CalculatorChild = () => {
   //   },
   // });
 
-
   const clearAllState = () => {
     setValue("");
     setExpression("");
     setErrorMessage("");
     setEqType("");
     setTempInput("");
+    setValues([
+      {
+        result: "",
+        result1: "",
+      },
+    ])
     // setChartData({
     //   type: "",
     //   data: {
@@ -73,10 +84,15 @@ const CalculatorChild = () => {
           defaultValue="sepihak"
           variant={"enclosed"}
           overflow={"auto"}
-         
         >
-          <Alert status="info" title="Perhatian, Kalkulator Tahap Eksperimen" border={"1px solid white"} shadow={"md"} mb={4}>
-              <Text>Kalkulator belum mendukung operasi matematika kompleks</Text>
+          <Alert
+            status="info"
+            title="Perhatian, Kalkulator Tahap Eksperimen"
+            border={"1px solid white"}
+            shadow={"md"}
+            mb={4}
+          >
+            <Text>Kalkulator belum mendukung operasi matematika kompleks</Text>
           </Alert>
           <Tabs.List>
             <Tabs.Trigger
@@ -84,7 +100,7 @@ const CalculatorChild = () => {
               _selected={{ bgColor: "blue.100", color: "black" }}
               onClick={clearAllState}
             >
-              {/* <LuUser /> */}
+
               Sepihak
             </Tabs.Trigger>
             <Tabs.Trigger
@@ -119,7 +135,7 @@ const CalculatorChild = () => {
             }}
           >
             <Sepihak
-              setValue={setValue}
+              setValues={setValues}
               setExpression={setExpression}
               setErrorMessage={setErrorMessage}
               setTempInput={setTempInput}
@@ -183,15 +199,27 @@ const CalculatorChild = () => {
             Input belum terdeteksi
           </Alert>
         </Box>
-        <Box display={errorMsg ? "none" : value ? "" : "none"}>
+        {/* {JSON.stringify(values)} */}
+        <Box display={errorMsg ? "none" : value ? "" : values[0] ? "" : "none"}>
           {/* {JSON.stringify(value)} */}
           {(() => {
-            if (value && !errorMsg) {
-              const argsForGemini = `\\lim_{${
-                JSON.parse(tempInput)["key2"]
-              } \\to ${JSON.parse(tempInput)["key3"]}}${
-                JSON.parse(tempInput)["key1"]
-              } \\approx ${value}`;
+            if ((value && !errorMsg) || (values[0].result && !errorMsg)) {
+              let argsForGemini: string = "";
+              if (eqType == "sepihak") {
+                argsForGemini = `Limit Kanan : \\lim_{${
+                  JSON.parse(tempInput)["key2"]
+                } \\to ${JSON.parse(tempInput)["key3"]}}${
+                  JSON.parse(tempInput)["key1"]
+                } = ${values[0].result}, Limit Kiri : 
+                \\lim_{${JSON.parse(tempInput)["key2"]} \\to ${
+                  JSON.parse(tempInput)["key5"]
+                }}${JSON.parse(tempInput)["key4"]} = ${values[0].result1}
+                `;
+              } else {
+                argsForGemini = `\\lim_{${JSON.parse(tempInput)["key2"]} \\to ${
+                  JSON.parse(tempInput)["key3"]
+                }}${JSON.parse(tempInput)["key1"]} = ${value}`;
+              }
 
               // const resResult = getAIResponse(argsForGemini)
 
@@ -201,20 +229,66 @@ const CalculatorChild = () => {
                     Hasil Kalkulasi Limit :
                   </Text>
                   <Box display={"flex"} mb={2}>
-                    {expression == "noLatex" ? (
-                      <LatexRenderer
-                        expression={`\\lim_{${
-                          JSON.parse(tempInput)["key2"]
-                        } \\to ${JSON.parse(tempInput)["key3"]}}${
-                          JSON.parse(tempInput)["key1"]
-                        } \\approx `}
-                      />
-                    ) : (
-                      <LatexRenderer expression={expression} />
-                    )}
+                    {(() => {
+                      if (expression == "noLatex") {
+                        if (eqType == "Sepihak") {
+                          return (
+                            <Box display={"flex"} flexDir={"column"}>
+                              <Box>
+                                <Text>Hasil Limit Kanan : </Text>
+                                <LatexRenderer
+                                  expression={`\\lim_{${
+                                    JSON.parse(tempInput)["key2"]
+                                  } \\to +${JSON.parse(tempInput)["key3"]}}${
+                                    JSON.parse(tempInput)["key1"]
+                                  } = ${values[0].result}`}
+                                />
+                              </Box>
+                              <Box>
+                                <Text>Hasil Limit Kiri : </Text>
+                                <Box>
+                                  <LatexRenderer
+                                    expression={`\\lim_{${
+                                      JSON.parse(tempInput)["key2"]
+                                    } \\to ${JSON.parse(tempInput)["key5"]}}${
+                                      JSON.parse(tempInput)["key4"]
+                                    } = ${values[0].result1}`}
+                                  />
+                                </Box>
+                              </Box>
+                            </Box>
+                          );
+                        }
+                        return (
+                          <LatexRenderer
+                            expression={`\\lim_{${
+                              JSON.parse(tempInput)["key2"]
+                            } \\to ${JSON.parse(tempInput)["key3"]}}${
+                              JSON.parse(tempInput)["key1"]
+                            } = `}
+                          />
+                        );
+                      } else {
+                        return <LatexRenderer expression={expression} />;
+                      }
+                      // {expression == "noLatex" ? (
+                      //   <LatexRenderer
+                      //     expression={`\\lim_{${
+                      //       JSON.parse(tempInput)["key2"]
+                      //     } \\to ${JSON.parse(tempInput)["key3"]}}${
+                      //       JSON.parse(tempInput)["key1"]
+                      //     } = `}
+                      //   />
+                      // ) : (
+                      // )}
+                    })()}
 
                     <Box ms={1}>
-                      <LatexRenderer expression={value} />
+                      {(() => {
+                        if (eqType !== "Sepihak") {
+                          return <LatexRenderer expression={value} />;
+                        }
+                      })()}
                     </Box>
                   </Box>
                   <Box>
@@ -222,9 +296,28 @@ const CalculatorChild = () => {
                       Penjelasan :{" "}
                     </Text>
                     <Text my={3} overflow={"auto"}>
-                    <Suspense fallback={<p>Loading response...</p>}>
+                    {(() => {
+                        if(eqType == 'Sepihak'){
+                          if(values[0].result == values[0].result1){
+                            return (
+                              <Text>Kedua ekspresi limit di atas menghasilkan Limit fungsi yang kontinu</Text>
+                            )
+                          }else{
+                            return (
+                              <Text>Kedua ekspresi limit di atas menghasilkan Limit fungsi yang tidak kontinu</Text>
+                            )
+                          }
+                        }else{
+                          return (
+                          <Suspense fallback={<p>Loading response...</p>}>
+                            <GenerateText expression={argsForGemini} />
+                          </Suspense>
+                          )
+                        }
+                      })()}
+                      {/* <Suspense fallback={<p>Loading response...</p>}>
                       <GenerateText expression={argsForGemini} />
-                    </Suspense>
+                    </Suspense> */}
                     </Text>
                   </Box>
                   {/* {resResult} */}

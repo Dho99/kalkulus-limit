@@ -8,11 +8,13 @@ export default function Page() {
 
   const formatDate = (rawDate: string) => {
     let dateString: string = "";
-    dateString = `${new Date(rawDate).toLocaleDateString("id-ID", {
+    dateString = `${new Date(rawDate).toLocaleDateString("id-ID", 
+      {
       day: "2-digit",
       month: "long",
       year: "numeric",
-    })}`;
+    }
+  )}`;
     return dateString;
   };
 
@@ -68,6 +70,7 @@ export default function Page() {
                   <Table.Row key={key}>
                     <Table.Cell textAlign={"center"}>
                       {" "}
+                      {/* {item.date} */}
                       {formatDate(item.date)}
                     </Table.Cell>
                     <Table.Cell textAlign={"center"}>

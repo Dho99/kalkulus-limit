@@ -120,53 +120,73 @@ export default function QuizComponent({
               switch (currentMateri) {
                 case "konsepDasar":
                   return (
-                    <Image
-                      src={`${quizImageAnswer}/konsepDasar.png`}
-                      alt={"Penyelesaian Mini Quiz Konsep Dasar"}
-                      width={500}
-                      height={500}
-                    />
+                    <Box display={"flex"} flexDir={"column"} gapY={3} mt={3}>
+                      <Box>
+                        <Text textStyle={"lg"} fontWeight={"bold"} mb={2}>
+                          Penyelesaian 1
+                        </Text>
+                        <Image
+                          src={`${quizImageAnswer}/konsepDasar.png`}
+                          alt={"Penyelesaian Mini Quiz Konsep Dasar"}
+                          width={500}
+                          height={500}
+                        />
+                      </Box>
+                      <Box>
+                        <Text textStyle={"lg"} fontWeight={"bold"} mb={2}>
+                          Penyelesaian 2
+                        </Text>
+                        <Image
+                          src={`${quizImageAnswer}/konsepDasar1.png`}
+                          alt={"Penyelesaian Mini Quiz Konsep Dasar"}
+                          width={500}
+                          height={500}
+                        />
+                      </Box>
+                    </Box>
                   );
                   break;
                 case "sepihak":
                   return (
                     <Image
-                    src={`${quizImageAnswer}/sepihak.png`}
-                    alt={"Penyelesaian Mini Quiz Limit Sepihak"}
-                    width={500}
-                    height={500}
-                  />
-                  )
+                      src={`${quizImageAnswer}/sepihak.png`}
+                      alt={"Penyelesaian Mini Quiz Limit Sepihak"}
+                      width={500}
+                      height={500}
+                    />
+                  );
                   break;
                 case "sukuBanyak":
                   return (
                     <Image
-                    src={`${quizImageAnswer}/polinomial.png`}
-                    alt={"Penyelesaian Mini Quiz Limit Suku Banyak / Polinomial"}
-                    width={500}
-                    height={500}
-                  />
-                  )
+                      src={`${quizImageAnswer}/polinomial.png`}
+                      alt={
+                        "Penyelesaian Mini Quiz Limit Suku Banyak / Polinomial"
+                      }
+                      width={500}
+                      height={500}
+                    />
+                  );
                   break;
                 case "takHingga":
                   return (
                     <Image
-                    src={`${quizImageAnswer}/takHingga.png`}
-                    alt={"Penyelesaian Mini Quiz Limit Tak Hingga"}
-                    width={500}
-                    height={500}
-                  />
-                  )
+                      src={`${quizImageAnswer}/takHingga.png`}
+                      alt={"Penyelesaian Mini Quiz Limit Tak Hingga"}
+                      width={500}
+                      height={500}
+                    />
+                  );
                   break;
                 case "trigonometri":
                   return (
                     <Image
-                    src={`${quizImageAnswer}/trigonometri.png`}
-                    alt={"Penyelesaian Mini Quiz Limit Trigonometri"}
-                    width={500}
-                    height={500}
-                  />
-                  )
+                      src={`${quizImageAnswer}/trigonometri.png`}
+                      alt={"Penyelesaian Mini Quiz Limit Trigonometri"}
+                      width={500}
+                      height={500}
+                    />
+                  );
                   break;
               }
             })()}

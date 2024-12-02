@@ -11,22 +11,22 @@ export default function Page() {
   const answerArray = [
       {
         value: "A",
-        description: "2t",
+        description: "3,5",
         latex: false,
       },
       {
         value: "B",
-        description: "\\frac{1}{2}t",
-        latex: true,
+        description: "4",
+        latex: false,
       },
       {
         value: "C",
-        description: "t",
+        description: "7",
         latex: false,
       },
       {
         value: "D",
-        description: "0",
+        description: "8",
         latex: false,
       },
   ];

@@ -170,7 +170,7 @@ export default function Page() {
                           />
                         </Box>
                         <LatexRenderer
-                          expression={"\\lim_{x \\to 2^+}(-2) + 7 = -2 + 7 = 5"}
+                          expression={"\\lim_{x \\to 2^-}(-2) + 7 = -2 + 7 = 5"}
                           inline={true}
                         />
                       </Box>

@@ -28,6 +28,8 @@ import {
 } from "@/components/ui/dialog";
 import Link from "next/link";
 import { Alert } from "@/components/ui/alert"
+import { useContext } from "react";
+import { QuizContext } from "@/app/quiz-context";
 
 
 interface Soal {
@@ -184,7 +186,23 @@ const renderQuestion = (parts: Array<string | any>) => //eslint-disable-line
   );
 
 export default function Page() {
+    const { levelFinish, updateLevelFinish } = useContext(QuizContext);
 
+    const updateContextAndLocalStorage = () => {
+
+      
+      updateLevelFinish("exercise", true);
+      localStorage.removeItem("progress");
+      
+      const levelObj: { [key: string]: { open: boolean; finish: boolean } } = {
+        ...levelFinish,
+      };
+      levelObj["exercise"].finish = true;
+  
+      localStorage.setItem("progress", JSON.stringify(levelObj));
+
+    }
+    
     const storeToLocal = (correct: number, wrong: number) => {
         let histories: object[] = [];
         const now = new Date().toLocaleDateString();
@@ -197,10 +215,14 @@ export default function Page() {
         }
 
         histories.push({date: now, correctAnswer: correct, wrongAnswer: wrong});
+        
 
         localStorage.setItem("history", JSON.stringify(histories));
+
+        updateContextAndLocalStorage();
         
-        console.log(histories);
+        
+        // console.log(histories);
 
     }
 

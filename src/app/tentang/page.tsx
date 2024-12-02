@@ -49,7 +49,7 @@ export default function Page() {
               },
               {
                 nama: "Arum Rizky Ramadhani",
-                npm: 247006111000,
+                npm: 247006111016,
                 kontribusi: "Research Materi",
                 imgSrc: "/Images/about/arum.png",
               },

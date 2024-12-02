@@ -25,7 +25,7 @@ const getAIResponse = async (args: string): Promise<string|unknown|any> => { //e
 
 export default function GenerateText({ expression }: PageProps) {
   const response = getAIResponse(
-    `Berikan penjelasan mengenai ekspresi ini ${expression}, dan berikan respons dalam bentuk elemen html`
+    `Berikan penjelasan mengenai ekspresi ini ${expression}, dan berikan respons dalam bentuk elemen html, berikan div nya saja`
   );
   return (response);
 }

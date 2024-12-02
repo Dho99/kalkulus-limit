@@ -184,7 +184,7 @@ export default function Sidenav({ content }: SidenavProps) {
             {menus[0].menuSelection.map((item, key) => {
               if(currLoc == menus[0].menuLink[key]){
                 return (
-                  <Button as="li" key={key} justifyContent={"start"} colorPalette={"blue"} variant={"solid"}>
+                  <Button as="li" key={key} justifyContent={"start"} colorPalette={"blue"} variant={"solid"} shadow={"md"}>
                     <Link
                       href={menus[0].menuLink[key]}
                       className={sidenav.active}
@@ -197,7 +197,7 @@ export default function Sidenav({ content }: SidenavProps) {
                 );
               }else{
                 return (
-                  <Button as="li" key={key} justifyContent={"start"} variant={"solid"}>
+                  <Button as="li" key={key} justifyContent={"start"} bgColor={"whiteAlpha.700"} variant={"solid"} _hover={{bg: "blue.700", color: "white", shadow: "sm"}}>
                     <Link
                       href={menus[0].menuLink[key]}
                       className={sidenav.basic}

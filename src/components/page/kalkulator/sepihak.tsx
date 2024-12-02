@@ -9,14 +9,14 @@ require("nerdamer/all"); //eslint-disable-line
 // import VirtualKeyboard from "./mathlive";
 
 type ComponentProps = {
-  setValue: Dispatch<SetStateAction<string>>;
+  setValues: Dispatch<SetStateAction<{result: string, result1: string}[]>>;
   setExpression: Dispatch<SetStateAction<string>>;
   setTempInput: Dispatch<SetStateAction<string>>;
   setErrorMessage: Dispatch<SetStateAction<string>>;
 };
 
 export default function Sepihak({
-  setValue,
+  setValues,
   setExpression,
   setErrorMessage,
   setTempInput,
@@ -26,6 +26,7 @@ export default function Sepihak({
     key2: "",
     key3: "",
     key4: "",
+    key5: "",
   });
 
   const handleInput = (key: string, value: string) => {
@@ -39,11 +40,23 @@ export default function Sepihak({
     setErrorMessage("");
     try {
       const expression = `limit(${input["key1"]}, ${input["key2"]}, ${input["key3"]})`;
+      const expression1 = `limit(${input["key4"]}, ${input["key2"]}, ${input["key5"]})`;
 
+      
       const calculateResult = nerdamer(expression).toString();
+      const calculateResult1 = nerdamer(expression1).toString();
 
       setExpression("noLatex");
-      setValue(calculateResult);
+      setValues([{
+        result: calculateResult,
+        result1: calculateResult1
+      }])
+      // setValue(calculateResult);
+      // setValue(calculateResult1);
+
+      console.log(calculateResult)
+      console.log(calculateResult1);
+      
       setTempInput(JSON.stringify(input));
     } catch (e: unknown) {
       setErrorMessage(JSON.stringify(e));
@@ -76,6 +89,30 @@ export default function Sepihak({
         {/* {JSON.stringify(input)} */}
       </Field>
 
+      <Field
+        label="Masukkan Ekspresi Fungsi Limit Kiri"
+        helperText="Apabila terdapat variabel yang diikuti konstanta, maka dipisahkan dengan * (bintang), Contoh : (2x) menjadi (2*x)"
+      >
+        <Input
+          border={"1px solid white"}
+          placeholder="Masukkan Ekspresi Fungsi Limit"
+          shadow={"sm"}
+          onInput={(e) => {
+            handleInput("key4", e.currentTarget.value);
+          }}
+        />
+        {/* <VirtualKeyboard inputKey={"key1"} handleInput={handleInput}/> */}
+      </Field>
+
+      <Field label="Bentuk Ekspresi Fungsi Limit : ">
+        {input["key1"] ? (
+          <LatexRenderer expression={input["key4"]} />
+        ) : (
+          "Belum ada input "
+        )}
+        {/* {JSON.stringify(input)} */}
+      </Field>
+
       <Field label="Masukkan Variabel">
         <Input
           border={"1px solid white"}
@@ -86,13 +123,23 @@ export default function Sepihak({
           }}
         />
       </Field>
-      <Field label="Masukkan Nilai Limit">
+      <Field label="Masukkan Nilai Limit Kanan">
         <Input
-          placeholder="Masukkan Nilai Limit"
+          placeholder="Masukkan Nilai Limit + "
           border={"1px solid white"}
           shadow={"sm"}
           onInput={(e) => {
             handleInput("key3", e.currentTarget.value);
+          }}
+        />
+      </Field>
+      <Field label="Masukkan Nilai Limit Kiri">
+        <Input
+          placeholder="Masukkan Nilai Limit - "
+          border={"1px solid white"}
+          shadow={"sm"}
+          onInput={(e) => {
+            handleInput("key5", e.currentTarget.value);
           }}
         />
       </Field>
